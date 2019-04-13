@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class UniversityController {
 
 	University school;
+	DBController DBCon = new DBController();
 
 	/**
 	 * constructs a new UniversityController with the school provided
@@ -124,33 +125,33 @@ public class UniversityController {
 		if (percentFemale.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentFemale) > 0.0 && Double.parseDouble(percentFemale) < 100.0) {
 			school.setPercentFemale(percentFemale);
 		}else if(percentFemale == null || percentFemale.equals("")) {
-			school.setPercentFemale("-1");
+			school.setPercentFemale("-1.0");
 		}else {
 			throw new IllegalArgumentException("Invalid percentFemale");
 		}
 
 		
-		if (satVerbal.matches("\\d+") && Double.parseDouble(satVerbal) >= 200 && Double.parseDouble(satVerbal) <= 800) {
+		if (satVerbal.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(satVerbal) >= 200 && Double.parseDouble(satVerbal) <= 800) {
 			school.setSatVerbal(satVerbal);
 		}else if(satVerbal == null || satVerbal.equals("")) {
-			school.setSatVerbal("-1");
+			school.setSatVerbal("-1.0");
 		}else {
 			throw new IllegalArgumentException("Invalid satVerbal");
 		}
 		
-		if (satMath.matches("\\d+") && Double.parseDouble(satMath) >= 200 && Double.parseDouble(satMath) <= 800) {
+		if (satMath.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(satMath) >= 200 && Double.parseDouble(satMath) <= 800) {
 			school.setSatMath(satMath);
 		}else if(satMath == null || satMath.equals("")) {
-			school.setSatMath("-1");
+			school.setSatMath("-1.0");
 		}else {
 			throw new IllegalArgumentException("Invalid satMath");
 		}
 
 		
-		if (cost.matches("\\d+")) {
+		if (cost.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(cost) > 0.0  ) {
 			school.setCost(cost);
 		}else if(cost == null || cost.equals("")) {
-			school.setCost("-1");
+			school.setCost("-1.0");
 		}else {
 			throw new IllegalArgumentException("Invalid cost");
 		}
@@ -158,7 +159,7 @@ public class UniversityController {
 		if (percentFinAid.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentFinAid) > 0.0 && Double.parseDouble(percentFinAid) < 100.0) {
 			school.setPercentFinAid(percentFinAid);
 		}else if(percentFinAid == null || percentFinAid.equals("")) {
-			school.setPercentFinAid("-1");
+			school.setPercentFinAid("-1.0");
 		}else {
 			throw new IllegalArgumentException("Invalid percentFinAid");
 		}
@@ -176,7 +177,7 @@ public class UniversityController {
 		if (percentAdmitted.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentAdmitted) > 0 && Double.parseDouble(percentAdmitted) < 100) {
 			school.setPercentAdmitted(percentAdmitted);
 		}else if(percentAdmitted == null || percentAdmitted.equals("")) {
-			school.setPercentAdmitted("-1");
+			school.setPercentAdmitted("-1.0");
 		}else {
 			throw new IllegalArgumentException("Invalid percentAdmitted");
 		}
@@ -185,7 +186,7 @@ public class UniversityController {
 		if (percentEnrolled.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentEnrolled) > 0 && Double.parseDouble(percentEnrolled) < 100) {
 			school.setPercentEnrolled(percentEnrolled);
 		}else if(percentEnrolled == null || percentEnrolled.equals("")) {
-			school.setPercentEnrolled("-1");
+			school.setPercentEnrolled("-1.0");
 		}else {
 			throw new IllegalArgumentException("Invalid percentEnrolled");
 		}
@@ -223,6 +224,16 @@ public class UniversityController {
 		}else {
 			school.setEmphases(emphases);
 		}
+		
+		this.DBCon.editUniversity(school.getName(), school.getState(), school.getLocation(),
+				school.getControl(), school.getEnrollment(),
+				school.getPercentFemale(), school.getSatVerbal(),
+				school.getSatMath(),school.getCost(),
+				school.getPercentFinAid(), school.getApplicants(),
+				school.getPercentAdmitted(), school.getPercentEnrolled(),
+				school.getAcademicScale(), school.getSocialScale(),
+				school.getQualityOfLife());
+		
 		return school;
 	}
 
@@ -252,12 +263,172 @@ public class UniversityController {
 			String percentFemale, String satVerbal, String satMath, String cost, String percentFinAid,
 			String percentEnrolled, String applicants, String percentAdmitted, String academicScale, String socialScale,
 			String qualityOfLife, String[] emphases) {
-		University newSchool;
+		/*University newSchool;
 			newSchool = new University(name, state, location, control, enrollment, percentFemale, satVerbal, satMath, cost,
 					percentFinAid, percentEnrolled, applicants, percentAdmitted, academicScale, socialScale, qualityOfLife,
 					emphases);
 		this.school = newSchool;
-		return newSchool;
+		return newSchool;*/
+		if (name.matches("[a-zA-Z]+")) {
+			school.setName(name);
+		}else {
+			throw new IllegalArgumentException("Invalid name");
+		}
+		
+		
+		if (state.matches("[a-zA-Z]+")) {
+			school.setState(state);
+		}else if(state == null || state.equals("")) {
+			school.setState("-1");
+		}else {
+			throw new IllegalArgumentException("Invalid State");
+		}
+
+		
+		if (location.matches("[a-zA-Z]+")) {
+			school.setLocation(location);
+		}else if(location == null || location.equals("")) {
+			school.setLocation("-1");
+		}else {
+			throw new IllegalArgumentException("Invalid location");
+		}
+
+		
+		if (control.equals("PRIVATE") || control.equals("PUBLIC")) {
+			school.setControl(control);
+		}else if(control == null || control.equals("")) {
+			school.setControl("-1");
+		}else {
+			throw new IllegalArgumentException("Invalid control");
+		}
+
+		
+		if (enrollment.matches("\\d+")) {
+			school.setEnrollment(enrollment);
+		}else if(enrollment == null || enrollment.equals("")) {
+			school.setEnrollment("-1");
+		}else {
+			throw new IllegalArgumentException("Invalid enrollment");
+		}
+
+		
+		if (percentFemale.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentFemale) > 0.0 && Double.parseDouble(percentFemale) < 100.0) {
+			school.setPercentFemale(percentFemale);
+		}else if(percentFemale == null || percentFemale.equals("")) {
+			school.setPercentFemale("-1.0");
+		}else {
+			throw new IllegalArgumentException("Invalid percentFemale");
+		}
+
+		
+		if (satVerbal.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(satVerbal) >= 200 && Double.parseDouble(satVerbal) <= 800) {
+			school.setSatVerbal(satVerbal);
+		}else if(satVerbal == null || satVerbal.equals("")) {
+			school.setSatVerbal("-1.0");
+		}else {
+			throw new IllegalArgumentException("Invalid satVerbal");
+		}
+		
+		if (satMath.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(satMath) >= 200 && Double.parseDouble(satMath) <= 800) {
+			school.setSatMath(satMath);
+		}else if(satMath == null || satMath.equals("")) {
+			school.setSatMath("-1.0");
+		}else {
+			throw new IllegalArgumentException("Invalid satMath");
+		}
+
+		
+		if (cost.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(cost) > 0.0  ) {
+			school.setCost(cost);
+		}else if(cost == null || cost.equals("")) {
+			school.setCost("-1.0");
+		}else {
+			throw new IllegalArgumentException("Invalid cost");
+		}
+
+		if (percentFinAid.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentFinAid) > 0.0 && Double.parseDouble(percentFinAid) < 100.0) {
+			school.setPercentFinAid(percentFinAid);
+		}else if(percentFinAid == null || percentFinAid.equals("")) {
+			school.setPercentFinAid("-1.0");
+		}else {
+			throw new IllegalArgumentException("Invalid percentFinAid");
+		}
+
+		
+		if (applicants.matches("\\d+")) {
+			school.setApplicants(applicants);
+		}else if(applicants == null || applicants.equals("")) {
+			school.setApplicants("-1");
+		}else {
+			throw new IllegalArgumentException("Invalid applicants");
+		}
+
+		
+		if (percentAdmitted.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentAdmitted) > 0 && Double.parseDouble(percentAdmitted) < 100) {
+			school.setPercentAdmitted(percentAdmitted);
+		}else if(percentAdmitted == null || percentAdmitted.equals("")) {
+			school.setPercentAdmitted("-1.0");
+		}else {
+			throw new IllegalArgumentException("Invalid percentAdmitted");
+		}
+
+		
+		if (percentEnrolled.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentEnrolled) > 0 && Double.parseDouble(percentEnrolled) < 100) {
+			school.setPercentEnrolled(percentEnrolled);
+		}else if(percentEnrolled == null || percentEnrolled.equals("")) {
+			school.setPercentEnrolled("-1.0");
+		}else {
+			throw new IllegalArgumentException("Invalid percentEnrolled");
+		}
+
+		
+		if (academicScale.matches("[12345]")) {
+			school.setAcademicScale(academicScale);
+		}else if(academicScale == null || academicScale.equals("")) {
+			school.setAcademicScale("-1");
+		}else {
+			throw new IllegalArgumentException("Invalid academicScale");
+		}
+
+		
+		if (socialScale.matches("[12345]")) {
+			school.setSocialScale(socialScale);
+		}else if(socialScale == null || socialScale.equals("")) {
+			school.setSocialScale("-1");
+		}else {
+			throw new IllegalArgumentException("Invalid socialScale");
+		}
+
+		
+		if (qualityOfLife.matches("[12345]")) {
+			school.setQualityOfLife(qualityOfLife);
+		}else if(qualityOfLife == null || qualityOfLife.equals("")) {
+			school.setQualityOfLife("-1");
+		}else {
+			throw new IllegalArgumentException("Invalid qualityOfLife");
+		}
+
+		
+		if (emphases == null || emphases.length == 0) {
+			school.setEmphases(new String[] {});
+		}else {
+			school.setEmphases(emphases);
+		}
+		
+		this.DBCon.addUniversity(school.getName(), school.getState(), school.getLocation(),
+				school.getControl(), school.getEnrollment(),
+				school.getPercentFemale(), school.getSatVerbal(),
+				school.getSatMath(),school.getCost(),
+				school.getPercentFinAid(), school.getApplicants(),
+				school.getPercentAdmitted(), school.getPercentEnrolled(),
+				school.getAcademicScale(), school.getSocialScale(),
+				school.getQualityOfLife());
+	
+		for(String e: emphases) {
+			this.DBCon.addEmphasis(name, e);
+		}
+		
+		return school;
 	}
 
 }

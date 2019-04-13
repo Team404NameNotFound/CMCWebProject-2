@@ -66,6 +66,33 @@ public class DBController {
 				Double.parseDouble(school.getPercentAdmitted()), Double.parseDouble(school.getPercentEnrolled()),
 				Integer.parseInt(school.getAcademicScale()), Integer.parseInt(school.getSocialScale()),
 				Integer.parseInt(school.getQualityOfLife()));
+
+	}
+	
+	public void addUniversity(String school,
+			String state,
+            String location,
+            String control,
+            String numberOfStudents,
+            String percentFemales, 
+            String SATVerbal, 
+            String SATMath, 
+            String expenses, 
+            String percentFinancialAid, 
+            String numberOfApplicants, 
+            String percentAdmitted, 
+            String percentEnrolled, 
+            String academicsScale, 
+            String socialScale,
+            String qualityOfLifeScale) {
+		dbLibrary.university_addUniversity(school, state, location,control,
+				Integer.parseInt(numberOfStudents), 
+				Double.parseDouble(percentFemales), Double.parseDouble(SATVerbal),
+				Double.parseDouble(SATMath), Double.parseDouble(expenses),
+				Double.parseDouble(percentFinancialAid), Integer.parseInt(numberOfApplicants),
+				Double.parseDouble(percentAdmitted), Double.parseDouble(percentEnrolled),
+				Integer.parseInt(academicsScale), Integer.parseInt(socialScale),
+				Integer.parseInt(qualityOfLifeScale));
 	}
 
 	/**
@@ -160,6 +187,39 @@ public class DBController {
 				Integer.parseInt(school.getAcademicScale()), Integer.parseInt(school.getSocialScale()),
 				Integer.parseInt(school.getQualityOfLife()));
 	}
+	
+	/**
+	 * Edit information in database for a specified university
+	 * 
+	 * @param school
+	 *            name of school to be updated in database
+	 */
+	public void editUniversity(String school,
+			String state,
+            String location,
+            String control,
+            String numberOfStudents,
+            String percentFemales, 
+            String SATVerbal, 
+            String SATMath, 
+            String expenses, 
+            String percentFinancialAid, 
+            String numberOfApplicants, 
+            String percentAdmitted, 
+            String percentEnrolled, 
+            String academicsScale, 
+            String socialScale,
+            String qualityOfLifeScale) {
+		dbLibrary.university_editUniversity(school, state, location,control,
+				Integer.parseInt(numberOfStudents), 
+				Double.parseDouble(percentFemales), Double.parseDouble(SATVerbal),
+				Double.parseDouble(SATMath), Double.parseDouble(expenses),
+				Double.parseDouble(percentFinancialAid), Integer.parseInt(numberOfApplicants),
+				Double.parseDouble(percentAdmitted), Double.parseDouble(percentEnrolled),
+				Integer.parseInt(academicsScale), Integer.parseInt(socialScale),
+				Integer.parseInt(qualityOfLifeScale));
+	}
+
 
 	/**
 	 * Retrieve information for a specified account
@@ -195,6 +255,20 @@ public class DBController {
 		dbLibrary.user_editUser(account.getUsername(), account.getFirstName(), account.getLastName(),
 				account.getPassword(), account.getUserType().charAt(0), account.getUserStatus().charAt(0));
 
+	}
+
+	/**
+	 * Update information for a specified account
+	 * 
+	 * @param userName
+	 * @param firstName
+	 * @param lastName
+	 * @param password
+	 * @param userType
+	 * @param userStatus
+	 */
+	public void editAccount(String userName, String firstName, String lastName, String password, String userType, String userStatus) {
+		dbLibrary.user_editUser(userName, firstName, lastName, password, userType.charAt(0), userStatus.charAt(0));
 	}
 
 	/**

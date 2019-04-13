@@ -7,9 +7,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 import cmc.entity.Account;
+import cmc.entity.University;
 import cmc.functionality.AccountController;
 import cmc.functionality.DBController;
 
+/**
+ * @author tzhang001
+ *
+ */
 public class AdminInteractionTest {
 	private DBController dbController; 
 	private AdminInteraction admin;
@@ -26,97 +31,130 @@ public class AdminInteractionTest {
 		admin.logout();
 	}
 
-	/*@Test
-	public void testAdminInteraction() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testAdminInteractionAdminFunctionalityController() {
-		fail("Not yet implemented");
-	}
-*/
-
-	/*@Test (expected = IllegalArgumentException.class) 
-	public void testEditProfile_adminNotLoggedIn_case1() {
-		admin.editProfile("cz001", "cf", "cl", "cp", "u", "Y");
-	}*/
+	//*******************************EditProfile()***********************************************
 	
 	@Test (expected = IllegalArgumentException.class)
-	public void testEditProfile_adminEnterEmpty_case2() {
+	public void testEditProfile_adminEnterEmpty_case1() {
 		admin.login("nadmin", "Admin");
 		admin.editProfile("", "", "", "", "", "");
 	}
 	
 	@Test (expected = IllegalArgumentException.class)
-	public void testEditProfile_adminNonExistingUsername_case3() {
+	public void testEditProfile_adminNonExistingUsername_case2() {
 		admin.login("nadmin", "Admin");
 		admin.editProfile("cz002", "cf", "cl", "cp", "u", "Y");
 	
 	}
 	
 	@Test (expected = IllegalArgumentException.class)
-	public void testEditProfile_adminInvalidUserType_case4() {
+	public void testEditProfile_adminInvalidUserType_case3() {
 		admin.login("nadmin", "Admin");
 		admin.editProfile("cz001", "cf", "cl", "cp", "invalidUserType", "Y");
 	}
 	
 	@Test (expected = IllegalArgumentException.class)
-	public void testEditProfile_adminInvalidUserStatus_case5() {
+	public void testEditProfile_adminInvalidUserStatus_case4() {
 		admin.login("nadmin", "Admin");
 		admin.editProfile("cz001", "cf", "cl", "cp", "u", "invalidUserStatus");
 	}
 	
 	@Test
-	public void testEditProfile_adminEditProfileSuccessfully_case6() {
+	public void testEditProfile_adminEditProfileSuccessfully_case5() {
 		admin.login("nadmin", "Admin");
-		admin.editProfile("cz001", "cf", "cl", "cp", "a", "Y"); //last Y
-		String expFirstName = "cf";
-		String expUserType = "a";
-		String resultFirstName = (this.dbController.getAccount("cz001").getFirstName());
-		String resultUserType= (this.dbController.getAccount("cz001").getUserType());
+		admin.editProfile("juser", "Johnny", "User", "user", "u", "Y"); 
+		String expFirstName = "Johnny";
+		String expUserType = "u";
+		String resultFirstName = (this.dbController.getAccount("juser").getFirstName());
+		String resultUserType= (this.dbController.getAccount("juser").getUserType());
 		assertEquals("Admin edit profile: first name" + expFirstName, expFirstName,resultFirstName );
 		assertEquals("Admin edit profile: user type" + expUserType, expUserType,resultUserType );
 		
 	}
-
-	/*@Test (expected = IllegalArgumentException.class)
-	public void testToggleActivationStatus_adminNotLoggedIn_case1() {
-		admin.toggleActivationStatus("cz001");
-	}*/
 	
-	@Test (expected = NullPointerException.class)
-	public void testToggleActivationStatus_adminToggleNonexsitingUser_case2() {
+	//************************************AddUser()***************************************************
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void testAddUser_adminAddExistingUsername_case1() {
 		admin.login("nadmin", "Admin");
-		admin.toggleActivationStatus("ASDASD");
+		admin.addUser("juser", "testAddUser", "cuser", "testAddUser", "a");
 	}
 	
-	@Test (expected = NullPointerException.class)
-	public void testToggleActivationStatus_adminEnterEmptyUserName_case3() {
+	@Test (expected = IllegalArgumentException.class)
+	public void testAddUser_adminAddInvalidUserType_case2() {
+		admin.login("nadmin", "Admin");
+		admin.addUser("jj", "testAddUser", "testAddUser", "testAddUser", "invalidUserType");
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void testAddUser_adminAddEmptyUser_case3() {
+		admin.login("nadmin", "Admin");
+		admin.addUser("", "", "aaNewUser", "", "a");
+	}
+
+	@Test
+	public void testAddUser_adminAddUserSuccessfully_case4() {
+		admin.login("nadmin", "Admin");
+		admin.addUser("testAddUser", "test", "AHappyGal", "testAddUser", "a");
+		String expResult = "AHappyGal";
+		String result = dbController.getAccount("AHappyGal").getUsername();
+	    assertEquals("Admin add new user" + expResult,expResult, result);
+	}
+
+	//************************************ViewUsers()***************************************************
+	
+	@Test
+	public void testViewUsers() {
+		admin.login("nadmin", "Admin"); 
+		int result = admin.viewUsers().size();
+		int expResult = this.dbController.getAccountList().size(); 
+		assertEquals("Admin view users" + expResult,expResult, result);
+		
+	}
+	
+	//************************************ViewUniversities()***************************************************
+	
+	@Test
+	public void testViewUniversities() {
+		admin.login("nadmin", "Admin"); 
+		int result = admin.viewUniversities().size();
+		int expResult = this.dbController.getUniversityList().size();
+		assertEquals("Admin view users" + expResult,expResult, result);
+		
+	}
+	
+	//**********************************toggleActivationStatus()*************************************************
+	
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void testToggleActivationStatus_adminToggleNonexsitingUser_case1() {
+		admin.login("nadmin", "Admin");
+		admin.toggleActivationStatus("buladddnON");
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void testToggleActivationStatus_adminEnterEmptyUserName_case2() {
 		admin.login("nadmin", "Admin");
 		admin.toggleActivationStatus("");
 	}
 	
 	@Test
-	public void testToggleActivationStatus_adminToggleActivationSuccessfully_case4() {
+	public void testToggleActivationStatus_adminToggleActivationSuccessfully_case3() {
 		admin.login("nadmin", "Admin");
-		admin.toggleActivationStatus("cuser");
-		String expResult = "Y";
-		String result= (this.dbController.getAccount("cuser").getUserStatus());
+		String currentStatus = this.dbController.getAccount("green@csbsju.edu").getUserStatus();
+		String expResult;
+		if(currentStatus.equals("N")) {
+			expResult = "Y";
+		}else {
+			expResult = "N";
+		}
+		admin.toggleActivationStatus("green@csbsju.edu");
+		String result= (this.dbController.getAccount("green@csbsju.edu").getUserStatus());
 		assertEquals("Admin toggle avtication status: " + expResult, expResult,result);
 	}
-
 	
-	/*@Test (expected = IllegalArgumentException.class)
-	public void testEditUniversityInfo_adminNotLoggedIn_case1() {
-		admin.editUniversityInfo("ABILENE CHRISTIAN UNIVERSITY", "TEXAS", "SUBURBAN",  "PRIVATE",
-				 "10000", "50",  "", "", 
-				 "12088", "70", "80", "4000", 
-				"90", "2", "3", "3", 
-				new String[] {"ACCOUNTING", "BIOLOGY"});
-	}*/
 	
-	//***************************************************EditUniversityInfo*******************************
+	//**********************************editUniversityInfo*************************************************
+	
 	@Test (expected = IllegalArgumentException.class)
 	public void testEditUniversityInfo_adminEditNonExistingSchool_case2() {
 		admin.login("nadmin", "Admin");
@@ -191,7 +229,7 @@ public class AdminInteractionTest {
 	}
 	
 	@Test (expected = IllegalArgumentException.class)
-	public void testEditUniversityInfo_adminEnterSATMathScoreLessThan200_case9() { // 100
+	public void testEditUniversityInfo_adminEnterSATMathScoreLessThan200_case9() {  //100
 		admin.login("nadmin", "Admin");
 		admin.editUniversityInfo("ABILENE CHRISTIAN UNIVERSITY", "TEXAS", "SUBURBAN",  "PRIVATE",
 				 "10000", "50",  "", "100 ", 
@@ -221,7 +259,7 @@ public class AdminInteractionTest {
 	}
 	
 	@Test (expected = IllegalArgumentException.class)
-	public void testEditUniversityInfo_adminEnterPercentFinancialAidEqualsToZero_case12() { // 0
+	public void testEditUniversityInfo_adminEnterPercentFinancialAidEqualsToZero_case12() {  //0
 		admin.login("nadmin", "Admin");
 		admin.editUniversityInfo("ABILENE CHRISTIAN UNIVERSITY", "TEXAS", "SUBURBAN",  "PRIVATE",
 				 "10000", "50",  "", "", 
@@ -231,7 +269,7 @@ public class AdminInteractionTest {
 	}
 	
 	@Test (expected = IllegalArgumentException.class)
-	public void testEditUniversityInfo_adminEnterInvalidNumOfApplicants_case13() { // not an integer
+	public void testEditUniversityInfo_adminEnterInvalidNumOfApplicants_case13() {  //not an integer
 		admin.login("nadmin", "Admin");
 		admin.editUniversityInfo("ABILENE CHRISTIAN UNIVERSITY", "TEXAS", "SUBURBAN",  "PRIVATE",
 				 "10000", "50",  "", "", 
@@ -261,14 +299,14 @@ public class AdminInteractionTest {
 	}
 	
 	@Test
-	public void testEditUniversityInfo_adminEnterInvalidEmphasis_case17() { 
+	public void testEditUniversityInfo_adminEnterOneEmphasis_case17() { 
 		admin.login("nadmin", "Admin");
 		admin.editUniversityInfo("ABILENE CHRISTIAN UNIVERSITY", "TEXAS", "SUBURBAN",  "PRIVATE",
 				 "10000", "50",  "", "", 
 				 "12088", "70", "80", "4000", 
 				"90", "2", "3", "3", 
-				new String[] {"InvalidEmphasis"});
-		String[] expResult = new String[] {"InvalidEmphasis"};
+				new String[] {"OneEmphasis"});
+		String[] expResult = new String[] {"OneEmphasis"};
 		String[] result = this.dbController.getUniversity2("ABILENE CHRISTIAN UNIVERSITY").getEmphases();
 		assertEquals("Admin edit emphases:  " + expResult,expResult, result);
 	}
@@ -280,42 +318,15 @@ public class AdminInteractionTest {
 				 "10000", "50",  "", "", 
 				 "12088", "70", "80", "4000", 
 				"90", "2", "3", "3", 
-				new String[] {"InvalidEmphasis"});
-		String expResult = "PUBLIC";
-		String[] expResult2 = new String[] {"InvalidEmphasis"};
-		String result = this.dbController.getUniversity2("ABILENE CHRISTIAN UNIVERSITY").getControl();
-		String[] result2 = this.dbController.getUniversity2("ABILENE CHRISTIAN UNIVERSITY").getEmphases();
-		assertEquals("Admin edit ABILENE CHRISTIAN UNIVERSITY to be all empty:  " + expResult,expResult, result);
-		assertEquals("Admin edit emphases:  " + expResult2,expResult2, result2);
-	}
-	
-	//***********************************************************************************************************************
-
-	@Test
-	public void testViewUsers() {
-		admin.login("nadmin", "Admin"); 
-		admin.viewUsers();
-	}
-
-	@Test
-	public void testViewUniversities() {
-		admin.login("nadmin", "Admin"); 
-		admin.viewUniversities();
-	}
-
-
-	@Test (expected = IllegalArgumentException.class)
-	public void testRemoveUniversity_removeInvalidUniversity() {
-		admin.login("nadmin", "Admin"); 
-		admin.removeUniversity("yoyoyo");
-	}
-	
-	@Test
-	public void testRemoveUniversity_removeSuccessfully() {
-		admin.login("nadmin", "Admin"); 
-		admin.removeUniversity("ECOLE NATIONALE SUPERIEURE DE TELECOMMUNICATION DE PARIS");
-	}
-	
+				new String[] {"BIOLOGY"});
+		String expControll = "PUBLIC";
+		String[] expResultEmpha = new String[] {"BIOLOGY"};
+		String resultControll = this.dbController.getUniversity2("ABILENE CHRISTIAN UNIVERSITY").getControl();
+		String[] resultEmpha = this.dbController.getUniversity2("ABILENE CHRISTIAN UNIVERSITY").getEmphases();
+		assertEquals("Admin edit ABILENE CHRISTIAN UNIVERSITY controll  " + expControll,expControll, resultControll);
+		assertEquals("Admin edit emphases:  " + expResultEmpha,expResultEmpha, resultEmpha);
+	} 
+	//**********************************addNewUniversity()*************************************************
 	
 	@Test (expected = IllegalArgumentException.class)
 	public void testAddNewUniversity_addExistingUniversity() {
@@ -328,7 +339,7 @@ public class AdminInteractionTest {
 	
 	@Test (expected = IllegalArgumentException.class)
 	public void testAddNewUniversity_addInvalidUniversityControl() {
-		admin.addNewUniversity("YAYAYAYAYAYA", "state", "location", "control", 
+		admin.addNewUniversity("YAYAYAYAYAYA", "state", "location", "invalidControll", 
 				"enrollment", "percentFemale", "satVerbal", "satMath", 
 				"cost", "percentFinAid", "percentEnrolled", "applicants", 
 				"percentAdmitted", "academicScale", "socialScale", 
@@ -346,55 +357,50 @@ public class AdminInteractionTest {
 	
 	@Test
 	public void testAddNewUniversity_addSuccessfully() {
-		admin.addNewUniversity("aaaaa", "TEXAS", "SUBURBAN",  "PRIVATE",
-				 "10000", "50",  "", "", 
+		admin.addNewUniversity("AAAAASCHOOL", "NOTTEXAS", "SUBURBAN",  "PRIVATE",
+				 "10011", "50",  "", "", 
 				 "12088", "70", "80", "4000", 
 				"90", "2", "3", "3", 
 				new String[] {"ACCOUNTING", "BIOLOGY"});
-	}
-
+		String expControll = "PRIVATE";
+		String[] expResultEmpha = new String[] {"ACCOUNTING", "BIOLOGY"};
+		String resultControll = this.dbController.getUniversity2("BBBSCHOOL").getControl();
+		String[] resultEmpha = this.dbController.getUniversity2("BBBSCHOOL").getEmphases();
+		assertEquals("Admin add a new university  " + expControll,expControll, resultControll);
+		assertEquals("Admin add a new university  " + expResultEmpha,expResultEmpha, resultEmpha);
+		
+	} 
+	
+	//**********************************removeUniversity()*************************************************
+	
 	@Test (expected = IllegalArgumentException.class)
-	public void testAddUser_studentAddUser_case1() {
-		admin.afCon.setAccount(new AccountController(dbController.getAccount("kmendel001@csbsju.edu")));
-		admin.addUser("newUser", "newUser", "newUser", "newUser", "a");
+	public void testRemoveUniversity_removeInvalidUniversity() {
+		admin.login("nadmin", "Admin"); 
+		admin.removeUniversity("yoyoyoyoyoyoyoyoyoyoyoyo");
 	}
 	
 	@Test (expected = IllegalArgumentException.class)
-	public void testAddUser_adminNotLoggedIn_case2() {
-		admin.addUser("testAddUser", "testAddUser", "testAddUser", "testAddUser", "a");
+	public void testRemoveUniversityWithEmphases_() {
+		admin.login("nadmin", "Admin"); 
+		admin.removeUniversity("BBSCHOOL");
 	}
 	
 	@Test (expected = IllegalArgumentException.class)
-	public void testAddUser_adminAddExistingUsername_case3() {
+	public void testRemoveSavedUniversity() {
+		admin.login("nadmin", "Admin"); 
+		admin.removeUniversity("BROWN");
+	}
+	
+	public void testRemoveUniversity_removeSuccessfully() {
 		admin.login("nadmin", "Admin");
-		admin.addUser("testAddUser", "testAddUser", "cuser", "testAddUser", "a");
+		admin.addNewUniversity(
+		"BBBSCHOOL", "NOTTEXAS", "SUBURBAN",  "PRIVATE",
+		 "10011", "50",  "", "", 
+		 "12088", "70", "80", "4000", 
+		"90", "2", "3", "3", 
+		new String[] {"ACCOUNTING", "BIOLOGY"});
+		//admin.removeUniversity("TESTdELETE");
 	}
 	
-	@Test (expected = IllegalArgumentException.class)
-	public void testAddUser_adminAddInvalidUserType_case4() {
-		admin.login("nadmin", "Admin");
-		admin.addUser("testAddUser", "testAddUser", "testAddUser", "testAddUser", "invalidUserType");
-	}
-	
-	@Test (expected = IllegalArgumentException.class)
-	public void testAddUser_adminAddEmptyUser_case5() {
-		admin.login("nadmin", "Admin");
-		admin.addUser("", "", "testAddUser", "", "a");
-	}
-	
-	@Test (expected = IllegalArgumentException.class)
-	public void testAddUser_adminAddEmptyUserName_case6() {
-		admin.login("nadmin", "Admin");
-		admin.addUser("testAddUser", "testAddUser", "", "testAddUser", "a");
-	}
-	
-	@Test
-	public void testAddUser_adminAddUserSuccessfully_case7() {
-		admin.login("nadmin", "Admin");
-		admin.addUser("testAddUser", "test", "thisIsANewUSER", "testAddUser", "a");
-		String expResult = "thisIsANewUSER";
-		String result = dbController.getAccount("thisIsANewUSER").getUsername();
-	    assertEquals("Admin add new user" + expResult,expResult, result);
-	}
 
 }

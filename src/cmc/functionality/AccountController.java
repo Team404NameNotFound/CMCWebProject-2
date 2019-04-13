@@ -96,19 +96,15 @@ public class AccountController {
 	 * @return Account account with activation status changed
 	 */
 	public Account toggleActivationStatus() {
-		if (this.account == null)
-			throw new NullPointerException();
-
-		else if (this.account.getUserStatus().equals("N")) {
+		if (this.account.getUserStatus().equals("N")) {
 			this.account.setUserStatus("Y");
-			dbController.setAccount(this.account);
-		} else  if(this.account.getUserStatus().equals("Y")){
+			this.dbController.editAccount(account.getUsername(), account.getFirstName(),account.getLastName(), account.getPassword(), account.getUserType(), "Y" );
+			this.dbController.setAccount(this.account);
+		} else {
 			this.account.setUserStatus("N");
-			dbController.setAccount(this.account);
-		}else {
-			System.out.println("wrong 107 ac");
+			this.dbController.editAccount(account.getUsername(), account.getFirstName(),account.getLastName(), account.getPassword(), account.getUserType(), "N" );
+			this.dbController.setAccount(this.account);
 		}
-		//dbController.setAccount(this.account);
 		return this.account;
 	}
 
@@ -196,27 +192,25 @@ public class AccountController {
 		});
 
 		// Compose the message
-		if (emailAddress.contains("@") && emailMessage!=null){
-		try {
-			MimeMessage message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(user));
-			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-			message.setSubject("CMC Password Reset");
-			message.setText(emailMessage);
+		if (emailAddress.contains("@") && emailMessage != null) {
+			try {
+				MimeMessage message = new MimeMessage(session);
+				message.setFrom(new InternetAddress(user));
+				message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+				message.setSubject("CMC Password Reset");
+				message.setText(emailMessage);
 
-			// send the message
-			Transport.send(message);
+				// send the message
+				Transport.send(message);
 
-			sent = true;
+				sent = true;
 
-			return sent;
-		} catch (MessagingException e) {
-			e.printStackTrace();
-			return false;
-		}
-		}
-		else
-		{
+				return sent;
+			} catch (MessagingException e) {
+				e.printStackTrace();
+				return false;
+			}
+		} else {
 			return false;
 		}
 	}

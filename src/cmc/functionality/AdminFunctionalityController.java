@@ -57,14 +57,12 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 			String percentFemale, String satVerbal, String satMath, String cost, String percentFinAid,
 			String percentEnrolled, String applicants, String percentAdmitted, String academicScale, String socialScale,
 			String qualityOfLife, String[] emphases) {
-		if (this.DBCon.getUniversity(name) != null) {
+		if (this.DBCon.getUniversity2(name) != null) {
 			throw new IllegalArgumentException("Sorry" + name + " already exists");
 		} else {
 			University schoolToAdd = this.universityCon.createNewUniversity(name, state, location, control, enrollment,
 					percentFemale, satVerbal, satMath, cost, percentFinAid, percentEnrolled, applicants,
 					percentAdmitted, academicScale, socialScale, qualityOfLife, emphases);
-
-			this.DBCon.addUniversity(schoolToAdd);
 		}
 
 	}
@@ -115,33 +113,32 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 			String percentEnrolled, String applicants, String percentAdmitted, String academicScale, String socialScale,
 			String qualityOfLife, String[] emphases) {
 
-		/*
-		 * if (this.loggedIn == false) { throw new
-		 * IllegalArgumentException("This admin has not logged in"); }
-		 */
-
 		University uniToChange = this.DBCon.getUniversity2(name);
 		if (uniToChange == null) {
 			throw new IllegalArgumentException(name + " does not exist in the database");
 		}
 
-		String[] currentEmpases = uniToChange.getEmphases();
-
-		if (currentEmpases.length > 0) {
-			for (String oldEmphase : currentEmpases) {
-				this.DBCon.removeEmphasis(uniToChange.getName(), oldEmphase);
+		String[] oldEmphases = uniToChange.getEmphases();
+		if (oldEmphases.length > 0) {
+			for (String oldOne : oldEmphases) {
+				this.DBCon.removeEmphasis(uniToChange.getName(), oldOne);
 			}
 		}
-		
 		for (String newEmphase : emphases) {
 			this.DBCon.addEmphasis(uniToChange.getName(), newEmphase);
 		}
 
-		universityCon = new UniversityController(uniToChange);
-		this.DBCon.setUniversity(universityCon.updateUniversityInfo(name, state, location, control, enrollment,
-				percentFemale, satVerbal, satMath, cost, percentFinAid, percentEnrolled, applicants, percentAdmitted,
-				academicScale, socialScale, qualityOfLife, emphases));
+		this.universityCon = new UniversityController(uniToChange);
+		uniToChange = this.universityCon.updateUniversityInfo(name, state, location, control, enrollment, percentFemale,
+				satVerbal, satMath, cost, percentFinAid, percentEnrolled, applicants, percentAdmitted, academicScale,
+				socialScale, qualityOfLife, emphases);
 
+		/*
+		 * this.DBCon.setUniversity(universityCon.updateUniversityInfo(name, state,
+		 * location, control, enrollment, percentFemale, satVerbal, satMath, cost,
+		 * percentFinAid, percentEnrolled, applicants, percentAdmitted, academicScale,
+		 * socialScale, qualityOfLife, emphases));
+		 */
 	}
 
 	/**
@@ -151,7 +148,15 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 	 *            name of university
 	 */
 	public void removeUniversity(String name) {
-		this.DBCon.removeUniversity(name);
+		University schoolToRemove= this.DBCon.getUniversity2(name);
+		if (schoolToRemove == null) {
+			throw new IllegalArgumentException("Cannot move invalid school");
+		} else {
+			if(this.DBCon.getUserSavedStatistics(name)>0 || schoolToRemove.getEmphases().length > 0) {
+				throw new IllegalArgumentException("This shcool cannot be deleted, it has been saved by a user or have emphases");
+			}
+			this.DBCon.removeUniversity(name);
+		}
 	}
 
 	/**
@@ -168,26 +173,32 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 		boolean added = false;
 		ArrayList<UserSavedSchool> savedSchoolList = new ArrayList<UserSavedSchool>();
 
-		if (!DBCon.checkUser(username)) {
-			if (firstname.equals("") || lastname.equals("") || username.equals("") || password.equals("")
-					|| userType.equals("")) {
-				throw new IllegalArgumentException("Sorry, you need to specify all fields.");
-			} else if (!userType.equalsIgnoreCase("u") && !userType.equalsIgnoreCase("a")) {
-				throw new IllegalArgumentException("Sorry, you need to specify a valid user type.");
-			} else {
-				AccountController acCon = new AccountController();
-				Account account = acCon.createNewAccount(firstname, lastname, username, password, userType,
-						savedSchoolList);
+		if (this.DBCon.getAccount(username) == null) {
+			System.out.println("172 afCon");
+			AccountController acCon = new AccountController();
+			Account account = acCon.createNewAccount(firstname, lastname, username, password, userType,
+					savedSchoolList);
+			DBCon.addUser(account);
+			added = true;
 
-					DBCon.addUser(account);
-					added = true;
-				
-			}
 		} else {
-			throw new IllegalArgumentException("sorry, invalid username");
+			throw new IllegalArgumentException("sorry, this user has already exist");
 		}
 
 		return added;
+	}
+
+	public boolean editUserProfile2(String userName, String firstName, String lastName, String password,
+			String userType, String userStatus) {
+		Boolean edit = false;
+		Account accountToEdit = this.DBCon.getAccount(userName);
+		if (accountToEdit == null) {
+			throw new IllegalArgumentException("Valid User needed");
+		} else {
+			this.DBCon.editAccount(userName, firstName, lastName, password, userType, userStatus);
+			edit = true;
+		}
+		return edit;
 	}
 
 	/**
@@ -197,11 +208,14 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 	 *            user name associated with account being edited
 	 */
 	public void toggleActivationStatus(String accountName) {
-		AccountController toggleAccount =  new AccountController(DBCon.getAccount(accountName));
-		//this.account = new AccountController(DBCon.getAccount(accountName));
-        toggleAccount.toggleActivationStatus();
-		// this.account.setAccount(account);
-		//DBCon.setAccount(this.account.toggleActivationStatus());
+		Account toggleAccount = this.DBCon.getAccount(accountName);
+		if (toggleAccount != null) {
+			AccountController ac = new AccountController(toggleAccount);
+			ac.toggleActivationStatus();
+		} else {
+			throw new IllegalArgumentException("Cannot toggle null account");
+		}
+
 	}
 
 }
