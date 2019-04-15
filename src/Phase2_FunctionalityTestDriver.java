@@ -7,7 +7,7 @@ import cmc.interaction.*;
 import java.util.ArrayList;
 
 public class Phase2_FunctionalityTestDriver {
-/*
+
 	static AccountInteraction user = new AccountInteraction();
 	static StudentInteraction student = new StudentInteraction();
 	static AdminInteraction admin = new AdminInteraction();
@@ -18,9 +18,9 @@ public class Phase2_FunctionalityTestDriver {
 	static AccountController accountController = new AccountController(student1);
 	static StudentInteraction studentInteraction = new StudentInteraction();
 	static StudentFunctionalityController sfCon = new StudentFunctionalityController();
-*/
+
 	public static void main(String[] args) {
-		/*// UC 1 Login
+		// UC 1 Login
 		// successful login (user)
 		System.out.println("UC 1: Successful login (user):");
 		System.out.println("-------------------------");
@@ -323,22 +323,7 @@ public class Phase2_FunctionalityTestDriver {
 		System.out.println("-------------------------");
 		admin.toggleActivationStatus("cz001");
 		System.out.println("-------------------------\n\n\n");
-		System.out.println("END OF DRIVER");*/
-		DBController db = new DBController();
-		Account a = db.getAccount("cuser");
-		AccountController ac = new AccountController(a);
-		ac.saveSchool("AUBURN"); //545
-		ac.saveSchool("BARD"); //520
-		ac.saveSchool("BBSCHOOL"); //-1
-		ac.saveSchool("CAL TECH"); //780
-	 	ac.saveSchool("DREW"); //535
-	 	ac.saveSchool("STANFORD"); //675
-	 	ac.saveSchool("AUGSBURG"); //490
-		ArrayList<String>  schools = ac.compareSchoolsByScore();
-		for(String school : schools) {
-			System.out.println(school);
-		}
-		ac.removeAllSavedSchools();
-
+		System.out.println("END OF DRIVER");
+		
 	}
 }
