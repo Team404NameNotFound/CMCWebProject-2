@@ -368,26 +368,30 @@ public class AccountController {
 		if (savedSchools.size() == 0) {
 			throw new UnsupportedOperationException("No saved school to compare scores");
 		}
-
+      
 		double[][] scores = new double[savedSchools.size()][2];
 		ArrayList<String> returnList = new ArrayList<>();
-
+		
+		String[] savedSchoolNames = new String[savedSchools.size()];
 		for (int i = 0; i < savedSchools.size(); i++) {
 			scores[i][0] = Double.parseDouble(savedSchools.get(i).getSatMath());
 			scores[i][1] = Double.parseDouble("" + i);
+			savedSchoolNames[i] = savedSchools.get(i).getName();
 		}
-
+        
+		
 		java.util.Arrays.sort(scores, new java.util.Comparator<double[]>() {
 			public int compare(double[] a, double[] b) {
 				return Double.compare(a[0], b[0]);
 			}
 		});
-
+		
 		for (int j = 0; j < scores.length; j++) {
+			int order = (int) Math.round(scores[j][1]);
 			if (scores[j][0] != -1.0) {
-				returnList.add(savedSchools.get(j).getName() + " " + scores[j][0]);
+				returnList.add(savedSchoolNames[order] + " " + scores[j][0]);
 			}
-		}
+	}
 
 		return returnList;
 	}
