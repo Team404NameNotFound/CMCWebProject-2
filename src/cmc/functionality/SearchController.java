@@ -372,6 +372,9 @@ public class SearchController {
 
 	public ArrayList<University> rankUniversity2(University university) {
 		ArrayList<University> returnUniversity = new ArrayList<University>();
+		String state = university.getState();
+		String location = university.getLocation();
+		String control = university.getControl();
 		double numStudents = Integer.parseInt(university.getEnrollment());
 		double numStudMin = Integer.parseInt(university.getEnrollment());
 		double numStudMax = Integer.parseInt(university.getEnrollment());
@@ -558,12 +561,35 @@ public class SearchController {
 			score = score + (Math.abs((Double.parseDouble(universityList[i].getSocialScale()) - socialScale))
 					/ (socialMax - socialMin));
 
-			// tesing distance distance based on qualityoflife
+			// testing distance distance based on qualityoflife
 			score = score + (Math.abs((Double.parseDouble(universityList[i].getQualityOfLife()) - qualityOfLifeScale))
 					/ (qolMax - qolMin));
+			
+			//testing state
+			int stateScore;
+			if(universityList[i].getState().equals(state)) {
+				stateScore = 0;
+			}else {
+				stateScore = 1;
+			}
+			//testing location
+			int locationScore;
+			if(universityList[i].getLocation().equals(location)) {
+				locationScore = 0;
+			}else {
+				locationScore = 1;
+			}
+			//testing control
+			int controlScore;
+			if(universityList[i].getControl().equals(control)) {
+				controlScore = 0;
+			}else {
+				controlScore = 1;
+			}
+			
 
 			// setting final score of university
-			schoolMatches[i][0] = score;// i};
+			schoolMatches[i][0] = score + stateScore + locationScore + controlScore;// i};
 			schoolMatches[i][1] = Double.parseDouble("" + i);
 		}
 
@@ -578,15 +604,20 @@ public class SearchController {
 				return Double.compare(a[0], b[0]);
 			}
 		});
-
+		
 		for (int i = 0; i < 5; i++) {
 			int position = (int) schoolMatches[i + 1][1];
 			System.out.println(schoolMatches[i + 1][0]);
 			returnUniversity.add(universityList[position]);
 		}
-
+		System.out.println("Five recommendation schools for " + university.getName() + " are");
+		for(University uni: returnUniversity) {
+			System.out.println(uni.getName());
+		}
+		
 		return returnUniversity;
 	}
+	
 
 	/**
 	 * @param schoolName
