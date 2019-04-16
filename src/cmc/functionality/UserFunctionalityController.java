@@ -9,11 +9,11 @@ import java.util.ArrayList;
  * @author ajheroux
  *
  */
-public abstract class UserFunctionalityController {
+public class UserFunctionalityController {
 
 	// Making instance variables
-	AccountController account;
 	DBController DBCon = new DBController();
+	AccountController account;
 	UniversityController universityCon;
 	public Boolean loggedIn;
 

@@ -9,16 +9,16 @@ import cmc.functionality.UserFunctionalityController;
  * @author tzhang001
  *
  */
-public abstract class AccountInteraction {
+public class AccountInteraction {
 
 	UserFunctionalityController UFCon;
 
 //	/**
 //	 * Create a new AccountInteraction
 //	 */
-//	public AccountInteraction() {
-//		UFCon = new UserFunctionalityController();
-//	}
+	public AccountInteraction() {
+		
+	}
 
 	/**
 	 * Create a new AccountInteraction with a given UserFunctionalityController

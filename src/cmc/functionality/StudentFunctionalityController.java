@@ -21,6 +21,30 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 		this.searchCon = new SearchController(this.DBCon.getUniversityList());
 	}
 
+	
+	public int login(String userName, String password) {
+		if (!loggedIn) {
+			if (this.DBCon.checkUser(userName)) {
+				if (this.DBCon.getAccount(userName).getUserStatus().equals("Y")) {
+					AccountController userAcc = new AccountController(this.DBCon.getAccount(userName));
+					if (userAcc.checkPassword(password)) {
+						account = new AccountController(this.DBCon.getAccount(userName));
+						this.loggedIn = true;
+						return 0;
+					} else {
+						return -2;
+
+					}
+				} else {
+					return -3;
+				}
+			} else {
+				return -1;
+
+			}
+		}
+		return -4;
+	}
 	/**
 	 * returns the five most similar universities to the specified university
 	 * 
