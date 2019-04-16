@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
-	<%@page language="java" import="cmc.functionality.*"%>
+	<%@page language="java" import="cmc.interaction.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,7 +9,7 @@
 <title></title>
 </head>
 <%String userName = request.getParameter("username");
-	AdminFunctionalityController afc = (AdminFunctionalityController)session.getAttribute("controller");
+	AdminInteraction afc = (AdminInteraction)session.getAttribute("interaction");
 %>
 <body>
 	<form action="EditUserAction" name="editForm">
@@ -19,38 +19,38 @@
 				<tr>
 					<td style="vertical-align: top;">First Name<br>
 					</td>
-					<td style="vertical-align: top;"><input name=<% afc.viewUserProfile(userName).get(0); %>><br>
+					<td style="vertical-align: top;"><input name=<% afc.viewProfile(userName).get(0); %>><br>
 					</td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">Last Name<br>
 					</td>
-					<td style="vertical-align: top;"><input name=<% afc.viewUserProfile(userName).get(1); %>><br>
+					<td style="vertical-align: top;"><input name=<% afc.viewProfile(userName).get(1); %>><br>
 					</td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">User Name<br>
 					</td>
 					<td style="vertical-align: top;"><input readonly="readonly"
-						name=<% afc.viewUserProfile(userName).get(2); %>><br></td>
+						name=<% afc.viewProfile(userName).get(2); %>><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">Password<br>
 					</td>
-					<td style="vertical-align: top;"><input name=<% afc.viewUserProfile(userName).get(3); %>><br>
+					<td style="vertical-align: top;"><input name=<% afc.viewProfile(userName).get(3); %>><br>
 					</td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">Account Type<br>
 					</td>
-					<td style="vertical-align: top;"><input name=<% afc.viewUserProfile(userName).get(4); %>><br>
+					<td style="vertical-align: top;"><input name=<% afc.viewProfile(userName).get(4); %>><br>
 					</td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">Activation Status<br>
 					</td>
 					<td style="vertical-align: top;"><input
-						name=<% afc.viewUserProfile(userName).get(5); %>><br></td>
+						name=<% afc.viewProfile(userName).get(5); %>><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;"><input name="reset"

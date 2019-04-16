@@ -37,11 +37,11 @@ public class AccountInteraction {
 	 * @param String
 	 *            password
 	 */
-	public boolean login(String username, String password) {
+	public int login(String username, String password) {
 		if (this.UFCon.login(username, password)) {
-			return true;
+			return 0;
 		} else {
-			return false;
+			return -1;
 		}
 
 	}
