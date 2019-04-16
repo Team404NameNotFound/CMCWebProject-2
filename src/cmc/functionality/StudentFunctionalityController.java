@@ -16,6 +16,8 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	 * Creating a new StudentFunctionalityController
 	 */
 	public StudentFunctionalityController() {
+		super();
+		this.account = new AccountController();
 		this.searchCon = new SearchController(this.DBCon.getUniversityList());
 	}
 

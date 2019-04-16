@@ -28,6 +28,7 @@ public class AdminInteraction extends AccountInteraction {
 	 * Create a new AdminInteraction
 	 */
 	public AdminInteraction() {
+		super();
 		this.afCon = new AdminFunctionalityController();
 	}
 

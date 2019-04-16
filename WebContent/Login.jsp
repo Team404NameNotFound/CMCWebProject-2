@@ -1,9 +1,5 @@
 <%@ page language="java" import="cmc.interaction.AccountInteraction,java.util.*"%>
 
-<% 
-AccountInteraction user = new AccountInteraction();
-session.setAttribute("interaction", user);
-%>
 
 
 

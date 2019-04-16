@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @author ajheroux
  *
  */
-public class UserFunctionalityController {
+public abstract class UserFunctionalityController {
 
 	// Making instance variables
 	AccountController account;
