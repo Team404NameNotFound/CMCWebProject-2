@@ -13,12 +13,12 @@ public abstract class AccountInteraction {
 
 	UserFunctionalityController UFCon;
 
-	/**
-	 * Create a new AccountInteraction
-	 */
-	public AccountInteraction() {
-		UFCon = new UserFunctionalityController();
-	}
+//	/**
+//	 * Create a new AccountInteraction
+//	 */
+//	public AccountInteraction() {
+//		UFCon = new UserFunctionalityController();
+//	}
 
 	/**
 	 * Create a new AccountInteraction with a given UserFunctionalityController

@@ -1,9 +1,11 @@
-<%@ page language="java" import="cmc.interaction.*,java.util.*"%>
+<%@ page language="java" import="cmc.interaction.*,java.util.*,cmc.functionality.*"%>
 
     <% 
 String u = request.getParameter("username");
 String p = request.getParameter("password");
-AccountInteraction interaction = (AccountInteraction) session.getAttribute("interaction");
+AccountInteraction interaction;
+DBController db = new DBController();
+interaction = new AdminInteraction();
 
 int loginStatus = interaction.login(u, p);
 
@@ -11,12 +13,14 @@ if(loginStatus == 0)
 {
 	if(interaction.viewProfile(u).get(4).equals("a"))
 	{
-		interaction = (StudentInteraction) session.getAttribute("interaction");
+		interaction = new AdminInteraction();
+		session.setAttribute("interaction", interaction);
 		response.sendRedirect("AdminMenu.jsp");
 	}
 	if(interaction.viewProfile(u).get(4).equals("u"))
 	{
-		interaction = (AdminInteraction) session.getAttribute("interaction");
+		interaction = new StudentInteraction();
+		session.setAttribute("interaction", interaction);
 		response.sendRedirect("AdminMenu.jsp");
 	}
 	
