@@ -38,11 +38,7 @@ public abstract class AccountInteraction {
 	 *            password
 	 */
 	public int login(String username, String password) {
-		if (this.UFCon.login(username, password)) {
-			return 0;
-		} else {
-			return -1;
-		}
+		return this.UFCon.login(username, password);
 
 	}
 

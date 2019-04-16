@@ -50,7 +50,7 @@ public abstract class UserFunctionalityController {
 	 * @param password
 	 * @return true in log on is successful
 	 */
-	public boolean login(String userName, String password) {
+	public int login(String userName, String password) {
 		if (!loggedIn) {
 			if (this.DBCon.checkUser(userName)) {
 				if (this.DBCon.getAccount(userName).getUserStatus().equals("Y")) {
@@ -58,20 +58,20 @@ public abstract class UserFunctionalityController {
 					if (userAcc.checkPassword(password)) {
 						account = new AccountController(this.DBCon.getAccount(userName));
 						this.loggedIn = true;
-						return true;
+						return 0;
 					} else {
-						throw new IllegalArgumentException("Invalid Password");
+						return -2;
 
 					}
 				} else {
-					throw new NullPointerException("Sorry, User is not active");
+					return -3;
 				}
 			} else {
-				throw new IllegalArgumentException("Sorry,username does not exist");
+				return -1;
 
 			}
 		}
-		return false;
+		return -4;
 	}
 
 	/**
