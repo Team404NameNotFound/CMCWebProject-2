@@ -55,11 +55,11 @@ session.setAttribute("interaction", user);
 	}
 	else if(anyErrors != null && anyErrors.equals("-3"))
 	{
-		out.println("There was an error while attempting to access the database");
+		out.println("User is inactive");
 	}
 	else if(anyErrors != null && anyErrors.equals("-4"))
 	{
-		out.println("You cannot use this function because you are not logged in");
+		out.println("User is already logged in");
 	}
 	
 	%>
