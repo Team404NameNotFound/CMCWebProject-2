@@ -20,7 +20,7 @@ if(loginStatus == 0)
 		session.setAttribute("interaction", interaction);
 		response.sendRedirect("StudentMenu.jsp?username="+u+"&password="+p);
 	}
->>>>>>> 270037d0db619f6c9f2f0cab0be30b20a789ad0c
+}
 	
 // }
 // else

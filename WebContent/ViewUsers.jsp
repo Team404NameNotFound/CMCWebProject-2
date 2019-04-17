@@ -38,7 +38,7 @@ for (int i = 0; i < allUsers.size(); i++ ){
 %>
 <tr>
 <td style="vertical-align: top;">
-<form method="post" action="AdminEditUser.jsp" name="Edit">
+<form method="post" action="EditUserAction.jsp" name="Edit">
     <input name="Edit" value="Edit" type="submit">
     <input name="Username" value="<%=allUsers.get(i).getUsername()%>" type="hidden">
 </form>
