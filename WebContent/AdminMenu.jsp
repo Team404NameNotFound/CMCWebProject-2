@@ -1,12 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java"
+	import="cmc.interaction.*,java.util.*,cmc.functionality.*"%>
+
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+<title></title>
 </head>
 <body>
-
+	Welcome<%=request.getParameter("username")%>
+	<br>
+	<a href="ViewUniversities.jsp">Manage universities</a>
+	<br>
+	<a href="ViewUsers.jsp">Manage users</a>
+	<br>
 </body>
 </html>
