@@ -3,16 +3,8 @@
 <% 
 String u = request.getParameter("username");
 String p = request.getParameter("password");
-<<<<<<< HEAD
-AccountInteraction interaction;
-interaction = new AccountInteraction();
-
-int loginStatus = 0;
-=======
 AccountInteraction interaction = new AccountInteraction();
 int loginStatus = interaction.login(u, p);
->>>>>>> b07108545e998fa78be9f4cfbe652e843daf2be9
-
 if(loginStatus == 0)
 {
 	if(interaction.viewProfile(u).get(4).equals("a"))
