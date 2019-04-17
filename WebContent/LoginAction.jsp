@@ -4,10 +4,9 @@
 String u = request.getParameter("username");
 String p = request.getParameter("password");
 AccountInteraction interaction;
-DBController db = new DBController();
 interaction = new AccountInteraction();
 
-int loginStatus = interaction.login(u, p);
+int loginStatus = 0;
 
 if(loginStatus == 0)
 {
