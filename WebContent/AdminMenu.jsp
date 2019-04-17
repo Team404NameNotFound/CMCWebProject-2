@@ -7,7 +7,7 @@
 <title></title>
 </head>
 <body>
-	Welcome<%=request.getParameter("username")%>
+	Welcome : <%=request.getParameter("username")%>
 	<br>
 	<a href="ViewUniversities.jsp">Manage universities</a>
 	<br>
