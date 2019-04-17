@@ -11,7 +11,7 @@ cellspacing="2">
 <tr align="center">
 
 <td colspan="8" rowspan="1" style="vertical-align: top;"><a
-href="Add.jsp">ADD A USER</a>
+href="AddUser.jsp">ADD A USER</a>
 </td>
 
 </tr>
@@ -38,7 +38,7 @@ for (int i = 0; i < allUsers.size(); i++ ){
 %>
 <tr>
 <td style="vertical-align: top;">
-<form method="post" action="Edit.jsp" name="Edit">
+<form method="post" action="AdminEditUser.jsp" name="Edit">
     <input name="Edit" value="Edit" type="submit">
     <input name="Username" value="<%=allUsers.get(i).getUsername()%>" type="hidden">
 </form>

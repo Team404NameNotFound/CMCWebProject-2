@@ -11,7 +11,7 @@ import cmc.functionality.UserFunctionalityController;
  */
 public class AccountInteraction {
 
-	UserFunctionalityController UFCon;
+	UserFunctionalityController UFCon = new UserFunctionalityController();
 
 //	/**
 //	 * Create a new AccountInteraction
