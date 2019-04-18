@@ -21,10 +21,8 @@ if(loginStatus == 0)
 		response.sendRedirect("StudentMenu.jsp?username="+u+"&password="+p);
 	}
 }
-	
-// }
-// else
-// {
-// 	 response.sendRedirect("Login.jsp?Error="+loginStatus);
-// }
+else
+{
+	 response.sendRedirect("Login.jsp?Error="+loginStatus);
+}
 %>
