@@ -118,13 +118,16 @@ public class UserFunctionalityController {
 	 * @param lastName
 	 * @param password
 	 */
-	public boolean editUserProfile(String userName, String firstName, String password, String lastName,
+	public boolean editUserProfile(String userName, String firstName,  String lastName, String password,
 			String userType) {
 
 		account = new AccountController(this.DBCon.getAccount(userName));
-		if (this.DBCon.getAccount(userName) == null) {
+		if (this.DBCon.getAccount(userName) == null) 
+		{
 			throw new IllegalArgumentException("Valid User needed");
-		} else {
+		} 
+		else 
+		{
 			Account userAcc = account.updateUserInfo(firstName, lastName, password, "-1", userType);
 
 			this.DBCon.setAccount(userAcc);

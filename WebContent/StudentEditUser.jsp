@@ -6,10 +6,16 @@
 </head>
 <%
 String username = request.getParameter("username");
+
 StudentInteraction student = (StudentInteraction) session.getAttribute("interaction");
+String fName = student.viewProfile(username).get(0);
+String lName = student.viewProfile(username).get(1);
+String password = student.viewProfile(username).get(3);
+String type = student.viewProfile(username).get(4);
+String status = student.viewProfile(username).get(5);
 %>
 <body>
-	<form action="EditUserActio.jsp?username="+<%=request.getParameter("username")%> name="editForm">
+	<form action="EditUserAction.jsp?username="+<%=request.getParameter("username")%> name="editForm">
 		<table style="text-align: left; width: 523px; height: 180px;"
 			border="1" cellpadding="2" cellspacing="2">
 			<tbody>
