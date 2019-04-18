@@ -31,7 +31,7 @@ public class DBController {
 		String[][] userList = dbLibrary.user_getUsers();
 		for (int n = 0; n < userList.length; n++) {
 
-			if (userList[n][2].equals(inputString) && userList[n][5].equals("Y")) {
+			if (userList[n][2].equals(inputString)) {
 
 				return true;
 
