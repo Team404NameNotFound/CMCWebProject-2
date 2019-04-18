@@ -38,9 +38,9 @@ for (int i = 0; i < allUsers.size(); i++ ){
 %>
 <tr>
 <td style="vertical-align: top;">
-<form method="post" action="EditUserAction.jsp" name="Edit">
+<form method="post" action="AdminEditUser.jsp" name="Edit">
     <input name="Edit" value="Edit" type="submit">
-    <input name="Username" value="<%=allUsers.get(i).getUsername()%>" type="hidden">
+    <input name="username" value="<%=allUsers.get(i).getUsername()%>" type="hidden">
 </form>
 </td>
 <td style="vertical-align: top;"><%out.println(allUsers.get(i).getFirstName() + " " + allUsers.get(i).getLastName());%>
@@ -56,7 +56,7 @@ for (int i = 0; i < allUsers.size(); i++ ){
 <td style="vertical-align: top;">
 <form method="post" action="Delete.jsp" name="Delete">
     <input name="Delete" value="Delete" type="submit">
-    <input name="Username" value= "<%=allUsers.get(i).getUsername()%>" type="hidden">   
+    <input name="username" value= "<%=allUsers.get(i).getUsername()%>" type="hidden">   
 </form>
 </td>
 </tr>

@@ -102,6 +102,7 @@ public class UserFunctionalityController {
 			profile.add(userAcc.getUsername());
 			profile.add(userAcc.getPassword());
 			profile.add(userAcc.getUserType());
+			profile.add(userAcc.getUserStatus());
 
 			return profile;
 		} else {
