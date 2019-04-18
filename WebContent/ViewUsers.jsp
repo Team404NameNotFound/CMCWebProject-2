@@ -28,7 +28,7 @@ Edit</td>
 </td>
 <td style="vertical-align: top; text-align: center;">Status
 </td>
-<td style="vertical-align: top;">Delete
+<td style="vertical-align: top;">Toggle Activation Status
 </td>
 </tr>
 
@@ -54,8 +54,8 @@ for (int i = 0; i < allUsers.size(); i++ ){
 <td style="vertical-align: top;"><%out.println(allUsers.get(i).getUserStatus());%>
 </td>
 <td style="vertical-align: top;">
-<form method="post" action="Delete.jsp" name="Delete">
-    <input name="Delete" value="Delete" type="submit">
+<form method="post" action="ToggleActivationStatusAction.jsp" name="Toggle Activation Status">
+    <input name="Toggle" value="Toggle Activation Status" type="submit">
     <input name="username" value= "<%=allUsers.get(i).getUsername()%>" type="hidden">   
 </form>
 </td>
