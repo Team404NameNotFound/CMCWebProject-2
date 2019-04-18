@@ -1,12 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ page language="java" import="cmc.interaction.*, cmc.functionality.*, java.util.*"%>
+<%
+AdminInteraction sessionUser = (AdminInteraction) session.getAttribute("interaction");
+String fName = request.getParameter("firstname");
+String lName = request.getParameter("lastname");
+String username = request.getParameter("username");
+String password = request.getParameter("password");
+String type = request.getParameter("type");
+String status = request.getParameter("status");
 
-</body>
-</html>
+sessionUser.addUser(fName, lName, username, password, type);
+
+response.sendRedirect("ViewUsers.jsp?Username="+sessionUser.viewProfile(username).get(2));
+%>

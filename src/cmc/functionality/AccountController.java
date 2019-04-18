@@ -172,48 +172,48 @@ public class AccountController {
 	 *            content of email to send to user containing randomly generated
 	 *            password
 	 */
-//	public boolean sendEmail(String emailMessage, String emailAddress) {
-//		boolean sent = false;
-//		String host = "127.0.0.1";
-//		final String user = "csbsju.cmc@gmail.com";
-//		final String password = "jumpingfrog12";
-//
-//		String to = emailAddress;
-//
-//		// Get the session object
-//		Properties props = new Properties();
-//		props.put("mail.smtp.host", host);
-//		props.put("mail.smtp.auth", "true");
-//
-//		Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
-//			protected PasswordAuthentication getPasswordAuthentication() {
-//				return new PasswordAuthentication(user, password);
-//			}
-//		});
-//
-//		// Compose the message
-//		if (emailAddress.contains("@") && emailMessage != null) {
-//			try {
-//				MimeMessage message = new MimeMessage(session);
-//				message.setFrom(new InternetAddress(user));
-//				message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-//				message.setSubject("CMC Password Reset");
-//				message.setText(emailMessage);
-//
-//				// send the message
-//				Transport.send(message);
-//
-//				sent = true;
-//
-//				return sent;
-//			} catch (MessagingException e) {
-//				e.printStackTrace();
-//				return false;
-//			}
-//		} else {
-//			return false;
-//		}
-//	}
+	public boolean sendEmail(String emailMessage, String emailAddress) {
+		boolean sent = false;
+		String host = "127.0.0.1";
+		final String user = "csbsju.cmc@gmail.com";
+		final String password = "jumpingfrog12";
+
+		String to = emailAddress;
+
+		// Get the session object
+		Properties props = new Properties();
+		props.put("mail.smtp.host", host);
+		props.put("mail.smtp.auth", "true");
+
+		Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(user, password);
+			}
+		});
+
+		// Compose the message
+		if (emailAddress.contains("@") && emailMessage != null) {
+			try {
+				MimeMessage message = new MimeMessage(session);
+				message.setFrom(new InternetAddress(user));
+				message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+				message.setSubject("CMC Password Reset");
+				message.setText(emailMessage);
+
+				// send the message
+				Transport.send(message);
+
+				sent = true;
+
+				return sent;
+			} catch (MessagingException e) {
+				e.printStackTrace();
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
 
 	/**
 	 * Updates the first name, last name, password, type, and status of the current

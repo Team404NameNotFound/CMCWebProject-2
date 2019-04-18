@@ -45,7 +45,7 @@
 				<tr>
 					<td style="vertical-align: top;">Status<br>
 					</td>
-					<td style="vertical-align: top;"><input name="status">
+					<td style="vertical-align: top;"><input readonly = "readonly" value = "Y" name="status">
 					</td>
 				</tr>
 
