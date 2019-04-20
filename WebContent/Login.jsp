@@ -1,8 +1,8 @@
-<%@ page language="java" import="cmc.interaction.AccountInteraction, cmc.functionality.*, java.util.*"%>
+<%@ page language="java" import="cmc.interaction.AccountInteraction,  java.util.*"%>
 
 <% 
-AccountController user = new AccountController();
-session.setAttribute("interaction", user);
+//ccountController user = new AccountController();
+//session.setAttribute("interaction", user);
 %>
 <html>
 <head>
@@ -19,18 +19,18 @@ session.setAttribute("interaction", user);
 			border="1" cellpadding="2" cellspacing="2">
 			<tbody>
 				<tr>
-					<td style="vertical-align: top;">Username<br>
+					<td> style="vertical-align: top;"> Username<br>
 					</td>
 					<td style="vertical-align: top;"><input name="username">
 					</td>
 				</tr>
 				<tr>
-					<td style="vertical-align: top;">Password<br>
+					<td> style="vertical-align: top;">Password<br>
 					</td>
-					<td style="vertical-align: top;"><input name="password">
+					<td> style="vertical-align: top;"><input name="password">
 					</td>
 				</tr>
-
+				<tr>
 				<td style="vertical-align: top;"><input value="Log in"
 					name="Log in" type="submit"></td>
 				<td style="vertical-align: top;"><input value="Reset"

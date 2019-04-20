@@ -4,7 +4,7 @@
 String u = request.getParameter("username");
 String p = request.getParameter("password");
 
-AccountInteraction interaction = new AccountInteraction();
+AccountInteraction interaction = new AdminInteraction();
 int loginStatus = interaction.login(u, p);
 if(loginStatus == 0)
 {
