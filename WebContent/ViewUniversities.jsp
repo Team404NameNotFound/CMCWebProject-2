@@ -85,22 +85,22 @@
 			cellpadding="2" cellspacing="2">
 			<tbody>
 				<tr>
-					<td style="vertical-align: top;"><br><%schools.get(i).getName(); %></td>
-					<td style="vertical-align: top;"><br><%schools.get(i).getState(); %></td>
-					<td style="vertical-align: top;"><br><%schools.get(i).getLocation(); %></td>
-					<td style="vertical-align: top;"><br><%schools.get(i).getControl(); %></td>
-					<td style="vertical-align: top;"><br><%schools.get(i).getEnrollment(); %></td>
-					<td style="vertical-align: top;"><br><%schools.get(i).getPercentFemale(); %></td>
-					<td style="vertical-align: top;"><br><%schools.get(i).getSatVerbal(); %></td>
-					<td style="vertical-align: top;"><br><%schools.get(i).getSatMath(); %></td>
-					<td style="vertical-align: top;"><br><%schools.get(i).getCost(); %></td>
-					<td style="vertical-align: top;"><br><%schools.get(i).getPercentFinAid(); %></td>
-					<td style="vertical-align: top;"><br><%schools.get(i).getApplicants(); %></td>
-					<td style="vertical-align: top;"><br><%schools.get(i).getPercentAdmitted(); %></td>
-					<td style="vertical-align: top;"><br><%schools.get(i).getPercentEnrolled(); %></td>
-					<td style="vertical-align: top;"><br><%schools.get(i).getAcademicScale(); %><</td>
-					<td style="vertical-align: top;"><br><%schools.get(i).getSocialScale(); %><</td>
-					<td style="vertical-align: top;"><br><%schools.get(i).getQualityOfLife(); %><</td>
+					<td style="vertical-align: top;"><%=schools.get(i).getName() %><br></td>
+					<td style="vertical-align: top;"><%=schools.get(i).getState() %><br></td>
+					<td style="vertical-align: top;"><%=schools.get(i).getLocation() %><br></td>
+					<td style="vertical-align: top;"><%=schools.get(i).getControl() %><br></td>
+					<td style="vertical-align: top;"><%=schools.get(i).getEnrollment() %><br></td>
+					<td style="vertical-align: top;"><%=schools.get(i).getPercentFemale() %><br></td>
+					<td style="vertical-align: top;"><%=schools.get(i).getSatVerbal() %><br></td>
+					<td style="vertical-align: top;"><%=schools.get(i).getSatMath() %><br></td>
+					<td style="vertical-align: top;"><%=schools.get(i).getCost() %><br></td>
+					<td style="vertical-align: top;"><%=schools.get(i).getPercentFinAid() %><br></td>
+					<td style="vertical-align: top;"><%=schools.get(i).getApplicants() %><br></td>
+					<td style="vertical-align: top;"><%=schools.get(i).getPercentAdmitted() %><br></td>
+					<td style="vertical-align: top;"><%=schools.get(i).getPercentEnrolled()%><br></td>
+					<td style="vertical-align: top;"><%=schools.get(i).getAcademicScale() %><br></td>
+					<td style="vertical-align: top;"><%=schools.get(i).getSocialScale() %><br></td>
+					<td style="vertical-align: top;"><%=schools.get(i).getQualityOfLife() %><br></td>
 					<td style="vertical-align: top;"><span
 						style="font-family: Times New Roman, Times, serif;"><input
 							name="Submit" value="Submit" type="submit"></span><br></td>

@@ -16,15 +16,15 @@
 			border="1" cellpadding="2" cellspacing="2">
 			<tbody>
 				<tr>
-					<td> style="vertical-align: top;"> Username<br>
+					<td style="vertical-align: top;"> Username<br>
 					</td>
 					<td style="vertical-align: top;"><input name="username">
 					</td>
 				</tr>
 				<tr>
-					<td> style="vertical-align: top;">Password<br>
+					<td style="vertical-align: top;">Password<br>
 					</td>
-					<td> style="vertical-align: top;"><input name="password">
+					<td style="vertical-align: top;"><input name="password">
 					</td>
 				</tr>
 				<tr>
