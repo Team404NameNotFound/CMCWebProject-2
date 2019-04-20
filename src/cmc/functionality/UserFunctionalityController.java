@@ -151,7 +151,7 @@ public class UserFunctionalityController {
 	 * 
 	 * @param userName
 	 */
-	public boolean forgotPassword(String userName) {
+	public int forgotPassword(String userName) {
 		if (!loggedIn) {
 			if (this.DBCon.checkUser(userName)) {
 				AccountController userAcc = new AccountController(this.DBCon.getAccount(userName));
@@ -162,12 +162,12 @@ public class UserFunctionalityController {
 						+ ",\n\nYour password has been updated to " + rndPassword + ".\n\nPlease update "
 						+ "your password using the provided temporary password.\n\nCMC.com";
 				userAcc.sendEmail(emailMessage, userAcc.account.getUsername());
-				return true;
+				return 0;
 			} else {
-				throw new IllegalArgumentException("Invalid Username");
+				return -5;
 			}
 		}
-		return false;
+		return -5;
 	}
 
 	/**

@@ -100,7 +100,7 @@ public class AccountInteraction {
 	 * 
 	 * @param username
 	 */
-	public boolean forgotPsw(String usrName) {
+	public int forgotPsw(String usrName) {
 		return this.UFCon.forgotPassword(usrName);
 	}
 

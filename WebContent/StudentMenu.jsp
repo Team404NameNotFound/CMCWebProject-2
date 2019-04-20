@@ -15,5 +15,7 @@
 	<br>
 	<a href="Search.jsp?username="+<%=request.getParameter("username")%>>Search for schools</a>
 	<br>
+	<a href="TakePersonalityQuiz.jsp?username="+<%=request.getParameter("username")%>>Take personality quiz</a>
+	<br>
 </body>
 </html>

@@ -1,9 +1,6 @@
 <%@ page language="java" import="cmc.interaction.AccountInteraction,  java.util.*"%>
 
-<% 
-//ccountController user = new AccountController();
-//session.setAttribute("interaction", user);
-%>
+
 <html>
 <head>
 
@@ -40,8 +37,15 @@
 		</table>
 		<br>
 	</form>
+	
+	<br>
+	<a href="ForgotPassword.jsp">Forgot password?</a>
+	<br>
+	<br>
+	<br>
 	<%
 	String anyErrors = request.getParameter("Error");
+	
 	if(anyErrors != null && anyErrors.equals("-1"))
 	{
 		out.println("Please provide a valid username");
@@ -58,6 +62,17 @@
 	{
 		out.println("User is already logged in");
 	}
+	
+	String emailStatus = request.getParameter("emailStatus");
+	if(emailStatus != null && emailStatus.equals("0"))
+	{
+		out.println("Email was successfully sent");
+	}
+	else if(anyErrors != null && anyErrors.equals("-5"))
+	{
+		out.println("Email could not be sent");
+	}
+	
 	
 	%>
 	<br>
