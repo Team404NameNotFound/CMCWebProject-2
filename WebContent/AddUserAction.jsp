@@ -1,12 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<%@page language="java" import="cmc.interaction.*"%>
+<%@include file="verifyLogin.jsp" %>
+<%
+String firstname = request.getParameter("firstName");
+String lastname = request.getParameter("lastName");
+String username = request.getParameter("username");
+String password = request.getParameter("password");
+String type = request.getParameter("type");
+String status = request.getParameter("status");
 
-</body>
-</html>
+AdminInteraction ai = (AdminInteraction) session.getAttribute("interaction");
+response.sendRedirect("AdminMenu.jsp?");
+%>
