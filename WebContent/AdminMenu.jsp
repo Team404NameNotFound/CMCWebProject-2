@@ -1,0 +1,17 @@
+<%@ page language="java"
+	import="cmc.interaction.*,java.util.*,cmc.functionality.*"%>
+
+<html>
+<head>
+<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+<title></title>
+</head>
+<body>
+	Welcome : <%=request.getParameter("username")%>
+	<br>
+	<a href="ViewUniversities.jsp?username="+<%=request.getParameter("username")%>>Manage Universities</a>
+	<br>
+	<a href="ViewUsers.jsp?username="+<%=request.getParameter("username")%>>Manage Users</a>
+	<br>
+</body>
+</html>
