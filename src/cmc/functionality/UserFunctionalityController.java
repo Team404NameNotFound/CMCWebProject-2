@@ -12,8 +12,8 @@ import java.util.ArrayList;
 public class UserFunctionalityController {
 
 	// Making instance variables
-	AccountController account;
 	DBController DBCon = new DBController();
+	AccountController account;
 	UniversityController universityCon;
 	public Boolean loggedIn;
 
@@ -50,7 +50,7 @@ public class UserFunctionalityController {
 	 * @param password
 	 * @return true in log on is successful
 	 */
-	public boolean login(String userName, String password) {
+	public int login(String userName, String password) {
 		if (!loggedIn) {
 			if (this.DBCon.checkUser(userName)) {
 				if (this.DBCon.getAccount(userName).getUserStatus().equals("Y")) {
@@ -58,20 +58,20 @@ public class UserFunctionalityController {
 					if (userAcc.checkPassword(password)) {
 						account = new AccountController(this.DBCon.getAccount(userName));
 						this.loggedIn = true;
-						return true;
+						return 0;
 					} else {
-						throw new IllegalArgumentException("Invalid Password");
+						return -2;
 
 					}
 				} else {
-					throw new NullPointerException("Sorry, User is not active");
+					return -3;
 				}
 			} else {
-				throw new IllegalArgumentException("Sorry,username does not exist");
+				return -1;
 
 			}
 		}
-		return false;
+		return -4;
 	}
 
 	/**
@@ -102,6 +102,7 @@ public class UserFunctionalityController {
 			profile.add(userAcc.getUsername());
 			profile.add(userAcc.getPassword());
 			profile.add(userAcc.getUserType());
+			profile.add(userAcc.getUserStatus());
 
 			return profile;
 		} else {
@@ -117,13 +118,16 @@ public class UserFunctionalityController {
 	 * @param lastName
 	 * @param password
 	 */
-	public boolean editUserProfile(String userName, String firstName, String password, String lastName,
+	public boolean editUserProfile(String userName, String firstName,  String lastName, String password,
 			String userType) {
 
 		account = new AccountController(this.DBCon.getAccount(userName));
-		if (this.DBCon.getAccount(userName) == null) {
+		if (this.DBCon.getAccount(userName) == null) 
+		{
 			throw new IllegalArgumentException("Valid User needed");
-		} else {
+		} 
+		else 
+		{
 			Account userAcc = account.updateUserInfo(firstName, lastName, password, "-1", userType);
 
 			this.DBCon.setAccount(userAcc);
@@ -147,7 +151,7 @@ public class UserFunctionalityController {
 	 * 
 	 * @param userName
 	 */
-	public boolean forgotPassword(String userName) {
+	public int forgotPassword(String userName) {
 		if (!loggedIn) {
 			if (this.DBCon.checkUser(userName)) {
 				AccountController userAcc = new AccountController(this.DBCon.getAccount(userName));
@@ -158,12 +162,12 @@ public class UserFunctionalityController {
 						+ ",\n\nYour password has been updated to " + rndPassword + ".\n\nPlease update "
 						+ "your password using the provided temporary password.\n\nCMC.com";
 				userAcc.sendEmail(emailMessage, userAcc.account.getUsername());
-				return true;
+				return 0;
 			} else {
-				throw new IllegalArgumentException("Invalid Username");
+				return -5;
 			}
 		}
-		return false;
+		return -5;
 	}
 
 	/**

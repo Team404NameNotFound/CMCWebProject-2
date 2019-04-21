@@ -233,7 +233,7 @@ public class StudentInteraction extends AccountInteraction {
 		return sfCon.compareSchoolsByScore();
 	}
 
-	public ArrayList<String> editProfile(String userName, String firstName, String password, String lastName) {
+	public ArrayList<String> editProfile(String userName, String firstName, String lastName, String password) {
 		if (firstName == "" || lastName == "" || password == "") {
 			throw new IllegalArgumentException();
 		} else {

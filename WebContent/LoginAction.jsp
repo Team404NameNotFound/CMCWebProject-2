@@ -1,12 +1,28 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ page language="java" import="cmc.interaction.*,java.util.*,cmc.functionality.*"%>
 
-</body>
-</html>
+<% 
+String u = request.getParameter("username");
+String p = request.getParameter("password");
+
+AccountInteraction interaction = new AdminInteraction();
+int loginStatus = interaction.login(u, p);
+if(loginStatus == 0)
+{
+	if(interaction.viewProfile(u).get(4).equals("a"))
+	{
+		interaction = new AdminInteraction();
+		session.setAttribute("interaction", interaction);
+		response.sendRedirect("AdminMenu.jsp?username="+u+"&password="+p);
+	}
+	if(interaction.viewProfile(u).get(4).equals("u"))
+	{
+		interaction = new StudentInteraction();
+		session.setAttribute("interaction", interaction);
+		response.sendRedirect("StudentMenu.jsp?username="+u+"&password="+p);
+	}
+}
+else
+{
+	 response.sendRedirect("Login.jsp?Error="+loginStatus);
+}
+%>

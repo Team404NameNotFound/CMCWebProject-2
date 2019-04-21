@@ -11,13 +11,13 @@ import cmc.functionality.UserFunctionalityController;
  */
 public class AccountInteraction {
 
-	UserFunctionalityController UFCon;
+	UserFunctionalityController UFCon = new UserFunctionalityController();
 
-	/**
-	 * Create a new AccountInteraction
-	 */
+//	/**
+//	 * Create a new AccountInteraction
+//	 */
 	public AccountInteraction() {
-		UFCon = new UserFunctionalityController();
+		
 	}
 
 	/**
@@ -37,12 +37,8 @@ public class AccountInteraction {
 	 * @param String
 	 *            password
 	 */
-	public boolean login(String username, String password) {
-		if (this.UFCon.login(username, password)) {
-			return true;
-		} else {
-			return false;
-		}
+	public int login(String username, String password) {
+		return this.UFCon.login(username, password);
 
 	}
 
@@ -104,7 +100,7 @@ public class AccountInteraction {
 	 * 
 	 * @param username
 	 */
-	public boolean forgotPsw(String usrName) {
+	public int forgotPsw(String usrName) {
 		return this.UFCon.forgotPassword(usrName);
 	}
 

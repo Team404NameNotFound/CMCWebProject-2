@@ -11,7 +11,7 @@ import cmc.entity.*;
 public class AdminFunctionalityController extends UserFunctionalityController {
 	// constructor
 	public AdminFunctionalityController() {
-
+		super();
 	}
 
 	/**

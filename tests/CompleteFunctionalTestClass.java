@@ -22,7 +22,7 @@ public class CompleteFunctionalTestClass {
 	@Test
 	public void UC1SucessfulLogin() {
 		AccountInteraction ac = new AccountInteraction();
-		assertTrue(ac.login("cz001", "password"));
+		assertTrue(ac.login("cz001", "password")==0);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
