@@ -8,7 +8,7 @@
 <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
 <title></title>
 </head>
-<%String universityName = request.getParameter("universityName");
+<%String universityName = request.getParameter("school");
 	AdminInteraction afc = (AdminInteraction)session.getAttribute("interaction");
 	ArrayList<University> universityList = afc.viewSchoolList();
 	boolean found = false;

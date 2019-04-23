@@ -17,8 +17,11 @@
 	<table style="text-align: left; width: 100%;" border="1"
 		cellpadding="2" cellspacing="2">
 		<tbody>
-			<tr>
-				<td style="vertical-align: top;"><br></td>
+			<tr align="center">
+
+				<td colspan="8" rowspan="1" style="vertical-align: top;"><a
+					href="AddUniversity.jsp">Add a University</a></td>
+
 			</tr>
 		</tbody>
 	</table>
@@ -80,7 +83,7 @@
 	for(int i = 0; i < schools.size(); i++)
 	{
 	%>
-	<form action="EditUniversity" name="school">
+	<form action="EditUniversity.jsp" name="school">
 		<table style="text-align: left; width: 100%;" border="1"
 			cellpadding="2" cellspacing="2">
 			<tbody>
@@ -103,7 +106,7 @@
 					<td style="vertical-align: top;"><%=schools.get(i).getQualityOfLife() %><br></td>
 					<td style="vertical-align: top;"><span
 						style="font-family: Times New Roman, Times, serif;"><input
-							name="Submit" value="Submit" type="submit"></span><br></td>
+							name="Edit" value="Edit" type="submit"></span><br></td>
 				</tr>
 			</tbody>
 		</table>
