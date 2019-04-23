@@ -23,12 +23,12 @@ public class Account {
 	 * @param userStatus
 	 *            whether account is active or inactive
 	 */
-	private String firstName;
-	private String lastName;
-	private String username;
-	private String password;
-	private String userType;
-	private String userStatus;
+	private String firstName = "";
+	private String lastName = "";
+	private String username = "";
+	private String password = "";
+	private String userType = "";
+	private String userStatus = "";
 
 	/**
 	 * Creates a new Account object with the following attributes
@@ -56,6 +56,11 @@ public class Account {
 		this.userType = userType;
 		this.userStatus = userStatus;
 	}
+	
+	public Account() {
+		
+	}
+	
 
 	// /**
 	// * Allows user with the correspoding username and password to access the

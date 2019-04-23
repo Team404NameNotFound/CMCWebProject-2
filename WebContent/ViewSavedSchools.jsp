@@ -3,12 +3,11 @@
 <title></title>
 </head>
 <body>
-	<%@page language="java" import="cmc.entity.*"
-		import="cmc.functionality.*" import="cmc.interaction.*"
-		import="java.util.ArrayList"%>
-	<%
+	<%@page language="java" import="cmc.entity.*, cmc.functionality.*, cmc.interaction.*, java.util.*"%>
+   <%
 		StudentInteraction student = (StudentInteraction) session.getAttribute("interaction");
 		Account studentAccount = student.getAccount();
+		out.println("aCCOUNT="+studentAccount);
 	%>
 	<table style="text-align: left; width: 100%;" border="1"
 		cellpadding="2" cellspacing="2">
@@ -22,6 +21,7 @@
 			<%
 				ArrayList<UserSavedSchool> savedSchools = new ArrayList<UserSavedSchool>();
 				savedSchools = student.viewSavedSchools();
+				out.println(savedSchools.size());
 				for (int i = 0; i < savedSchools.size(); i++) {
 			%>
 			<tr>

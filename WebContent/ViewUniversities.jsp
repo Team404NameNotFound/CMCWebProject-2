@@ -146,7 +146,7 @@
 			<tr align="center">
 
 				<td colspan="17" rowspan="1" style="vertical-align: top;"><a
-					href="AddUniversities.jsp">ADD A NEW UNIVERSITY</a></td>
+					href="AddUniversity.jsp">ADD A NEW UNIVERSITY</a></td>
 
 			</tr>
 			<tr>

@@ -17,7 +17,7 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	 */
 	public StudentFunctionalityController() {
 		super();
-		this.account = new AccountController();
+		//this.account = new AccountController();
 		this.searchCon = new SearchController(this.DBCon.getUniversityList());
 	}
 
@@ -154,11 +154,9 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	 * View current user's saved schools list
 	 */
 	public ArrayList<UserSavedSchool> viewSavedSchools() {
-		if (this.account.account.getUserType().equals("a")) {
-			throw new IllegalArgumentException("User cannot be an admin");
-		} else {
-			this.account.viewSavedSchools();
-		}
+		//this.account.viewSavedSchools();
+		System.out.println("SF Controller this.viewSavedSchools: "+ this.getAccount());
+
 		return this.account.viewSavedSchools();
 	}
 

@@ -22,8 +22,8 @@ import dblibrary.project.csci230.UniversityDBLibrary;
  *
  */
 public class AccountController {
-	DBController dbController = new DBController();
-	Account account;
+	protected DBController dbController = new DBController();
+	protected Account account; //= new Account(); // ??
 
 	/**
 	 * creates new AccountController object
@@ -48,12 +48,14 @@ public class AccountController {
 
 	public void setAccount(String username) {
 		Account currentAccount = this.dbController.getAccount(username);
-		if(currentAccount != null) {
-			this.account = currentAccount;
-		}
+		this.account = currentAccount;
+		System.out.println("Account Controller this.account: "+ this.getAccount().getUsername());
 	}
-	
-	
+
+	public Account getAccount() {
+		return this.account;
+	}
+
 	/**
 	 * Returns list of all schools
 	 * 
@@ -61,13 +63,14 @@ public class AccountController {
 	 * @return schoolList list of schools the student has on saved school list
 	 */
 	public ArrayList<UserSavedSchool> viewSavedSchools() {
-		if (this.account.getUserType().equals("a"))
-			throw new UnsupportedOperationException("Current account is an admin");
-		else {
-			for (University savedSchool : this.dbController.getSchoolList2(this.account)) {
-				System.out.println(savedSchool.getName());
-			}
+		// if (this.account.getUserType().equals("a"))
+		// throw new UnsupportedOperationException("Current account is an admin");
+		// else {
+		System.out.println("Account Controller this.viewSavedSchools: "+ this.getAccount());
+		for (University savedSchool : this.dbController.getSchoolList2(this.account)) {
+			System.out.println(savedSchool.getName());
 		}
+		// }
 
 		return this.dbController.getSchoolList2(this.account);
 	}
@@ -106,11 +109,13 @@ public class AccountController {
 	public Account toggleActivationStatus() {
 		if (this.account.getUserStatus().equals("N")) {
 			this.account.setUserStatus("Y");
-			this.dbController.editAccount(account.getUsername(), account.getFirstName(),account.getLastName(), account.getPassword(), account.getUserType(), "Y" );
+			this.dbController.editAccount(account.getUsername(), account.getFirstName(), account.getLastName(),
+					account.getPassword(), account.getUserType(), "Y");
 			this.dbController.setAccount(this.account);
 		} else {
 			this.account.setUserStatus("N");
-			this.dbController.editAccount(account.getUsername(), account.getFirstName(),account.getLastName(), account.getPassword(), account.getUserType(), "N" );
+			this.dbController.editAccount(account.getUsername(), account.getFirstName(), account.getLastName(),
+					account.getPassword(), account.getUserType(), "N");
 			this.dbController.setAccount(this.account);
 		}
 		return this.account;
@@ -240,52 +245,34 @@ public class AccountController {
 	 * @return Account account with information edited
 	 */
 	public Account updateUserInfo(String fName, String lName, String password, String status, String type) {
-		if (!fName.equals("") && fName != null) 
-		{
+		if (!fName.equals("") && fName != null) {
 			account.setFirstName(fName);
 		}
-		if (!lName.equals("") && lName != null) 
-		{
+		if (!lName.equals("") && lName != null) {
 			account.setLastName(lName);
 		}
-		if (!password.equals("") && password != null) 
-		{
+		if (!password.equals("") && password != null) {
 			account.setPassword(password);
 		}
-		if (!type.equals("-1")) 
-		{
-			if (!type.equals("") && type != null) 
-			{
-				if (type.equals("u") || type.equals("U")) 
-				{
+		if (!type.equals("-1")) {
+			if (!type.equals("") && type != null) {
+				if (type.equals("u") || type.equals("U")) {
 					account.setUserType("u");
-				} 
-				else if (type.equals("a") || type.equals("A")) 
-				{
+				} else if (type.equals("a") || type.equals("A")) {
 					account.setUserType("a");
-				} 
-				else 
-				{
+				} else {
 					throw new UnsupportedOperationException("Account type can only be \" a\" or  \"u\" ");
 				}
 			}
 		}
-		if (!status.equals("") && status != null) 
-		{
-			if(status.equals("-1"))
-			{
+		if (!status.equals("") && status != null) {
+			if (status.equals("-1")) {
 				account.setUserStatus(status);
-			}
-			else if (status.equals("Y") || status.equals("y")) 
-			{
+			} else if (status.equals("Y") || status.equals("y")) {
 				account.setUserType("Y");
-			} 
-			else if (type.equals("N") || type.equals("n")) 
-			{
+			} else if (type.equals("N") || type.equals("n")) {
 				account.setUserType("N");
-			}
-			else 
-			{
+			} else {
 				throw new UnsupportedOperationException("Account status can only be \" N\" or  \" Y\" ");
 			}
 		}
@@ -396,30 +383,29 @@ public class AccountController {
 		if (savedSchools.size() == 0) {
 			throw new UnsupportedOperationException("No saved school to compare scores");
 		}
-      
+
 		double[][] scores = new double[savedSchools.size()][2];
 		ArrayList<String> returnList = new ArrayList<>();
-		
+
 		String[] savedSchoolNames = new String[savedSchools.size()];
 		for (int i = 0; i < savedSchools.size(); i++) {
 			scores[i][0] = Double.parseDouble(savedSchools.get(i).getSatMath());
 			scores[i][1] = Double.parseDouble("" + i);
 			savedSchoolNames[i] = savedSchools.get(i).getName();
 		}
-        
-		
+
 		java.util.Arrays.sort(scores, new java.util.Comparator<double[]>() {
 			public int compare(double[] a, double[] b) {
 				return Double.compare(a[0], b[0]);
 			}
 		});
-		
+
 		for (int j = 0; j < scores.length; j++) {
 			int order = (int) Math.round(scores[j][1]);
 			if (scores[j][0] != -1.0) {
 				returnList.add(savedSchoolNames[order] + " " + scores[j][0]);
 			}
-	}
+		}
 
 		return returnList;
 	}
