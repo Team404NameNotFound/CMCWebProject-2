@@ -86,7 +86,7 @@ public class UniversityController {
 		// goes through and tests every parameter to see if it has a value so that only
 		// the parameters with new values are updated
 
-		if (state.matches("[a-zA-Z]+")) {
+		if (!state.contains("1234567890")) {
 			school.setState(state);
 		}else if(state == null || state.equals("") || state.equals("-1")) {
 			school.setState("-1");
@@ -95,7 +95,7 @@ public class UniversityController {
 		}
 
 		
-		if (location.matches("[a-zA-Z]+")) {
+		if (!location.contains("1234567890")) {
 			school.setLocation(location);
 		}else if(location == null || location.equals("") || location.equals("-1")) {
 			school.setLocation("-1");
