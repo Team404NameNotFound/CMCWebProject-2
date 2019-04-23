@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
-	<%@page language="java" import="cmc.interaction.*,cmc.entity.*,java.util.*"%>
+	<%@page language="java" import="cmc.interaction.*,cmc.entity.*,cmc.functionality.*,java.util.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,14 +11,15 @@
 <%String universityName = request.getParameter("school");
 	AdminInteraction afc = (AdminInteraction)session.getAttribute("interaction");
 	ArrayList<University> universityList = afc.viewSchoolList();
-	boolean found = false;
-	University university = null;
-	for(int i = 0; i < universityList.size() && found == false; i++){
+	/*boolean found = false; */
+	DBController dbCon = new DBController();
+	University university = dbCon.getUniversity2(universityName);
+	/* for(int i = 0; i < universityList.size() && found == false; i++){
 		if (universityList.get(i).getName().equals(universityName)){
 			university = universityList.get(i);
 			found = true;
 		}
-	}
+	} */
 %>
 <body>
 	<form action="EditUniversityAction.jsp" name="editForm">
@@ -29,97 +30,97 @@
 					<td style="vertical-align: top;">University Name<br>
 					</td>
 					<td style="vertical-align: top;"><input name = "School"
-						value=<% university.getName(); %>><br></td>
+						value=<%=university.getName() %> readonly/><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">State<br>
 					</td>
 					<td style="vertical-align: top;"><input name = "State"
-						value=<% university.getState(); %>><br></td>
+						value=<%=university.getState() %>><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">Location<br>
 					</td>
 					<td style="vertical-align: top;"><input name = "Loc"
-						value=<% university.getLocation(); %>><br></td>
+						value=<%= university.getLocation() %>><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">Control<br>
 					</td>
 					<td style="vertical-align: top;"><input name = "Cont"
-						value=<% university.getControl(); %>><br></td>
+						value=<%= university.getControl() %>><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">Number of Students<br>
 					</td>
 					<td style="vertical-align: top;"><input name = "NumOfStud"
-						value=<% university.getEnrollment(); %>><br></td>
+						value=<%=university.getEnrollment() %>><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">% Female<br>
 					</td>
 					<td style="vertical-align: top;"><input name = "PerFem"
-						value=<% university.getPercentFemale(); %>><br></td>
+						value=<%=university.getPercentFemale()%>><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">SAT Verbal<br>
 					</td>
 					<td style="vertical-align: top;"><input name = "SATVerbal"
-						value=<% university.getSatVerbal(); %>><br></td>
+						value=<%=university.getSatVerbal() %>><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">SAT Math<br>
 					</td>
-					<td style="vertical-align: top;"><input name = "SatMath"
-						value=<% university.getSatMath(); %>><br></td>
+					<td style="vertical-align: top;"><input name = "SATMath"
+						value=<%= university.getSatMath() %>><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">Expenses<br>
 					</td>
 					<td style="vertical-align: top;"><input name = "Exp"
-						value=<% university.getCost(); %>><br></td>
+						value=<%=university.getCost() %>><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">% Financial Aid<br>
 					</td>
 					<td style="vertical-align: top;"><input name = "PerFinAid"
-						value=<% university.getPercentFinAid(); %>><br></td>
+						value=<%=university.getPercentFinAid() %>><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">Number of Applicants<br>
 					</td>
 					<td style="vertical-align: top;"><input name = "NumOfApp"
-						value=<% university.getApplicants(); %>><br></td>
+						value=<%= university.getApplicants() %>><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">% Admitted<br>
 					</td>
 					<td style="vertical-align: top;"><input name = "PerAdm"
-						value=<% university.getPercentAdmitted(); %>><br></td>
+						value=<%= university.getPercentAdmitted() %>><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">% Enrolled<br>
 					</td>
 					<td style="vertical-align: top;"><input name = "PerEnr"
-						value=<% university.getPercentEnrolled(); %>><br></td>
+						value=<%= university.getPercentEnrolled() %>><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">Academic Scale(1-5)<br>
 					</td>
 					<td style="vertical-align: top;"><input name = "AccSc"
-						value=<% university.getAcademicScale(); %>><br></td>
+						value=<%= university.getAcademicScale() %>><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">Social Scale(1-5)<br>
 					</td>
 					<td style="vertical-align: top;"><input name = "SocSc"
-						value=<% university.getSocialScale(); %>><br></td>
+						value=<%= university.getSocialScale() %>><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">Quality of Life Scale(1-5)<br>
 					</td>
 					<td style="vertical-align: top;"><input name = "QLSc"
-						value=<% university.getQualityOfLife(); %>><br></td>
+						value=<%= university.getQualityOfLife() %>><br></td>
 				</tr>
 				<%String[] emphases = university.getEmphases();
 				int i = 0;
@@ -130,7 +131,7 @@
 					<td style="vertical-align: top;"><input name = <%out.print("Emp" + i);%>
 						value=<% out.print(emphases[i]); %>><br></td>
 				</tr>
-				<%} for (; i < 5; i++){%>
+				<%} for (; i < 8; i++){%>
 				<tr>
 					<td style="vertical-align: top;">Add Emphases<br>
 					</td>

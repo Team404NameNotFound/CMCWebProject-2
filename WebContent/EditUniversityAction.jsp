@@ -31,6 +31,6 @@ for(int i = 0; i < 5; i++){
 
 adminInteraction.editUniversityInfo(name, state, location, control, enrollment, percentFemale, satVerbal, satMath, cost, percentFinAid,
 		percentEnrolled, applicants, percentAdmitted, academicScale, socialScale, qualityOfLife, emphases);
-response.sendRedirect("ViewUUniversities.jsp");
+response.sendRedirect("ViewUniversities.jsp");
 
 %>

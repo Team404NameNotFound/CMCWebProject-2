@@ -88,7 +88,7 @@ public class UniversityController {
 
 		if (state.matches("[a-zA-Z]+")) {
 			school.setState(state);
-		}else if(state == null || state.equals("")) {
+		}else if(state == null || state.equals("") || state.equals("-1")) {
 			school.setState("-1");
 		}else {
 			throw new IllegalArgumentException("Invalid State");
@@ -97,7 +97,7 @@ public class UniversityController {
 		
 		if (location.matches("[a-zA-Z]+")) {
 			school.setLocation(location);
-		}else if(location == null || location.equals("")) {
+		}else if(location == null || location.equals("") || location.equals("-1")) {
 			school.setLocation("-1");
 		}else {
 			throw new IllegalArgumentException("Invalid location");
@@ -106,7 +106,7 @@ public class UniversityController {
 		
 		if (control.equals("PRIVATE") || control.equals("PUBLIC")) {
 			school.setControl(control);
-		}else if(control == null || control.equals("")) {
+		}else if(control == null || control.equals("") || control.equals("-1")) {
 			school.setControl("-1");
 		}else {
 			throw new IllegalArgumentException("Invalid control");
@@ -115,7 +115,7 @@ public class UniversityController {
 		
 		if (enrollment.matches("\\d+")) {
 			school.setEnrollment(enrollment);
-		}else if(enrollment == null || enrollment.equals("")) {
+		}else if(enrollment == null || enrollment.equals("") || enrollment.equals("-1")) {
 			school.setEnrollment("-1");
 		}else {
 			throw new IllegalArgumentException("Invalid enrollment");
@@ -124,7 +124,7 @@ public class UniversityController {
 		
 		if (percentFemale.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentFemale) > 0.0 && Double.parseDouble(percentFemale) < 100.0) {
 			school.setPercentFemale(percentFemale);
-		}else if(percentFemale == null || percentFemale.equals("")) {
+		}else if(percentFemale == null || percentFemale.equals("") || percentFemale.equals("-1")) {
 			school.setPercentFemale("-1.0");
 		}else {
 			throw new IllegalArgumentException("Invalid percentFemale");
@@ -133,7 +133,7 @@ public class UniversityController {
 		
 		if (satVerbal.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(satVerbal) >= 200 && Double.parseDouble(satVerbal) <= 800) {
 			school.setSatVerbal(satVerbal);
-		}else if(satVerbal == null || satVerbal.equals("")) {
+		}else if(satVerbal == null || satVerbal.equals("") || Integer.parseInt(satVerbal) == -1) {
 			school.setSatVerbal("-1.0");
 		}else {
 			throw new IllegalArgumentException("Invalid satVerbal");
@@ -141,7 +141,7 @@ public class UniversityController {
 		
 		if (satMath.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(satMath) >= 200 && Double.parseDouble(satMath) <= 800) {
 			school.setSatMath(satMath);
-		}else if(satMath == null || satMath.equals("")) {
+		}else if(satMath == null || satMath.equals("") || satMath.equals("-1")) {
 			school.setSatMath("-1.0");
 		}else {
 			throw new IllegalArgumentException("Invalid satMath");
@@ -150,7 +150,7 @@ public class UniversityController {
 		
 		if (cost.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(cost) > 0.0  ) {
 			school.setCost(cost);
-		}else if(cost == null || cost.equals("")) {
+		}else if(cost == null || cost.equals("") || cost.equals("-1")) {
 			school.setCost("-1.0");
 		}else {
 			throw new IllegalArgumentException("Invalid cost");
@@ -158,7 +158,7 @@ public class UniversityController {
 
 		if (percentFinAid.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentFinAid) > 0.0 && Double.parseDouble(percentFinAid) < 100.0) {
 			school.setPercentFinAid(percentFinAid);
-		}else if(percentFinAid == null || percentFinAid.equals("")) {
+		}else if(percentFinAid == null || percentFinAid.equals("") || percentFinAid.equals("-1")) {
 			school.setPercentFinAid("-1.0");
 		}else {
 			throw new IllegalArgumentException("Invalid percentFinAid");
@@ -167,7 +167,7 @@ public class UniversityController {
 		
 		if (applicants.matches("\\d+")) {
 			school.setApplicants(applicants);
-		}else if(applicants == null || applicants.equals("")) {
+		}else if(applicants == null || applicants.equals("") || applicants.equals("-1")) {
 			school.setApplicants("-1");
 		}else {
 			throw new IllegalArgumentException("Invalid applicants");
@@ -176,7 +176,7 @@ public class UniversityController {
 		
 		if (percentAdmitted.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentAdmitted) > 0 && Double.parseDouble(percentAdmitted) < 100) {
 			school.setPercentAdmitted(percentAdmitted);
-		}else if(percentAdmitted == null || percentAdmitted.equals("")) {
+		}else if(percentAdmitted == null || percentAdmitted.equals("") || percentAdmitted.equals("-1")) {
 			school.setPercentAdmitted("-1.0");
 		}else {
 			throw new IllegalArgumentException("Invalid percentAdmitted");
@@ -185,7 +185,7 @@ public class UniversityController {
 		
 		if (percentEnrolled.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentEnrolled) > 0 && Double.parseDouble(percentEnrolled) < 100) {
 			school.setPercentEnrolled(percentEnrolled);
-		}else if(percentEnrolled == null || percentEnrolled.equals("")) {
+		}else if(percentEnrolled == null || percentEnrolled.equals("") || percentEnrolled.equals("-1")) {
 			school.setPercentEnrolled("-1.0");
 		}else {
 			throw new IllegalArgumentException("Invalid percentEnrolled");
@@ -194,7 +194,7 @@ public class UniversityController {
 		
 		if (academicScale.matches("[12345]")) {
 			school.setAcademicScale(academicScale);
-		}else if(academicScale == null || academicScale.equals("")) {
+		}else if(academicScale == null || academicScale.equals("") || academicScale.equals("-1")) {
 			school.setAcademicScale("-1");
 		}else {
 			throw new IllegalArgumentException("Invalid academicScale");
@@ -203,7 +203,7 @@ public class UniversityController {
 		
 		if (socialScale.matches("[12345]")) {
 			school.setSocialScale(socialScale);
-		}else if(socialScale == null || socialScale.equals("")) {
+		}else if(socialScale == null || socialScale.equals("") || socialScale.equals("-1")) {
 			school.setSocialScale("-1");
 		}else {
 			throw new IllegalArgumentException("Invalid socialScale");
@@ -212,7 +212,7 @@ public class UniversityController {
 		
 		if (qualityOfLife.matches("[12345]")) {
 			school.setQualityOfLife(qualityOfLife);
-		}else if(qualityOfLife == null || qualityOfLife.equals("")) {
+		}else if(qualityOfLife == null || qualityOfLife.equals("") || qualityOfLife.equals("-1")) {
 			school.setQualityOfLife("-1");
 		}else {
 			throw new IllegalArgumentException("Invalid qualityOfLife");

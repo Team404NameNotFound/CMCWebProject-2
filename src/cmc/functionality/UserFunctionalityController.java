@@ -13,7 +13,7 @@ public class UserFunctionalityController {
 
 	// Making instance variables
 	DBController DBCon = new DBController();
-	AccountController account;
+	AccountController account = new AccountController();
 	UniversityController universityCon;
 	public Boolean loggedIn;
 
@@ -211,8 +211,8 @@ public class UserFunctionalityController {
 	 * 
 	 * @return
 	 */
-	public AccountController getAccount() {
-		return this.account;
+	public Account getAccount() {
+		return this.account.account;
 	}
 
 	/**
@@ -222,6 +222,13 @@ public class UserFunctionalityController {
 	 */
 	public void setAccount(AccountController account) {
 		this.account = account;
+	}
+	
+	public void setAccount(String username) {
+		if(this.account == null) {
+			throw new NullPointerException("The account controller in UserFunctionalityController is null");
+		}
+		this.account.setAccount(username);
 	}
 
 }

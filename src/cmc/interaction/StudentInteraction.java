@@ -8,6 +8,8 @@ import java.util.List;
 
 import cmc.entity.University;
 import cmc.entity.UserSavedSchool;
+import cmc.functionality.AccountController;
+import cmc.functionality.DBController;
 import cmc.functionality.SearchController;
 import cmc.functionality.StudentFunctionalityController;
 
@@ -18,7 +20,7 @@ import cmc.functionality.StudentFunctionalityController;
 public class StudentInteraction extends AccountInteraction {
 
 	StudentFunctionalityController sfCon;
-
+	DBController dbCon = new DBController();
 	/**
 	 * Create a new StudentInteraction
 	 */
@@ -214,7 +216,7 @@ public class StudentInteraction extends AccountInteraction {
 	public void setSfCon(StudentFunctionalityController sfCon) {
 		this.sfCon = sfCon;
 	}
-
+	
 	/**
 	 * Remove a school from user's saved schools list
 	 * 
@@ -242,5 +244,9 @@ public class StudentInteraction extends AccountInteraction {
 
 		return UFCon.viewUserProfile(userName);
 	}
+	
+//	public void setAccount(String username) {
+//		this.sfCon.setAccount(username);
+//	}
 
 }

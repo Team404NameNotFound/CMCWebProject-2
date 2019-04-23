@@ -1,5 +1,5 @@
 <%@ page language="java"
-	import="cmc.interaction.*,java.util.*,cmc.functionality.*"%>
+	import="cmc.interaction.*,cmc.entity.*, java.util.*,cmc.functionality.*"%>
 
 <html>
 <head>
@@ -7,15 +7,19 @@
 <title></title>
 </head>
 <body>
-	Welcome : <%=request.getParameter("username")%>
+   <%
+		StudentInteraction student = (StudentInteraction) session.getAttribute("interaction");
+		Account studentAccount = student.getAccount();
+	%>
+	Welcome : <%=studentAccount.getUsername()%>
 	<br>
-	<a href="StudentEditUser.jsp?username="+<%=request.getParameter("username")%>>Manage my profile</a>
+	<a href="StudentEditUser.jsp">Manage my profile</a>
 	<br>
-	<a href="ViewSavedSchools.jsp?username="+<%=request.getParameter("username")%>>Manage my saved schools</a>
+	<a href="ViewSavedSchools.jsp">Manage my saved schools</a>
 	<br>
-	<a href="Search.jsp?username="+<%=request.getParameter("username")%>>Search for schools</a>
+	<a href="Search.jsp">Search for schools</a>
 	<br>
-	<a href="TakePersonalityQuiz.jsp?username="+<%=request.getParameter("username")%>>Take personality quiz</a>
+	<a href="TakePersonalityQuiz.jsp">Take personality quiz</a>
 	<br>
 </body>
 </html>

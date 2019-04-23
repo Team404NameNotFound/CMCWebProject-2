@@ -1,4 +1,4 @@
-<%@ page language="java" import="cmc.interaction.AccountInteraction,  java.util.*"%>
+<%@ page language="java" import="cmc.interaction.*,  java.util.*"%>
 
 
 <html>

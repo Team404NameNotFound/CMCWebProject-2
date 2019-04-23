@@ -11,8 +11,8 @@ import cmc.functionality.UserFunctionalityController;
  */
 public class AccountInteraction {
 
-	UserFunctionalityController UFCon = new UserFunctionalityController();
-
+	protected UserFunctionalityController UFCon = new UserFunctionalityController();
+	//protected String un = null;
 //	/**
 //	 * Create a new AccountInteraction
 //	 */
@@ -118,5 +118,17 @@ public class AccountInteraction {
 
 		}
 		return universityList;
+	}
+	
+	public void setUfCon(String username) {
+		this.UFCon.setAccount(username);
+	}
+	//Imad told us to get Account information through this way, instead of getParameter()
+	public void setAccount(String username) {
+		this.UFCon.setAccount(username);
+	}
+	
+	public Account getAccount() {
+		return this.UFCon.getAccount();
 	}
 }

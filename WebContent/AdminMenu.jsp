@@ -9,9 +9,9 @@
 <body>
 	Welcome : <%=request.getParameter("username")%>
 	<br>
-	<a href="ViewUniversities.jsp">Manage universities</a>
+	<a href="ViewUniversities.jsp?username="+<%=request.getParameter("username")%>>Manage Universities</a>
 	<br>
-	<a href="ViewUsers.jsp">Manage users</a>
+	<a href="ViewUsers.jsp?username="+<%=request.getParameter("username")%>>Manage Users</a>
 	<br>
 </body>
 </html>
