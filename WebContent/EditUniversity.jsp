@@ -90,7 +90,7 @@
 					<td style="vertical-align: top;">Number of Applicants<br>
 					</td>
 					<td style="vertical-align: top;"><input name = "NumOfApp"
-						value=<%= university.getApplicants() %>><br></td>
+						value=<%= university.getPercentEnrolled() %>><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">% Admitted<br>
@@ -102,7 +102,7 @@
 					<td style="vertical-align: top;">% Enrolled<br>
 					</td>
 					<td style="vertical-align: top;"><input name = "PerEnr"
-						value=<%= university.getPercentEnrolled() %>><br></td>
+						value=<%= university.getApplicants() %>><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">Academic Scale(1-5)<br>

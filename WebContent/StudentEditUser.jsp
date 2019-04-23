@@ -1,15 +1,15 @@
-<%@page language="java" import="cmc.interaction.*, java.util.*"%>
+<%@page language="java" import="cmc.interaction.*, java.util.*, cmc.entity.*"%>
 <html>
 <head>
 <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
 <title></title>
 </head>
 <%
-String userName = request.getParameter("username");
-
 StudentInteraction student = (StudentInteraction) session.getAttribute("interaction");
+Account studentAccount = student.getAccount();
+
 ArrayList<String> user = new ArrayList<String>();
-user = student.viewProfile(userName);
+user = student.viewProfile(studentAccount.getUsername());
 %>
 <body>
 	<form action="EditUserAction.jsp?username="+user.get(2) name="editForm">

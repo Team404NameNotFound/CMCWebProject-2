@@ -8,7 +8,7 @@
 <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
 <title></title>
 </head>
-<%String userName = request.getParameter("username");
+<%  String userName = request.getParameter("username");
 	AdminInteraction afc = (AdminInteraction)session.getAttribute("interaction");
 %>
 <body>
