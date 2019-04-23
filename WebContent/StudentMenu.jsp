@@ -13,7 +13,7 @@
 	%>
 	Welcome : <%=studentAccount.getUsername()%>
 	<br>
-	<a href="StudentEditUser.jsp">Manage my profile</a>
+	<a href="StudentEditUser.jsp?username="+<%=studentAccount.getUsername()%>>Manage my profile</a>
 	<br>
 	<a href="ViewSavedSchools.jsp">Manage my saved schools</a>
 	<br>
