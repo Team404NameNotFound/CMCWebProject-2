@@ -46,6 +46,14 @@ public class AccountController {
 
 	}
 
+	public void setAccount(String username) {
+		Account currentAccount = this.dbController.getAccount(username);
+		if(currentAccount != null) {
+			this.account = currentAccount;
+		}
+	}
+	
+	
 	/**
 	 * Returns list of all schools
 	 * 

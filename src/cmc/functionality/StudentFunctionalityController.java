@@ -257,5 +257,9 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	public ArrayList<String> compareSchoolsByScore() {
 		return super.account.compareSchoolsByScore();
 	}
+	
+	public void setAccount(String username) {
+		this.account.setAccount(username);
+	}
 
 }
