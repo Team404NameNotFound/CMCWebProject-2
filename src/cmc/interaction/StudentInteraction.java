@@ -156,7 +156,7 @@ public class StudentInteraction extends AccountInteraction {
 	 * @param school
 	 */
 	public ArrayList<UserSavedSchool> saveSchool(String school) {
-		this.sfCon.setAccount(this.UFCon.getAccount());
+		//this.sfCon.setAccount(this.UFCon.getAccount());
 		this.sfCon.saveSchool(school);
 		return sfCon.viewSavedSchools();
 	}

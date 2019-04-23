@@ -337,6 +337,7 @@ public class DBController {
 	public ArrayList<UserSavedSchool> getSchoolList2(Account account) {
 		String[][] savedSchools = dbLibrary.user_getUsernamesWithSavedSchools();
 		ArrayList<UserSavedSchool> returnSchools = new ArrayList<>();
+		System.out.println("account in DBCorntoller" + account);
 		for (int i = 0; i < savedSchools.length; i++) {
 			if (savedSchools[i][0].equals(account.getUsername())) {
 				University currentSchool = this.getUniversity2(savedSchools[i][1]);

@@ -56,7 +56,7 @@ public class AdminInteraction extends AccountInteraction {
 				|| userType.equals("")) {
 			throw new IllegalArgumentException("Please input valid user information");
 		} else if (!userType.equals("a") && !userType.equals("u")) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("not a valid type");
 		} else {
 			this.afCon.addUser(firstname, lastname, username, password, userType);
 		}

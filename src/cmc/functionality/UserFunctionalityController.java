@@ -13,7 +13,7 @@ public class UserFunctionalityController {
 
 	// Making instance variables
 	DBController DBCon = new DBController();
-	AccountController account = new AccountController();
+	AccountController account;// = new AccountController();
 	UniversityController universityCon;
 	public Boolean loggedIn;
 
@@ -21,6 +21,7 @@ public class UserFunctionalityController {
 	 * class constructor
 	 */
 	public UserFunctionalityController() {
+		this.account = new AccountController();
 		this.universityCon = new UniversityController();
 		this.loggedIn = false;
 	}
