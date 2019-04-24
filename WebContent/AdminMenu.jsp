@@ -1,5 +1,5 @@
 <%@ page language="java"
-	import="cmc.interaction.*,java.util.*,cmc.functionality.*"%>
+	import="cmc.interaction.*,cmc.entity.*, java.util.*,cmc.functionality.*"%>
 
 <html>
 <head>
@@ -7,7 +7,11 @@
 <title></title>
 </head>
 <body>
-	Welcome : <%=request.getParameter("username")%>
+<%
+		AdminInteraction admin = (AdminInteraction) session.getAttribute("interaction");
+		Account adminAccount = admin.getAccount();
+	%>
+	Welcome : <%=adminAccount.getUsername()%>
 	<br>
 	<a href="ViewUniversities.jsp?username="+<%=request.getParameter("username")%>>Manage Universities</a>
 	<br>

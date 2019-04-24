@@ -43,8 +43,9 @@ public class DBController {
 	 * @param schoolName
 	 *            school to be deleted from database
 	 */
-	public void removeUniversity(String schoolName) {
+	public int removeUniversity(String schoolName) {
 		dbLibrary.university_deleteUniversity(schoolName);
+		return 1;
 	}
 
 	/**
