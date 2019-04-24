@@ -257,9 +257,8 @@ public class AccountController {
 		{
 			account.setPassword(password);
 		}
-		if (!type.equals("-1")) {
-			if (!type.equals("") && type != null) 
-			{
+		if (!type.equals("") && type != null) {
+
 				if (type.equals("u") || type.equals("U")) 
 				{
 					account.setUserType("u");
@@ -272,26 +271,23 @@ public class AccountController {
 				{
 					throw new UnsupportedOperationException("Account type can only be \" a\" or  \"u\" ");
 				}
-			}
+			
 		}
 		
 		if (!status.equals("") && status != null) 
 		{
-			
-			if (status.equals("-1")) 
-			{
-				account.setUserStatus(account.getUserStatus());
-			}
-			else if (status.equals("Y")) 
+
+			if (status.equals("Y") || status.equals("y")) 
 			{
 				account.setUserStatus("Y");
 			} 
-			else if (status.equals("N")) 
+			else if (status.equals("N") || status.equals("n")) 
 			{
 				account.setUserStatus("N");
 			} 
 			else 
 			{
+				System.out.println(status);
 				throw new UnsupportedOperationException("Account status can only be \" N\" or  \" Y\" ");
 			}
 		}
