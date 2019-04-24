@@ -282,11 +282,11 @@ public class AccountController {
 			} 
 			else if (status.equals("Y") || status.equals("y")) 
 			{
-				account.setUserType("Y");
+				account.setUserStatus("Y");
 			} 
 			else if (type.equals("N") || type.equals("n")) 
 			{
-				account.setUserType("N");
+				account.setUserStatus("N");
 			} 
 			else 
 			{
