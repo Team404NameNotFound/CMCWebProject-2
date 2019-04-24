@@ -244,35 +244,50 @@ public class AccountController {
 	 *            active status of user
 	 * @return Account account with information edited
 	 */
-	public Account updateUserInfo(String fName, String lName, String password, String status, String type) {
-		if (!fName.equals("") && fName != null) {
+	public Account updateUserInfo(String fName, String lName, String password, String type, String status) {
+		if (!fName.equals("") && fName != null) 
+		{
 			account.setFirstName(fName);
 		}
-		if (!lName.equals("") && lName != null) {
+		if (!lName.equals("") && lName != null) 
+		{
 			account.setLastName(lName);
 		}
-		if (!password.equals("") && password != null) {
+		if (!password.equals("") && password != null) 
+		{
 			account.setPassword(password);
 		}
-		if (!type.equals("-1")) {
-			if (!type.equals("") && type != null) {
-				if (type.equals("u") || type.equals("U")) {
+		if (!type.equals("") && type != null) {
+
+				if (type.equals("u") || type.equals("U")) 
+				{
 					account.setUserType("u");
-				} else if (type.equals("a") || type.equals("A")) {
+				} 
+				else if (type.equals("a") || type.equals("A")) 
+				{
 					account.setUserType("a");
-				} else {
+				} 
+				else 
+				{
 					throw new UnsupportedOperationException("Account type can only be \" a\" or  \"u\" ");
 				}
-			}
+			
 		}
-		if (!status.equals("") && status != null) {
-			if (status.equals("-1")) {
-				account.setUserStatus(status);
-			} else if (status.equals("Y") || status.equals("y")) {
-				account.setUserType("Y");
-			} else if (type.equals("N") || type.equals("n")) {
-				account.setUserType("N");
-			} else {
+		
+		if (!status.equals("") && status != null) 
+		{
+
+			if (status.equals("Y") || status.equals("y")) 
+			{
+				account.setUserStatus("Y");
+			} 
+			else if (status.equals("N") || status.equals("n")) 
+			{
+				account.setUserStatus("N");
+			} 
+			else 
+			{
+				System.out.println(status);
 				throw new UnsupportedOperationException("Account status can only be \" N\" or  \" Y\" ");
 			}
 		}

@@ -76,13 +76,13 @@ public class AccountInteraction {
 	 * @param lastName
 	 * @param password
 	 */
-	public boolean editProfile(String userName, String firstName, String lastName, String password, String userType) {
+	public ArrayList<String> editProfile(String userName, String firstName, String lastName, String password, String userType, String activeStatus) {
 		if (firstName == "" || lastName == "" || password == "" || userType == "") {
 			throw new IllegalArgumentException();
 		} else if (!userType.equals("a") && !userType.equals("u")) {
 			throw new IllegalArgumentException();
 		} else {
-			return UFCon.editUserProfile(userName, firstName, lastName, password, userType);
+			return UFCon.editUserProfile(userName, firstName, lastName, password, userType, activeStatus);
 
 		}
 	}

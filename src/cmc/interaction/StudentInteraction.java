@@ -235,11 +235,11 @@ public class StudentInteraction extends AccountInteraction {
 		return sfCon.compareSchoolsByScore();
 	}
 
-	public ArrayList<String> editProfile(String userName, String firstName, String lastName, String password) {
+	public ArrayList<String> editProfile(String userName, String firstName, String lastName, String password, String userType, String activeStatus) {
 		if (firstName == "" || lastName == "" || password == "") {
 			throw new IllegalArgumentException();
 		} else {
-			UFCon.editUserProfile(userName, firstName, lastName, password, "-1");
+			UFCon.editUserProfile(userName, firstName, lastName, password, "u", activeStatus);
 		}
 
 		return UFCon.viewUserProfile(userName);

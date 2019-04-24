@@ -10,9 +10,16 @@ Account studentAccount = student.getAccount();
 
 ArrayList<String> user = new ArrayList<String>();
 user = student.viewProfile(studentAccount.getUsername());
+
+String message = request.getParameter("message");
+
+if(message != null && message.equals("-1"))
+{
+	out.println("User information updated successfully");
+}
 %>
 <body>
-	<form action="EditUserAction.jsp?username="+user.get(2) name="editForm">
+	<form action="StudentEditUserAction.jsp" name="editForm">
 		<table style="text-align: left; width: 523px; height: 180px;"
 			border="1" cellpadding="2" cellspacing="2">
 			<tbody>

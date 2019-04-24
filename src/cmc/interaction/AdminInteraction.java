@@ -53,11 +53,16 @@ public class AdminInteraction extends AccountInteraction {
 	public void addUser(String firstname, String lastname, String username, String password, String userType) {
 
 		if (firstname.equals("") || lastname.equals("") || username.equals("") || password.equals("")
-				|| userType.equals("")) {
+				|| userType.equals("")) 
+		{
 			throw new IllegalArgumentException("Please input valid user information");
-		} else if (!userType.equals("a") && !userType.equals("u")) {
+		} 
+		else if (!userType.equals("a") && !userType.equals("u"))
+		{
 			throw new IllegalArgumentException("not a valid type");
-		} else {
+		} 
+		else 
+		{
 			this.afCon.addUser(firstname, lastname, username, password, userType);
 		}
 
@@ -175,20 +180,29 @@ public class AdminInteraction extends AccountInteraction {
 	 * @param lastName
 	 * @param password
 	 * @param userType
+	 * @return 
 	 */
 
-	public void editProfile(String userName, String firstName, String lastName, String password, String userType,
+	public ArrayList<String> editProfile(String userName, String firstName, String lastName, String password, String userType,
 			String userStatus) {
 		if (firstName.equals("") || lastName.equals("") || userName.equals("") || password.equals("")
-				|| userType.equals("") || userStatus.equals("")) {
+				|| userType.equals("") || userStatus.equals("")) 
+		{
 			throw new IllegalArgumentException("");
-		} else if (!userType.equals("a") && !userType.equals("u")) {
+		} 
+		else if (!userType.equals("a") && !userType.equals("u")) 
+		{
 			throw new IllegalArgumentException();
-		} else if (!userStatus.equals("Y") && !userStatus.equals("N")) {
+		} 
+		else if (!userStatus.equals("Y") && !userStatus.equals("N")) 
+		{
 			throw new IllegalArgumentException();
-		} else {
-			this.afCon.editUserProfile2(userName, firstName, password, lastName, userType, userStatus);
+		} 
+		else
+		{
+			this.UFCon.editUserProfile(userName, firstName, password, lastName, userType, userStatus);
 		}
+		return this.UFCon.editUserProfile(userName, firstName, password, lastName, userType, userStatus);
 
 	}
 }

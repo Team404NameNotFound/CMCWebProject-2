@@ -7,33 +7,33 @@
 <title></title>
 </head>
 <body>
-	<form method="post" action="TakeQuizAction" name="Quiz"></form>
+	<form method="post" action="TakeQuizAction.jsp" name="Quiz">
 	<span style="font-weight: bold;">1. How would you describe the
 		location of your ideal college?</span>
 	<br>
-	<input name="Q1" value="1.1" type="radio">Walking distance to
+	<input name="Q1" value="URBAN" type="radio" checked>Walking distance to
 	many different restaurants, shops and exciting events
 	<br>
-	<input name="Q1" value="1.2" type="radio">Surrounded by nature
+	<input name="Q1" value="SMALL-CITY" type="radio">Surrounded by nature
 	and tranquility
 	<br>
-	<input name="Q1" value="1.3" type="radio">A mixture of access
+	<input name="Q1" value="SUBURBAN" type="radio">A mixture of access
 	to conveniences and peacefulness
 	<br>
-	<input name="Q1" value="1.4" type="radio"> Location does not
+	<input name="Q1" value="-1" type="radio"> Location does not
 	matter to me
 	<br>
 	<br>
 	<span style="font-weight: bold;">2. Which characteristics are
 		most important to you when looking for colleges?</span>
 	<br>
-	<input name="Q2" value="2.1" type="radio">Prestige and
+	<input name="Q2" value="ACADEMIC" type="radio" checked>Prestige and
 	challenging classes
 	<br>
-	<input name="Q2" value="2.2" type="radio">Lots of parties and
+	<input name="Q2" value="SOCIAL" type="radio">Lots of parties and
 	sporting events
 	<br>
-	<input name="Q2" value="2.3" type="radio">Good food and nice
+	<input name="Q2" value="QUALITYOFLIFE" type="radio">Good food and nice
 	dorms
 	<br>
 	<br>
@@ -41,55 +41,47 @@
 		where I can observe and be anonymous, rather than small discussions
 		with lots of participation and my professors know my name</span>
 	<br>
-	<input name="Q3" value="2.1" type="radio">Strongly disagree
+	<input name="Q3" value="LARGE" type="radio" checked>Strongly disagree
 	<br>
-	<input name="Q3" value="2.2" type="radio">Disagree
+	<input name="Q3" value="SEMI-LARGE" type="radio">Disagree
 	<br>
-	<input name="Q3" value="2.3" type="radio">Neutral
+	<input name="Q3" value="-1" type="radio">Neutral
 	<br>
-	<input name="Q3" value="2.2" type="radio">Agree
+	<input name="Q3" value="SEMI-SMALL" type="radio">Agree
 	<br>
-	<input name="Q3" value="2.3" type="radio">Strongly Agree
+	<input name="Q3" value="SMALL" type="radio">Strongly Agree
 	<br>
 	<br>
 	<span style="font-weight: bold;">4. What would you like to
 		study?<br>
 	</span>
-	<input name="Q4" value="2.1" type="radio">Business or a related
+	<input name="Q4" value="BUSINESS" type="radio" checked>Business or a related
 	field
 	<br>
-	<input name="Q4" value="2.2" type="radio">Medicine or a
+	<input name="Q4" value="MEDICINE" type="radio">Medicine or a
 	related field
 	<br>
-	<input name="Q4" value="2.3" type="radio">Social sciences or a
+	<input name="Q4" value="ENGINEERING" type="radio">Engineering or a
 	related field
 	<br>
-	<input name="Q4" value="2.2" type="radio">Engineering or a
-	related field
-	<br>
-	<input name="Q4" value="2.2" type="radio">Music or a related
+	<input name="Q4" value="MUSIC" type="radio">Music or a related
 	field
 	<br>
-	<input name="Q4" value="2.3" type="radio">Agriculture or a
+	<input name="Q4" value="EDUCATION" type="radio">Education or a
 	related field
 	<br>
-	<input name="Q4" value="2.2" type="radio">Education or a
-	related field
-	<br>
-	<input name="Q4" value="2.3" type="radio">Law or a related
+	<input name="Q4" value="LAW" type="radio">Law or a related
 	field
 	<br>
-	<input name="Q4" value="2.2" type="radio">English or a related
+	<input name="Q4" value="ENGLISH" type="radio">English or a related
 	field
 	<br>
-	<input name="Q4" value="2.2" type="radio">Government or a
-	related field
+	<input name="Q4" value="LIBERAL-ARTS" type="radio">Liberal arts
 	<br>
-	<input name="Q4" value="2.3" type="radio">Liberal arts
-	<br>
-	<input name="Q4" value="2.3" type="radio">Unsure
+	<input name="Q4" value="-1" type="radio">Unsure
 	<br>
 	<span style="font-weight: bold;"><br> </span>
-	<br>
+	<input name="quizResults" value="Submit" type="submit"> <br>
+	</form>
 </body>
 </html>
