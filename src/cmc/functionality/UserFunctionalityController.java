@@ -129,12 +129,6 @@ public class UserFunctionalityController {
 		} 
 		else 
 		{
-			if(account.getAccount().getUserType().equals("u")) {
-				userType = "u";
-			}
-			else {
-				userType = "a";
-			}
 			Account userAcc = account.updateUserInfo(firstName, lastName, password, userType, activeStatus);
 
 			this.DBCon.setAccount(userAcc);
