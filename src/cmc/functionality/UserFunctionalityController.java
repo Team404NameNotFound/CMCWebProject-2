@@ -129,7 +129,7 @@ public class UserFunctionalityController {
 		} 
 		else 
 		{
-			Account userAcc = account.updateUserInfo(firstName, lastName, password, "-1", userType);
+			Account userAcc = account.updateUserInfo(firstName, lastName, password, this.DBCon.getAccount(userName).getUserStatus(), userType);
 
 			this.DBCon.setAccount(userAcc);
 			return true;

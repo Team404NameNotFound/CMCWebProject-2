@@ -11,6 +11,6 @@ String type = request.getParameter("type");
 String activation = request.getParameter("activationStatus");
 
 inter.editProfile(uName, fname, lName, password);
-response.sendRedirect("ViewUsers.jsp");
+response.sendRedirect("StudentEditUser.jsp");
 
 %>
