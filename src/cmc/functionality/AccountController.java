@@ -274,17 +274,19 @@ public class AccountController {
 				}
 			}
 		}
+		
 		if (!status.equals("") && status != null) 
 		{
+			
 			if (status.equals("-1")) 
 			{
-				account.setUserStatus(status);
-			} 
-			else if (status.equals("Y") || status.equals("y")) 
+				account.setUserStatus(account.getUserStatus());
+			}
+			else if (status.equals("Y")) 
 			{
 				account.setUserStatus("Y");
 			} 
-			else if (type.equals("N") || type.equals("n")) 
+			else if (status.equals("N")) 
 			{
 				account.setUserStatus("N");
 			} 
