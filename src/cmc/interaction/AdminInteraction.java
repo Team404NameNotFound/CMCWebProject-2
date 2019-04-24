@@ -175,9 +175,10 @@ public class AdminInteraction extends AccountInteraction {
 	 * @param lastName
 	 * @param password
 	 * @param userType
+	 * @return 
 	 */
 
-	public void editProfile(String userName, String firstName, String lastName, String password, String userType,
+	public ArrayList<String> editProfile(String userName, String firstName, String lastName, String password, String userType,
 			String userStatus) {
 		if (firstName.equals("") || lastName.equals("") || userName.equals("") || password.equals("")
 				|| userType.equals("") || userStatus.equals("")) {
@@ -187,8 +188,9 @@ public class AdminInteraction extends AccountInteraction {
 		} else if (!userStatus.equals("Y") && !userStatus.equals("N")) {
 			throw new IllegalArgumentException();
 		} else {
-			this.afCon.editUserProfile2(userName, firstName, password, lastName, userType, userStatus);
+			this.UFCon.editUserProfile(userName, firstName, password, lastName, userType, userStatus);
 		}
+		return this.UFCon.editUserProfile(userName, firstName, password, lastName, userType, userStatus);
 
 	}
 }

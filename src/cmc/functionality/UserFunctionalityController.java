@@ -119,8 +119,8 @@ public class UserFunctionalityController {
 	 * @param lastName
 	 * @param password
 	 */
-	public boolean editUserProfile(String userName, String firstName,  String lastName, String password,
-			String userType) {
+	public ArrayList<String> editUserProfile(String userName, String firstName,  String lastName, String password,
+			String userType, String activeStatus) {
 
 		account = new AccountController(this.DBCon.getAccount(userName));
 		if (this.DBCon.getAccount(userName) == null) 
@@ -129,10 +129,23 @@ public class UserFunctionalityController {
 		} 
 		else 
 		{
-			Account userAcc = account.updateUserInfo(firstName, lastName, password, this.DBCon.getAccount(userName).getUserStatus(), userType);
+			if(account.getAccount().getUserType().equals("u")) {
+				userType = "u";
+			}
+			else {
+				userType = "a";
+			}
+			Account userAcc = account.updateUserInfo(firstName, lastName, password, userType, activeStatus);
 
 			this.DBCon.setAccount(userAcc);
-			return true;
+			ArrayList<String> updatedAccount= new ArrayList<String>();
+			updatedAccount.add(userAcc.getFirstName());
+			updatedAccount.add(userAcc.getLastName());
+			updatedAccount.add(userAcc.getUsername());
+			updatedAccount.add(userAcc.getPassword());
+			updatedAccount.add(userAcc.getUserType());
+			updatedAccount.add(userAcc.getUserStatus());
+			return updatedAccount;
 		}
 
 	}

@@ -10,6 +10,13 @@ Account studentAccount = student.getAccount();
 
 ArrayList<String> user = new ArrayList<String>();
 user = student.viewProfile(studentAccount.getUsername());
+
+String message = request.getParameter("message");
+
+if(message != null && message.equals("-1"))
+{
+	out.println("User information updated successfully");
+}
 %>
 <body>
 	<form action="StudentEditUserAction.jsp" name="editForm">
