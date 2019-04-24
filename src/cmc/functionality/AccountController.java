@@ -273,8 +273,10 @@ public class AccountController {
 				}
 			
 		}
+		
 		if (!status.equals("") && status != null) 
 		{
+
 			if (status.equals("Y") || status.equals("y")) 
 			{
 				account.setUserStatus("Y");
