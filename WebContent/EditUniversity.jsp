@@ -11,15 +11,15 @@
 <%String universityName = request.getParameter("school");
 	AdminInteraction afc = (AdminInteraction)session.getAttribute("interaction");
 	ArrayList<University> universityList = afc.viewSchoolList();
-	/*boolean found = false; */
+	boolean found = false; 
 	DBController dbCon = new DBController();
 	University university = dbCon.getUniversity2(universityName);
-	/* for(int i = 0; i < universityList.size() && found == false; i++){
-		if (universityList.get(i).getName().equals(universityName)){
-			university = universityList.get(i);
-			found = true;
-		}
-	} */
+	 //for(int i = 0; i < universityList.size() && found == false; i++){
+	//	if (universityList.get(i).getName().equals(universityName)){un
+	//		University university = universityList.get(i);
+	//		found = true;
+	//	}
+	//}
 %>
 <body>
 	<form action="EditUniversityAction.jsp" name="editForm">
