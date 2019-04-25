@@ -1,12 +1,15 @@
-import cmc.entity.University;
-import cmc.functionality.AccountController;
-import cmc.interaction.AccountInteraction;
+import cmc.*;
+import cmc.interaction.StudentInteraction;
 
 public class Zhang_Mendel_Driver {
 	public static void main() {
-
-		AccountController ac = new AccountController();
-		ac.setAccount("ajheroux@csbsju.edu");
-		ac.viewSavedSchools();
+		StudentInteraction student = new StudentInteraction();
+		String[] emp = {};
+		student.fieldSearch("A", "", "", "", "", 
+				"", "", "", "",
+				"", "", "", "", "",
+				"", "", "", "", 
+				"", "", "", "", "", 
+				"", "", "", "",emp, "");
 	}
 }

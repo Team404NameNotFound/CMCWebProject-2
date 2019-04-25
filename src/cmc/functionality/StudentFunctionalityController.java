@@ -109,6 +109,7 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 				numberApplicatnsMax, percentAddmittedMin, percentAdmittedMax, percentEnrolledMin, percentEnrolledMax,
 				academicScaleMin, academicScaleMax, socialScalemin, socialScaleMax, qualityOfLifeMin, qualityOfLifeMax,
 				emphases, control);
+		
 		return searchResults;
 	}
 

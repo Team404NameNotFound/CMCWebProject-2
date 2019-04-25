@@ -88,29 +88,46 @@ public class SearchController {
 			float percentAdmittedMax, float percentEnrolledMin, float percentEnrolledMax, int academicScaleMin,
 			int academicScaleMax, int socialScalemin, int socialScaleMax, int qualityOfLifeMin, int qualityOfLifeMax,
 			String[] emphases, String control) {
+
 		ArrayList<University> returnSchools = new ArrayList<University>();
+
+		/*
+		 * if (numStudentsMin < 0 || numStudentsMax < 0 || percentFemaleMin < 0 ||
+		 * percentFemaleMin > 100 || percentFemaleMax < 0 || percentFemaleMax > 100 ||
+		 * SATVerbalMin < 0 || SATVerbalMin > 800 || SATVerbalMax < 0 || SATVerbalMax >
+		 * 800 || SATMathMin < 0 || SATMathMin > 100 || SATMathMax < 0 || SATMathMax >
+		 * 800 || expensesMin < 0 || expensesMax < 0 || PercentFinancialAidMin < 0 ||
+		 * percenetFinancialAidMax < 0 || numberApplicantsMin < 0 || numberApplicatnsMax
+		 * < 0 || percentAddmittedMin < 0 || percentAdmittedMax < 0 ||
+		 * percentEnrolledMin < 0 || percentEnrolledMax < 0 || academicScaleMin < 0 ||
+		 * academicScaleMax < 0 || socialScalemin < 0 || socialScaleMax < 0 ||
+		 * qualityOfLifeMin < 0 || qualityOfLifeMax < 0) { return returnSchools; }
+		 * 
+		 * 
+		 */
+		System.out.println("Search Controller 108");
 		for (int i = 0; i < this.universityList.length; i++) {
 			Boolean emphMatch = false;
-			for (int j = 0; j < emphases.length; j++) {
+			
+			if(emphases.length == 0) {
+				emphMatch = true;
+				System.out.println("Search Controller: emphases is empty 114 ");
+			}
+			
+			int j = 0;
+			while (j < emphases.length && !emphMatch) {
 				String emph = emphases[j];
 				String[] testList = universityList[i].getEmphases();
 				for (int k = 0; k < testList.length; k++) {
-					if (emph.equals(testList[k])) {
+					if (emph.equalsIgnoreCase(testList[k])) {
 						emphMatch = true;
 					}
 				}
+				j++;
 			}
-			if(numStudentsMin<-1|| numStudentsMax <-1|| percentFemaleMin<-1 || percentFemaleMin>100 || percentFemaleMax<-1|| percentFemaleMax>100
-			|| SATVerbalMin<-1 || SATVerbalMin>800 || SATVerbalMax <-1 || SATVerbalMax >800|| SATMathMin < -1 || SATMathMin > 100 ||
-			SATMathMax< -1 || SATMathMax> 800 || expensesMin<-1 ||expensesMax<-1 || PercentFinancialAidMin <-1||
-			percenetFinancialAidMax <-1 || numberApplicantsMin <-1 || numberApplicatnsMax <-1 || percentAddmittedMin<-1 ||
-			percentAdmittedMax <-1 || percentEnrolledMin <-1 || percentEnrolledMax <-1|| academicScaleMin <-1 ||
-			academicScaleMax <-1 || socialScalemin <-1 || socialScaleMax<-1 || qualityOfLifeMin <-1 || qualityOfLifeMax <-1)
-			{
-				throw new IllegalArgumentException("Sorry, invalid parameters");
-			}
+
 			
-			if (emphMatch || emphases.length == 0) {
+			if (emphMatch) {
 
 				if ((Integer.parseInt(this.universityList[i].getEnrollment()) > numStudentsMin
 						&& Integer.parseInt(this.universityList[i].getEnrollment()) < numStudentsMax)
@@ -118,6 +135,7 @@ public class SearchController {
 								&& numStudentsMax == -1)
 						|| (Integer.parseInt(this.universityList[i].getEnrollment()) < numStudentsMax
 								&& numStudentsMax == -1 || numStudentsMax == -1 && numStudentsMax == -1)) {
+					System.out.println("Search Controller: "+ "NUM STUDENTS" ); //
 					if ((Float.parseFloat(this.universityList[i].getPercentFemale()) > percentFemaleMin
 							&& (Float.parseFloat(this.universityList[i].getPercentFemale()) < percentFemaleMax)
 							|| (Float.parseFloat(this.universityList[i].getEnrollment()) > percentFemaleMin
@@ -125,6 +143,7 @@ public class SearchController {
 							|| (Float.parseFloat(this.universityList[i].getEnrollment()) < percentFemaleMax
 									&& percentFemaleMin == -1)
 							|| percentFemaleMin == -1 && percentFemaleMax == -1)) {
+						System.out.println("Search Controller: "+ "% fEMALE" ); //
 						if ((Integer.parseInt(this.universityList[i].getSatVerbal()) > SATVerbalMin
 								&& Integer.parseInt(this.universityList[i].getSatVerbal()) < SATVerbalMax)
 								|| (Integer.parseInt(this.universityList[i].getSatVerbal()) > SATVerbalMin
@@ -132,6 +151,7 @@ public class SearchController {
 								|| (Integer.parseInt(this.universityList[i].getSatVerbal()) < SATVerbalMax
 										&& SATVerbalMax == -1)
 								|| SATVerbalMin == -1 && SATVerbalMax == -1) {
+							System.out.println("Search Controller: "+ "% 3" ); //
 							if ((Integer.parseInt(this.universityList[i].getSatMath()) > SATMathMin
 									&& Integer.parseInt(this.universityList[i].getSatMath()) < SATMathMax)
 									|| (Integer.parseInt(this.universityList[i].getSatMath()) > SATMathMin
@@ -139,6 +159,7 @@ public class SearchController {
 									|| (Integer.parseInt(this.universityList[i].getSatVerbal()) < SATMathMax
 											&& SATMathMax == -1)
 									|| SATMathMin == -1 && SATMathMax == -1) {
+								System.out.println("Search Controller: "+ "% 4" ); //
 								if ((Integer.parseInt(this.universityList[i].getCost()) > expensesMin
 										&& Integer.parseInt(this.universityList[i].getCost()) < expensesMax)
 										|| (Integer.parseInt(this.universityList[i].getCost()) > expensesMin
@@ -146,6 +167,7 @@ public class SearchController {
 										|| (Integer.parseInt(this.universityList[i].getCost()) < expensesMax
 												&& expensesMin == -1)
 										|| expensesMin == -1 && expensesMax == -1) {
+									System.out.println("Search Controller: "+ "% 5" ); //
 									if ((Float.parseFloat(
 											this.universityList[i].getPercentFinAid()) > PercentFinancialAidMin
 											&& (Float.parseFloat(this.universityList[i]
@@ -157,6 +179,7 @@ public class SearchController {
 													this.universityList[i].getPercentFinAid()) < percenetFinancialAidMax
 													&& PercentFinancialAidMin == -1)
 											|| percenetFinancialAidMax == -1 && PercentFinancialAidMin == -1)) {
+										System.out.println("Search Controller: "+ "% 6" ); //
 										if ((Integer
 												.parseInt(this.universityList[i].getApplicants()) > numberApplicantsMin
 												&& Integer.parseInt(
@@ -168,6 +191,7 @@ public class SearchController {
 														this.universityList[i].getApplicants()) < numberApplicatnsMax
 														&& numberApplicantsMin == -1
 														|| numberApplicantsMin == -1 && numberApplicatnsMax == -1)) {
+											System.out.println("Search Controller: "+ "% 7" ); //
 											if ((Float.parseFloat(
 													this.universityList[i].getPercentAdmitted()) > percentAddmittedMin
 													&& (Float.parseFloat(this.universityList[i]
@@ -181,6 +205,7 @@ public class SearchController {
 																	.getPercentAdmitted()) < percentAdmittedMax
 															&& percentAddmittedMin == -1)
 													|| percentAddmittedMin == -1 && percentAdmittedMax == -1)) {
+												System.out.println("Search Controller: "+ "% 8" ); //
 												if ((Float
 														.parseFloat(this.universityList[i]
 																.getPercentEnrolled()) > percentEnrolledMin
@@ -195,6 +220,7 @@ public class SearchController {
 																		.getPercentEnrolled()) < percentEnrolledMax
 																&& percentEnrolledMin == -1)
 														|| percentEnrolledMin == -1 && percentEnrolledMax == -1)) {
+													System.out.println("Search Controller: "+ "% 9" ); //
 													if ((Integer
 															.parseInt(this.universityList[i]
 																	.getAcademicScale()) > academicScaleMin
@@ -209,6 +235,7 @@ public class SearchController {
 																			.getAcademicScale()) < academicScaleMax
 																	&& academicScaleMin == -1)
 															|| academicScaleMin == -1 && academicScaleMax == -1) {
+														System.out.println("Search Controller: "+ "% 10" ); //
 														if ((Integer
 																.parseInt(this.universityList[i]
 																		.getSocialScale()) > socialScalemin
@@ -223,6 +250,7 @@ public class SearchController {
 																				.getSocialScale()) < socialScaleMax
 																		&& socialScalemin == -1)
 																|| socialScalemin == -1 && socialScaleMax == -1) {
+															System.out.println("Search Controller: "+ "% 11" ); //
 															if ((Integer
 																	.parseInt(this.universityList[i]
 																			.getQualityOfLife()) > qualityOfLifeMin
@@ -236,26 +264,26 @@ public class SearchController {
 																			&& qualityOfLifeMin == -1)
 																	|| qualityOfLifeMin == -1
 																			&& qualityOfLifeMax == -1) {
-																if (state.toLowerCase().trim()
-																		.equals(this.universityList[i].getState()
-																				.toLowerCase().trim())
-																		|| state.equals("-1")) {
-																	if (this.universityList[i].getName().toLowerCase()
-																			.trim()
-																			.contains(schoolName.toLowerCase().trim())
-																			|| schoolName.equals("-1")) {
+																System.out.println("Search Controller: "+ "% 12" ); //
+																if (this.universityList[i].getState().toLowerCase().trim().contains(state.toLowerCase().trim())
+																		|| state.length() < 1) {
+																	System.out.println("Search Controller: "+ "% state" ); //
+																	if (this.universityList[i].getName().toLowerCase().trim().contains(schoolName.toLowerCase().trim())
+																			|| schoolName.length() < 1) {
+																		System.out.println("Search Controller: "+ "% name" ); //
 																		if (location.toLowerCase().trim()
 																				.equals(this.universityList[i]
 																						.getLocation().toLowerCase()
 																						.trim())
-																				|| location.equals("-1")) {
+																				|| location.length() < 1) {
+																			System.out.println("Search Controller: "+ "% 14" ); //
 																			if (control.toLowerCase().trim()
 																					.equals(this.universityList[i]
 																							.getControl().toLowerCase()
 																							.trim())
-																					|| control.equals("-1")) {
-																				returnSchools
-																						.add(this.universityList[i]);
+																					|| control.length() < 1) {
+																				System.out.println("Search Controller: "+ "% 15" ); //
+																				returnSchools.add(this.universityList[i]);
 																			}
 																		}
 																	}
@@ -564,29 +592,28 @@ public class SearchController {
 			// testing distance distance based on qualityoflife
 			score = score + (Math.abs((Double.parseDouble(universityList[i].getQualityOfLife()) - qualityOfLifeScale))
 					/ (qolMax - qolMin));
-			
-			//testing state
+
+			// testing state
 			int stateScore;
-			if(universityList[i].getState().equals(state)) {
+			if (universityList[i].getState().equals(state)) {
 				stateScore = 0;
-			}else {
+			} else {
 				stateScore = 1;
 			}
-			//testing location
+			// testing location
 			int locationScore;
-			if(universityList[i].getLocation().equals(location)) {
+			if (universityList[i].getLocation().equals(location)) {
 				locationScore = 0;
-			}else {
+			} else {
 				locationScore = 1;
 			}
-			//testing control
+			// testing control
 			int controlScore;
-			if(universityList[i].getControl().equals(control)) {
+			if (universityList[i].getControl().equals(control)) {
 				controlScore = 0;
-			}else {
+			} else {
 				controlScore = 1;
 			}
-			
 
 			// setting final score of university
 			schoolMatches[i][0] = score + stateScore + locationScore + controlScore;// i};
@@ -604,20 +631,19 @@ public class SearchController {
 				return Double.compare(a[0], b[0]);
 			}
 		});
-		
+
 		for (int i = 0; i < 5; i++) {
 			int position = (int) schoolMatches[i + 1][1];
 			System.out.println(schoolMatches[i + 1][0]);
 			returnUniversity.add(universityList[position]);
 		}
 		System.out.println("Five recommendation schools for " + university.getName() + " are");
-		for(University uni: returnUniversity) {
+		for (University uni : returnUniversity) {
 			System.out.println(uni.getName());
 		}
-		
+
 		return returnUniversity;
 	}
-	
 
 	/**
 	 * @param schoolName

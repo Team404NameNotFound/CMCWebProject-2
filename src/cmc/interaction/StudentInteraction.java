@@ -1,4 +1,4 @@
-v/**
+/**
  * 
  */
 package cmc.interaction;
@@ -104,103 +104,241 @@ public class StudentInteraction extends AccountInteraction {
 			String[] emphases, String control) {
 
 		ArrayList<University> matchSchools = new ArrayList<University>();
-		int numStudentsMin = (Integer) null;
-		int numStudentsMax = (Integer) null;
-		float percentFemaleMin = (Float) null;
-		float percentFemaleMax = (Float) null;
-		int SATVerbalMin = (Integer) null;
-		int SATVerbalMax = (Integer) null;
-		int SATMathMin = (Integer) null;
-		int SATMathMax = (Integer) null;
-		int expensesMin = (Integer) null;
-		int expensesMax = (Integer) null;
-		float PercentFinancialAidMin = (Float) null;
-		float percenetFinancialAidMax = (Float) null;
-		int numberApplicantsMin = (Integer) null;
-		int numberApplicatnsMax = (Integer) null;
-		float percentAddmittedMin = (Float) null;
-		float percentAdmittedMax = (Float) null;
-		float percentEnrolledMin = (Float) null;
-		float percentEnrolledMax = (Float) null;
-		int academicScaleMin = (Integer) null;
-		int academicScaleMax = (Integer) null;
-		int socialScalemin = (Integer) null;
-		int socialScaleMax = (Integer) null;
-		int qualityOfLifeMin = (Integer) null;
-		int qualityOfLifeMax = (Integer) null;
-
-		try {
-			numStudentsMin = Integer.parseInt(numStudentsMinS);
-			numStudentsMax = Integer.parseInt(numStudentsMaxS);
-			percentFemaleMin = Float.parseFloat(percentFemaleMinS);
-			percentFemaleMax = Float.parseFloat(percentFemaleMaxS);
-			SATVerbalMin = Integer.parseInt(SATVerbalMinS);
-			SATVerbalMax = Integer.parseInt(SATVerbalMaxS);
-			SATMathMin = Integer.parseInt(SATMathMinS);
-			SATMathMax = Integer.parseInt(SATMathMaxS);
-			expensesMin = Integer.parseInt(expensesMinS);
-			expensesMax = Integer.parseInt(expensesMaxS);
-			PercentFinancialAidMin = Float.parseFloat(PercentFinancialAidMinS);
-			percenetFinancialAidMax = Float.parseFloat(percenetFinancialAidMaxS);
-			numberApplicantsMin = Integer.parseInt(numberApplicantsMinS);
-			numberApplicatnsMax = Integer.parseInt(numberApplicatnsMaxS);
-			percentAddmittedMin = Float.parseFloat(percentAddmittedMinS);
-			percentAdmittedMax = Float.parseFloat(percentAdmittedMaxS);
-			percentEnrolledMin = Float.parseFloat(percentEnrolledMinS);
-			percentEnrolledMax = Float.parseFloat(percentEnrolledMaxS);
-			academicScaleMin = Integer.parseInt(academicScaleMinS);
-			academicScaleMax = Integer.parseInt(academicScaleMaxS);
-			socialScalemin = Integer.parseInt(socialScaleminS);
-			socialScaleMax = Integer.parseInt(socialScaleMaxS);
-			qualityOfLifeMin = Integer.parseInt(qualityOfLifeMinS);
-			qualityOfLifeMax = Integer.parseInt(qualityOfLifeMaxS);
-		} catch (Exception e) {
-			System.out.println("Might be a Number Format Exception");
+		
+		//Check if all the parameters are empty
+		if (schoolName.length() < 1 && state.length() < 1 && location.length() < 1 && numStudentsMinS.length() < 1
+				&& numStudentsMaxS.length() < 1 && percentFemaleMinS.length() < 1 && percentFemaleMaxS.length() < 1
+				&& SATVerbalMinS.length() < 1 && SATVerbalMaxS.length() < 1 && SATMathMinS.length() < 1
+				&& SATMathMaxS.length() < 1 && expensesMinS.length() < 1 && expensesMaxS.length() < 1
+				&& PercentFinancialAidMinS.length() < 1 && percenetFinancialAidMaxS.length() < 1
+				&& numberApplicantsMinS.length() < 1 && numberApplicatnsMaxS.length() < 1
+				&& percentAddmittedMinS.length() < 1 && percentAdmittedMaxS.length() < 1
+				&& percentEnrolledMinS.length() < 1 && percentEnrolledMaxS.length() < 1
+				&& academicScaleMinS.length() < 1 && academicScaleMaxS.length() < 1 && socialScaleminS.length() < 1
+				&& socialScaleMaxS.length() < 1 && qualityOfLifeMinS.length() < 1 && qualityOfLifeMaxS.length() < 1
+				&& control.length() < 1) {
+			throw new IllegalArgumentException("Sorry, you must input at least one search field");
+			//return matchSchools;
 		}
 		
-		if (!sfCon.loggedIn) {
-			System.out.println("line 162 studentInteraction, at least logged in");
-			if (schoolName.equals("") && state.equals("") && location.equals("") && numStudentsMin == -1
-					&& numStudentsMax == -1 && percentFemaleMin == -1 && percentFemaleMax == -1 && SATVerbalMin == -1
-					&& SATVerbalMax == -1 && SATMathMin == -1 && SATMathMax == -1 && expensesMin == -1
-					&& expensesMax == -1 && PercentFinancialAidMin == -1 && percenetFinancialAidMax == -1
-					&& numberApplicantsMin == -1 && numberApplicatnsMax == -1 && percentAddmittedMin == -1
-					&& percentAdmittedMax == -1 && percentEnrolledMin == -1 && percentEnrolledMax == -1
-					&& academicScaleMin == -1 && academicScaleMax == -1 && socialScalemin == -1 && socialScaleMax == -1
-					&& qualityOfLifeMin == -1 && qualityOfLifeMax == -1 && control.equals("")) {
-				throw new IllegalArgumentException("Sorry, you must input at least one search field");
-			}
+		//Check if number parameters are valid
+		String[] numParameters = { numStudentsMinS, numStudentsMaxS, SATVerbalMinS, SATVerbalMaxS, SATMathMinS,
+				SATMathMaxS, expensesMinS, expensesMaxS, numberApplicantsMinS, numberApplicatnsMaxS };
 
-			else if ((numStudentsMax < numStudentsMin && numStudentsMax != -1)
-					|| (percentFemaleMax < percentFemaleMin && percentFemaleMax != -1)
-					|| (SATVerbalMax < SATVerbalMin && SATVerbalMax != -1)
-					|| (SATMathMax < SATMathMin && SATMathMax != -1) || (expensesMax < expensesMin && expensesMax != -1)
-					|| (percenetFinancialAidMax < PercentFinancialAidMin && percenetFinancialAidMax != -1)
-					|| (numberApplicatnsMax < numberApplicatnsMax && numberApplicatnsMax != -1)
-					|| (percentAdmittedMax < percentAddmittedMin && percentAdmittedMax != -1)
-					|| (percentEnrolledMax < percentEnrolledMin && percentEnrolledMax != -1)
-					|| (academicScaleMax < academicScaleMin && academicScaleMax != -1)
-					|| (socialScaleMax < socialScalemin && socialScaleMax != -1)
-					|| (qualityOfLifeMax < qualityOfLifeMin && qualityOfLifeMax != -1)) {
-				throw new IllegalArgumentException("Sorry, your no minimum can be greater than a maximum");
-			}
+		String[] percentParameters = { percentFemaleMinS, percentFemaleMaxS, PercentFinancialAidMinS,
+				percenetFinancialAidMaxS, percentAddmittedMinS, percentAdmittedMaxS, percentEnrolledMinS,
+				percentEnrolledMaxS };
 
-			else {
-				matchSchools = sfCon.search(schoolName, state, location, numStudentsMin, numStudentsMax,
-						percentFemaleMin, percentFemaleMax, SATVerbalMin, SATVerbalMax, SATMathMin, SATMathMax,
-						expensesMin, expensesMax, PercentFinancialAidMin, percenetFinancialAidMax, numberApplicantsMin,
-						numberApplicatnsMax, percentAddmittedMin, percentAdmittedMax, percentEnrolledMin,
-						percentEnrolledMax, academicScaleMin, academicScaleMax, socialScalemin, socialScaleMax,
-						qualityOfLifeMin, qualityOfLifeMax, emphases, control);
-				for (int i = 0; i < matchSchools.size(); i++) {
-					System.out.println(matchSchools.get(i).getName());
-				}
+		String[] scales = { academicScaleMinS, academicScaleMaxS, socialScaleminS, socialScaleMaxS, qualityOfLifeMinS,
+				qualityOfLifeMaxS };
+
+		for (String n : numParameters) {
+			if(!n.matches("\\d+(\\.\\d+)?") && n.length() > 0) {
+				throw new IllegalArgumentException("need to be positive number");
 			}
 		}
 
-		else {
-			throw new IllegalArgumentException("Sorry, you must be logged in to access this functionality");
+		for (String p : percentParameters) {
+			if(!p.matches("\\d+(\\.\\d+)?") || Float.parseFloat(p) < 0 || Float.parseFloat(p) > 100 
+					&& p.length() > 0){
+				throw new IllegalArgumentException("need to be percentage");
+			}
 		}
+
+		for (String c : scales) {
+			if(!c.matches("[12345]") && c.length() > 0){
+				throw new IllegalArgumentException("need to be 12345");
+			}
+		}
+		
+		
+		//Assign values for number Parameters
+		int numStudentsMin = -1;
+		int numStudentsMax = -1;
+		float percentFemaleMin = -1;
+		float percentFemaleMax = -1;
+		int SATVerbalMin = -1;
+		int SATVerbalMax = -1;
+		int SATMathMin = -1;
+		int SATMathMax = -1;
+		int expensesMin = -1;
+		int expensesMax = -1;
+		float PercentFinancialAidMin = -1;
+		float percenetFinancialAidMax = -1;
+		int numberApplicantsMin = -1;
+		int numberApplicatnsMax = -1;
+		float percentAddmittedMin = -1;
+		float percentAdmittedMax = -1;
+		float percentEnrolledMin = -1;
+		float percentEnrolledMax = -1;
+		int academicScaleMin = -1;
+		int academicScaleMax = -1;
+		int socialScalemin = -1;
+		int socialScaleMax = -1;
+		int qualityOfLifeMin = -1;
+		int qualityOfLifeMax = -1;
+
+		
+		if(numStudentsMinS.length() > 0) {
+			numStudentsMin = Integer.parseInt(numStudentsMinS);
+		}else {
+			numStudentsMin = -1;
+		}
+		if(numStudentsMaxS.length() > 0) {
+			numStudentsMax = Integer.parseInt(numStudentsMaxS);
+		}else {
+			numStudentsMax = -1;
+		}
+		
+		if(percentFemaleMinS.length() > 0) {
+			percentFemaleMin = Float.parseFloat(percentFemaleMinS); //
+		}else {
+			percentFemaleMin = -1;
+		}
+		if(percentFemaleMaxS.length() > 0) {
+			percentFemaleMax = Float.parseFloat(percentFemaleMaxS); //
+		}else {
+			percentFemaleMax = -1;
+		}
+		
+		if(SATVerbalMinS.length() > 0) {
+			SATVerbalMin = Integer.parseInt(SATVerbalMinS); //
+		}else {
+			SATVerbalMin = -1;
+		}
+		if(SATVerbalMaxS.length() > 0) {
+			SATVerbalMax = Integer.parseInt(SATVerbalMaxS); //
+		}else {
+			SATVerbalMax = -1;
+		}
+		
+		if(SATMathMinS.length() > 0) {
+			SATMathMin = Integer.parseInt(SATMathMinS); //
+		}else {
+			SATMathMin = -1;
+		}
+		if(SATMathMaxS.length() > 0) {
+			SATMathMax = Integer.parseInt(SATMathMaxS); //
+		}else {
+			SATMathMax = -1;
+		}
+		
+		if(expensesMinS.length() > 0) {
+			expensesMin = Integer.parseInt(expensesMinS);//
+		}else {
+			expensesMin = -1;
+		}
+		if(expensesMaxS.length() > 0) {
+			expensesMax = Integer.parseInt(expensesMaxS); //
+		}else {
+			expensesMax = -1;
+		}
+		
+		if(PercentFinancialAidMinS.length() > 0) {
+			PercentFinancialAidMin = Float.parseFloat(PercentFinancialAidMinS); //
+		}else {
+			PercentFinancialAidMin = -1;
+		}
+		if(percenetFinancialAidMaxS.length() > 0) {
+			percenetFinancialAidMax = Float.parseFloat(percenetFinancialAidMaxS); //
+		}else {
+			percenetFinancialAidMax = -1;
+		}
+		
+		if(numberApplicantsMinS.length() > 0) {
+			numberApplicantsMin = Integer.parseInt(numberApplicantsMinS); //
+		}else {
+			numberApplicantsMin = -1;
+		}
+		if(numberApplicatnsMaxS.length() > 0) {
+			numberApplicatnsMax = Integer.parseInt(numberApplicatnsMaxS); //
+		}else {
+			numberApplicatnsMax = -1;
+		}
+		
+		if(percentAddmittedMinS.length() > 0) {
+			percentAddmittedMin = Float.parseFloat(percentAddmittedMinS); //
+		}else {
+			percentAddmittedMin = -1;
+		}
+		if(percentAdmittedMaxS.length() > 0) {
+			percentAdmittedMax = Float.parseFloat(percentAdmittedMaxS); //
+		}else {
+			percentAdmittedMax = -1;
+		}
+		
+		if(percentEnrolledMinS.length() > 0) {
+			percentEnrolledMin = Float.parseFloat(percentEnrolledMinS); //
+		}else {
+			percentEnrolledMin = -1;
+		}
+		if(percentEnrolledMaxS.length() > 0) {
+			percentEnrolledMax = Float.parseFloat(percentEnrolledMaxS); //
+		}else {
+			percentEnrolledMax = -1;
+		}
+		
+		if(academicScaleMinS.length() > 0) {
+			academicScaleMin = Integer.parseInt(academicScaleMinS); //
+		}else {
+			academicScaleMin = -1;
+		}
+		if(academicScaleMaxS.length() > 0) {
+			academicScaleMax = Integer.parseInt(academicScaleMaxS); //
+		}else {
+			academicScaleMax = -1;
+		}
+		
+		if(socialScaleminS.length() > 0) {
+			socialScalemin = Integer.parseInt(socialScaleminS); //
+		}else {
+			socialScalemin = -1;
+		}
+		if(socialScaleMaxS.length() > 0) {
+			socialScaleMax = Integer.parseInt(socialScaleMaxS);//
+		}else {
+			socialScaleMax = -1;
+		}
+		
+		if(qualityOfLifeMinS.length() > 0) {
+			qualityOfLifeMin = Integer.parseInt(qualityOfLifeMinS); //
+		}else {
+			qualityOfLifeMin = -1;
+		}
+		if(qualityOfLifeMaxS.length() > 0) {
+			qualityOfLifeMax = Integer.parseInt(qualityOfLifeMaxS); //
+		}else {
+			qualityOfLifeMax = -1;
+		}
+		
+			
+		//check it min < max
+		if ((numStudentsMax < numStudentsMin && numStudentsMaxS.length() > 0)
+				|| (percentFemaleMax < percentFemaleMin && percentFemaleMaxS.length() > 0)
+				|| (SATVerbalMax < SATVerbalMin && SATVerbalMaxS.length() > 0)
+				|| (SATMathMax < SATMathMin && SATMathMaxS.length() > 0)
+				|| (expensesMax < expensesMin && expensesMaxS.length() > 0)
+				|| (percenetFinancialAidMax < PercentFinancialAidMin && percenetFinancialAidMaxS.length() > 0)
+				|| (numberApplicatnsMax < numberApplicatnsMax && numberApplicatnsMaxS.length() > 0)
+				|| (percentAdmittedMax < percentAddmittedMin && percentAdmittedMaxS.length() > 0)
+				|| (percentEnrolledMax < percentEnrolledMin && percentEnrolledMaxS.length() > 0)
+				|| (academicScaleMax < academicScaleMin && academicScaleMaxS.length() > 0)
+				|| (socialScaleMax < socialScalemin && socialScaleMaxS.length() > 0)
+				|| (qualityOfLifeMax < qualityOfLifeMin && qualityOfLifeMaxS.length() > 0)) {
+			throw new IllegalArgumentException("Sorry, your no minimum can be greater than a maximum");
+		}
+
+		matchSchools = sfCon.search(schoolName, state, location, numStudentsMin, numStudentsMax, percentFemaleMin,
+				percentFemaleMax, SATVerbalMin, SATVerbalMax, SATMathMin, SATMathMax, expensesMin, expensesMax,
+				PercentFinancialAidMin, percenetFinancialAidMax, numberApplicantsMin, numberApplicatnsMax,
+				percentAddmittedMin, percentAdmittedMax, percentEnrolledMin, percentEnrolledMax, academicScaleMin,
+				academicScaleMax, socialScalemin, socialScaleMax, qualityOfLifeMin, qualityOfLifeMax, emphases,
+				control);
+
+		for (int i = 0; i < matchSchools.size(); i++) {
+			System.out.println(matchSchools.get(i).getName());
+		}
+
 		return matchSchools;
 	}
 
