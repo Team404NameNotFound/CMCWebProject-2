@@ -2,7 +2,7 @@
 
 <%
 
-StudentInteraction adminInteraction = (StudentInteraction)session.getAttribute("interaction");
+AdminInteraction adminInteraction = (AdminInteraction)session.getAttribute("interaction");
 String name  = request.getParameter("School");
 String state = request.getParameter("State");
 String location = request.getParameter("Loc");
