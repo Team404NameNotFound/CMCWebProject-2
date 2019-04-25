@@ -131,7 +131,7 @@
 </html>
 
  --%>
- 
+
 <html>
 <head>
 <title></title>
@@ -142,7 +142,15 @@
 		import="java.util.ArrayList"%>
 	<%
 		AdminInteraction con = (AdminInteraction) session.getAttribute("interaction");
+		String anyErrors = request.getParameter("RemoveError");
+
+		if (anyErrors != null && anyErrors.equals("0")) {
+			out.println("School to remove does not exist in the database");
+		} else if (anyErrors != null && anyErrors.equals("-1")) {
+			out.println("This school cannot be removed because it has emphases or it has been saved by a user");
+		}
 	%>
+
 	<table style="text-align: left; width: 100%;" border="1"
 		cellpadding="2" cellspacing="2">
 		<tbody>
@@ -153,40 +161,24 @@
 
 			</tr>
 			<tr>
-				<td style="vertical-align: top;">School
-				</td>
-				<td style="vertical-align: top;">State
-				</td>
-				<td style="vertical-align: top;">Location
-				</td>
-				<td style="vertical-align: top;">Control
-				</td>
-				<td style="vertical-align: top;"># Students
-				</td>
-				<td style="vertical-align: top;">% Female
-				</td>
-				<td style="vertical-align: top;">SAT Verbal
-				</td>
-				<td style="vertical-align: top;">SAT Math
-				</td>
-				<td style="vertical-align: top;">Expenses
-				</td>
-				<td style="vertical-align: top;">% Financial Aid
-				</td>
-				<td style="vertical-align: top;"># Applicants
-				</td>
-				<td style="vertical-align: top;">% Admitted
-				</td>
-				<td style="vertical-align: top;">% Enrolled
-				</td>
-				<td style="vertical-align: top;">Academic Scale(1-5)
-				</td>
-				<td style="vertical-align: top;">Social Scale(1-5)
-				</td>
-				<td style="vertical-align: top;">Quality of Life(1-5)
-				</td>
-				<td style="vertical-align: top;">&nbsp;&nbsp;&nbsp;
-				</td>
+				<td style="vertical-align: top;">&nbsp;&nbsp;&nbsp;</td>
+				<td style="vertical-align: top;">School</td>
+				<td style="vertical-align: top;">State</td>
+				<td style="vertical-align: top;">Location</td>
+				<td style="vertical-align: top;">Control</td>
+				<td style="vertical-align: top;"># Students</td>
+				<td style="vertical-align: top;">% Female</td>
+				<td style="vertical-align: top;">SAT Verbal</td>
+				<td style="vertical-align: top;">SAT Math</td>
+				<td style="vertical-align: top;">Expenses</td>
+				<td style="vertical-align: top;">% Financial Aid</td>
+				<td style="vertical-align: top;"># Applicants</td>
+				<td style="vertical-align: top;">% Admitted</td>
+				<td style="vertical-align: top;">% Enrolled</td>
+				<td style="vertical-align: top;">Academic Scale(1-5)</td>
+				<td style="vertical-align: top;">Social Scale(1-5)</td>
+				<td style="vertical-align: top;">Quality of Life(1-5)</td>
+				<td style="vertical-align: top;">&nbsp;&nbsp;&nbsp;</td>
 			</tr>
 
 
@@ -195,6 +187,14 @@
 				for (int i = 0; i < schools.size(); i++) {
 			%>
 			<tr>
+				<td style="vertical-align: top;">
+					<form method="post" action="RemoveUniversity.jsp"
+						name="Remove University">
+						<input name="RemoveUniversity" value="Remove" type="submit">
+						<input name="universityName" value="<%=schools.get(i).getName()%>"
+							type="hidden">
+					</form>
+				</td>
 				<td style="vertical-align: top;">
 					<%
 						out.println(schools.get(i).getName());
@@ -213,6 +213,11 @@
 				<td style="vertical-align: top;">
 					<%
 						out.println(schools.get(i).getControl());
+					%>
+				</td>
+				<td style="vertical-align: top;">
+					<%
+						out.println(schools.get(i).getEnrollment());
 					%>
 				</td>
 				<td style="vertical-align: top;">
@@ -270,26 +275,23 @@
 						out.println(schools.get(i).getQualityOfLife());
 					%>
 				</td>
+
 				<td style="vertical-align: top;">
-					<%
-						out.println(schools.get(i).getEnrollment());
-					%>
-				</td>
-					
-					<td style="vertical-align: top;">
 					<form method="post" action="EditUniversity.jsp"
 						name="Edit University">
-						<input name="Toggle" value="Edit"
-							type="submit"> <input name="universityName"
-							value="<%=schools.get(i).getName()%>" type="hidden">
+						<input name="Edit" value="Edit" type="submit"> <input
+							name="universityName" value="<%=schools.get(i).getName()%>"
+							type="hidden">
 					</form>
 				</td>
-				
+
 			</tr>
-			<%}%>
-			</tbody>
-		</table>
-		<br>
+			<%
+				}
+			%>
+		</tbody>
+	</table>
+	<br>
 	</form>
 	<table style="text-align: left; width: 100%;" border="1"
 		cellpadding="2" cellspacing="2">
@@ -304,32 +306,32 @@
 	<br>
 	<br>
 </body>
-</html> 
+</html>
 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

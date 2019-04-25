@@ -79,162 +79,142 @@ public class UniversityController {
 	 * @param savedSchool
 	 * @return
 	 */
-	public University updateUniversityInfo(String name, String state, String location, String control,
+	public int updateUniversityInfo(String name, String state, String location, String control,
 			String enrollment, String percentFemale, String satVerbal, String satMath, String cost,
-			String percentFinAid, String percentEnrolled, String applicants, String percentAdmitted,
+			String percentFinAid, String applicants, String percentAdmitted, String percentEnrolled,
 			String academicScale, String socialScale, String qualityOfLife, String[] emphases) {
 		// goes through and tests every parameter to see if it has a value so that only
 		// the parameters with new values are updated
-
-		if (!state.contains("1234567890")) {
-			school.setState(state);
-		}else if(state == null || state.equals("") || state.equals("-1")) {
+		
+		if (state == null || state.length() < 1) {
 			school.setState("-1");
-		}else {
-			throw new IllegalArgumentException("Invalid State");
+		} else {
+			school.setState(state);
 		}
 
-		
-		if (!location.contains("1234567890")) {
-			school.setLocation(location);
-		}else if(location == null || location.equals("") || location.equals("-1")) {
+		if (location == null || location.length() < 1) {
 			school.setLocation("-1");
-		}else {
-			throw new IllegalArgumentException("Invalid location");
+			;
+		} else {
+			school.setLocation(location);
 		}
 
-		
-		if (control.equals("PRIVATE") || control.equals("PUBLIC")) {
-			school.setControl(control);
-		}else if(control == null || control.equals("") || control.equals("-1")) {
+		if (control == null || control.length() < 1) {
 			school.setControl("-1");
-		}else {
-			throw new IllegalArgumentException("Invalid control");
+		} else {
+			school.setControl(control);
 		}
 
-		
 		if (enrollment.matches("\\d+")) {
 			school.setEnrollment(enrollment);
-		}else if(enrollment == null || enrollment.equals("") || enrollment.equals("-1")) {
+		} else if (enrollment == null || enrollment.length() < 1) {
 			school.setEnrollment("-1");
-		}else {
-			throw new IllegalArgumentException("Invalid enrollment");
+		} else {
+			return -2;
 		}
 
-		
-		if (percentFemale.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentFemale) > 0.0 && Double.parseDouble(percentFemale) < 100.0) {
+		if (percentFemale.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentFemale) >= 0.0
+				&& Double.parseDouble(percentFemale) <= 100.0) {
 			school.setPercentFemale(percentFemale);
-		}else if(percentFemale == null || percentFemale.equals("") || percentFemale.equals("-1")) {
+		} else if (percentFemale == null || percentFemale.length() < 1) {
 			school.setPercentFemale("-1.0");
-		}else {
-			throw new IllegalArgumentException("Invalid percentFemale");
+		} else {
+			return -3;
 		}
 
-		
-		if (satVerbal.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(satVerbal) >= 200 && Double.parseDouble(satVerbal) <= 800) {
+		if (satVerbal.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(satVerbal) >= 200
+				&& Double.parseDouble(satVerbal) <= 800) {
 			school.setSatVerbal(satVerbal);
-		}else if(satVerbal == null || satVerbal.equals("") || Integer.parseInt(satVerbal) == -1) {
+		} else if (satVerbal == null || satVerbal.length() < 1) {
 			school.setSatVerbal("-1.0");
-		}else {
-			throw new IllegalArgumentException("Invalid satVerbal");
+		} else {
+			return -4;
 		}
-		
-		if (satMath.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(satMath) >= 200 && Double.parseDouble(satMath) <= 800) {
+
+		if (satMath.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(satMath) >= 200
+				&& Double.parseDouble(satMath) <= 800) {
 			school.setSatMath(satMath);
-		}else if(satMath == null || satMath.equals("") || satMath.equals("-1")) {
+		} else if (satMath == null || satMath.length() < 1) {
 			school.setSatMath("-1.0");
-		}else {
-			throw new IllegalArgumentException("Invalid satMath");
+		} else {
+			return -5;
 		}
 
-		
-		if (cost.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(cost) > 0.0  ) {
+		if (cost.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(cost) >= 0.0) {
 			school.setCost(cost);
-		}else if(cost == null || cost.equals("") || cost.equals("-1")) {
+		} else if (cost == null || cost.length() < 1) {
 			school.setCost("-1.0");
-		}else {
-			throw new IllegalArgumentException("Invalid cost");
+		} else {
+			return -6;
 		}
 
-		if (percentFinAid.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentFinAid) > 0.0 && Double.parseDouble(percentFinAid) < 100.0) {
+		if (percentFinAid.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentFinAid) >= 0.0
+				&& Double.parseDouble(percentFinAid) <= 100.0) {
 			school.setPercentFinAid(percentFinAid);
-		}else if(percentFinAid == null || percentFinAid.equals("") || percentFinAid.equals("-1")) {
+		} else if (percentFinAid == null || percentFinAid.length() < 1) {
 			school.setPercentFinAid("-1.0");
-		}else {
-			throw new IllegalArgumentException("Invalid percentFinAid");
+		} else {
+			return -7;
 		}
 
-		
 		if (applicants.matches("\\d+")) {
 			school.setApplicants(applicants);
-		}else if(applicants == null || applicants.equals("") || applicants.equals("-1")) {
+		} else if (applicants == null || applicants.length() < 1) {
 			school.setApplicants("-1");
-		}else {
-			throw new IllegalArgumentException("Invalid applicants");
+		} else {
+			return -8;
 		}
 
-		
-		if (percentAdmitted.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentAdmitted) > 0 && Double.parseDouble(percentAdmitted) < 100) {
+		if (percentAdmitted.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentAdmitted) >= 0
+				&& Double.parseDouble(percentAdmitted) <= 100) {
 			school.setPercentAdmitted(percentAdmitted);
-		}else if(percentAdmitted == null || percentAdmitted.equals("") || percentAdmitted.equals("-1")) {
+		} else if (percentAdmitted == null || percentAdmitted.length() < 1) {
 			school.setPercentAdmitted("-1.0");
-		}else {
-			throw new IllegalArgumentException("Invalid percentAdmitted");
+		} else {
+			return -9;
 		}
 
-		
-		if (percentEnrolled.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentEnrolled) > 0 && Double.parseDouble(percentEnrolled) < 100) {
+		if (percentEnrolled.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentEnrolled) >= 0
+				&& Double.parseDouble(percentEnrolled) <= 100) {
 			school.setPercentEnrolled(percentEnrolled);
-		}else if(percentEnrolled == null || percentEnrolled.equals("") || percentEnrolled.equals("-1")) {
+		} else if (percentEnrolled == null || percentEnrolled.length() < 1) {
 			school.setPercentEnrolled("-1.0");
-		}else {
-			throw new IllegalArgumentException("Invalid percentEnrolled");
+		} else {
+			return -10;
 		}
 
-		
 		if (academicScale.matches("[12345]")) {
 			school.setAcademicScale(academicScale);
-		}else if(academicScale == null || academicScale.equals("") || academicScale.equals("-1")) {
+		} else if (academicScale == null || academicScale.length() < 1) {
 			school.setAcademicScale("-1");
-		}else {
-			throw new IllegalArgumentException("Invalid academicScale");
+		} else {
+			return -11;
 		}
 
-		
 		if (socialScale.matches("[12345]")) {
 			school.setSocialScale(socialScale);
-		}else if(socialScale == null || socialScale.equals("") || socialScale.equals("-1")) {
+		} else if (socialScale == null || socialScale.length() < 1) {
 			school.setSocialScale("-1");
-		}else {
-			throw new IllegalArgumentException("Invalid socialScale");
+		} else {
+			return -11;
 		}
 
-		
 		if (qualityOfLife.matches("[12345]")) {
 			school.setQualityOfLife(qualityOfLife);
-		}else if(qualityOfLife == null || qualityOfLife.equals("") || qualityOfLife.equals("-1")) {
+		} else if (qualityOfLife == null || qualityOfLife.length() < 1) {
 			school.setQualityOfLife("-1");
-		}else {
-			throw new IllegalArgumentException("Invalid qualityOfLife");
+		} else {
+			return -11;
 		}
 
-		
-		if (emphases == null || emphases.length == 0) {
-			school.setEmphases(new String[] {});
-		}else {
-			school.setEmphases(emphases);
-		}
-		
-		this.DBCon.editUniversity(school.getName(), school.getState(), school.getLocation(),
-				school.getControl(), school.getEnrollment(),
-				school.getPercentFemale(), school.getSatVerbal(),
-				school.getSatMath(),school.getCost(),
-				school.getPercentFinAid(), school.getApplicants(),
-				school.getPercentAdmitted(), school.getPercentEnrolled(),
-				school.getAcademicScale(), school.getSocialScale(),
+
+		this.DBCon.editUniversity(school.getName(), school.getState(), school.getLocation(), school.getControl(),
+				school.getEnrollment(), school.getPercentFemale(), school.getSatVerbal(), school.getSatMath(),
+				school.getCost(), school.getPercentFinAid(), school.getApplicants(), school.getPercentAdmitted(),
+				school.getPercentEnrolled(), school.getAcademicScale(), school.getSocialScale(),
 				school.getQualityOfLife());
-		
-		return school;
+
+		return 1;
 	}
 
 	/**
@@ -259,176 +239,159 @@ public class UniversityController {
 	 * @param emphases
 	 * @return
 	 */
-	public University createNewUniversity(String name, String state, String location, String control, String enrollment,
+	public int createNewUniversity(String name, String state, String location, String control, String enrollment,
 			String percentFemale, String satVerbal, String satMath, String cost, String percentFinAid,
-			String percentEnrolled, String applicants, String percentAdmitted, String academicScale, String socialScale,
+			String applicants, String percentAdmitted, String percentEnrolled, String academicScale, String socialScale,
 			String qualityOfLife, String[] emphases) {
-		/*University newSchool;
-			newSchool = new University(name, state, location, control, enrollment, percentFemale, satVerbal, satMath, cost,
-					percentFinAid, percentEnrolled, applicants, percentAdmitted, academicScale, socialScale, qualityOfLife,
-					emphases);
-		this.school = newSchool;
-		return newSchool;*/
-		if (name.matches("[a-zA-Z]+")) {
+		/*
+		 * University newSchool; newSchool = new University(name, state, location,
+		 * control, enrollment, percentFemale, satVerbal, satMath, cost, percentFinAid,
+		 * percentEnrolled, applicants, percentAdmitted, academicScale, socialScale,
+		 * qualityOfLife, emphases); this.school = newSchool; return newSchool;
+		 */
+
+		if (name == null || name.length() < 1) {
+			return -1;
+		} else {
 			school.setName(name);
-		}else {
-			throw new IllegalArgumentException("Invalid name");
 		}
-		
-		
-		if (state.matches("[a-zA-Z]+")) {
-			school.setState(state);
-		}else if(state == null || state.equals("")) {
+
+		if (state == null || state.length() < 1) {
 			school.setState("-1");
-		}else {
-			throw new IllegalArgumentException("Invalid State");
+		} else {
+			school.setState(state);
 		}
 
-		
-		if (location.matches("[a-zA-Z]+")) {
-			school.setLocation(location);
-		}else if(location == null || location.equals("")) {
+		if (location == null || location.length() < 1) {
 			school.setLocation("-1");
-		}else {
-			throw new IllegalArgumentException("Invalid location");
+			;
+		} else {
+			school.setLocation(location);
 		}
 
-		
-		if (control.equals("PRIVATE") || control.equals("PUBLIC")) {
-			school.setControl(control);
-		}else if(control == null || control.equals("")) {
+		if (control == null || control.length() < 1) {
 			school.setControl("-1");
-		}else {
-			throw new IllegalArgumentException("Invalid control");
+		} else {
+			school.setControl(control);
 		}
 
-		
 		if (enrollment.matches("\\d+")) {
 			school.setEnrollment(enrollment);
-		}else if(enrollment == null || enrollment.equals("")) {
+		} else if (enrollment == null || enrollment.length() < 1) {
 			school.setEnrollment("-1");
-		}else {
-			throw new IllegalArgumentException("Invalid enrollment");
+		} else {
+			return -2;
 		}
 
-		
-		if (percentFemale.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentFemale) > 0.0 && Double.parseDouble(percentFemale) < 100.0) {
+		if (percentFemale.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentFemale) >= 0.0
+				&& Double.parseDouble(percentFemale) <= 100.0) {
 			school.setPercentFemale(percentFemale);
-		}else if(percentFemale == null || percentFemale.equals("")) {
+		} else if (percentFemale == null || percentFemale.length() < 1) {
 			school.setPercentFemale("-1.0");
-		}else {
-			throw new IllegalArgumentException("Invalid percentFemale");
+		} else {
+			return -3;
 		}
 
-		
-		if (satVerbal.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(satVerbal) >= 200 && Double.parseDouble(satVerbal) <= 800) {
+		if (satVerbal.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(satVerbal) >= 200
+				&& Double.parseDouble(satVerbal) <= 800) {
 			school.setSatVerbal(satVerbal);
-		}else if(satVerbal == null || satVerbal.equals("")) {
+		} else if (satVerbal == null || satVerbal.length() < 1) {
 			school.setSatVerbal("-1.0");
-		}else {
-			throw new IllegalArgumentException("Invalid satVerbal");
+		} else {
+			return -4;
 		}
-		
-		if (satMath.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(satMath) >= 200 && Double.parseDouble(satMath) <= 800) {
+
+		if (satMath.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(satMath) >= 200
+				&& Double.parseDouble(satMath) <= 800) {
 			school.setSatMath(satMath);
-		}else if(satMath == null || satMath.equals("")) {
+		} else if (satMath == null || satMath.length() < 1) {
 			school.setSatMath("-1.0");
-		}else {
-			throw new IllegalArgumentException("Invalid satMath");
+		} else {
+			return -5;
 		}
 
-		
-		if (cost.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(cost) > 0.0  ) {
+		if (cost.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(cost) >= 0.0) {
 			school.setCost(cost);
-		}else if(cost == null || cost.equals("")) {
+		} else if (cost == null || cost.length() < 1) {
 			school.setCost("-1.0");
-		}else {
-			throw new IllegalArgumentException("Invalid cost");
+		} else {
+			return -6;
 		}
 
-		if (percentFinAid.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentFinAid) > 0.0 && Double.parseDouble(percentFinAid) < 100.0) {
+		if (percentFinAid.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentFinAid) >= 0.0
+				&& Double.parseDouble(percentFinAid) <= 100.0) {
 			school.setPercentFinAid(percentFinAid);
-		}else if(percentFinAid == null || percentFinAid.equals("")) {
+		} else if (percentFinAid == null || percentFinAid.length() < 1) {
 			school.setPercentFinAid("-1.0");
-		}else {
-			throw new IllegalArgumentException("Invalid percentFinAid");
+		} else {
+			return -7;
 		}
 
-		
 		if (applicants.matches("\\d+")) {
 			school.setApplicants(applicants);
-		}else if(applicants == null || applicants.equals("")) {
+		} else if (applicants == null || applicants.length() < 1) {
 			school.setApplicants("-1");
-		}else {
-			throw new IllegalArgumentException("Invalid applicants");
+		} else {
+			return -8;
 		}
 
-		
-		if (percentAdmitted.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentAdmitted) > 0 && Double.parseDouble(percentAdmitted) < 100) {
+		if (percentAdmitted.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentAdmitted) >= 0
+				&& Double.parseDouble(percentAdmitted) <= 100) {
 			school.setPercentAdmitted(percentAdmitted);
-		}else if(percentAdmitted == null || percentAdmitted.equals("")) {
+		} else if (percentAdmitted == null || percentAdmitted.length() < 1) {
 			school.setPercentAdmitted("-1.0");
-		}else {
-			throw new IllegalArgumentException("Invalid percentAdmitted");
+		} else {
+			return -9;
 		}
 
-		
-		if (percentEnrolled.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentEnrolled) > 0 && Double.parseDouble(percentEnrolled) < 100) {
+		if (percentEnrolled.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentEnrolled) >= 0
+				&& Double.parseDouble(percentEnrolled) <= 100) {
 			school.setPercentEnrolled(percentEnrolled);
-		}else if(percentEnrolled == null || percentEnrolled.equals("")) {
+		} else if (percentEnrolled == null || percentEnrolled.length() < 1) {
 			school.setPercentEnrolled("-1.0");
-		}else {
-			throw new IllegalArgumentException("Invalid percentEnrolled");
+		} else {
+			return -10;
 		}
 
-		
 		if (academicScale.matches("[12345]")) {
 			school.setAcademicScale(academicScale);
-		}else if(academicScale == null || academicScale.equals("")) {
+		} else if (academicScale == null || academicScale.length() < 1) {
 			school.setAcademicScale("-1");
-		}else {
-			throw new IllegalArgumentException("Invalid academicScale");
+		} else {
+			return -11;
 		}
 
-		
 		if (socialScale.matches("[12345]")) {
 			school.setSocialScale(socialScale);
-		}else if(socialScale == null || socialScale.equals("")) {
+		} else if (socialScale == null || socialScale.length() < 1) {
 			school.setSocialScale("-1");
-		}else {
-			throw new IllegalArgumentException("Invalid socialScale");
+		} else {
+			return -11;
 		}
 
-		
 		if (qualityOfLife.matches("[12345]")) {
 			school.setQualityOfLife(qualityOfLife);
-		}else if(qualityOfLife == null || qualityOfLife.equals("")) {
+		} else if (qualityOfLife == null || qualityOfLife.length() < 1) {
 			school.setQualityOfLife("-1");
-		}else {
-			throw new IllegalArgumentException("Invalid qualityOfLife");
+		} else {
+			return -11;
 		}
 
-		
-		if (emphases == null || emphases.length == 0) {
-			school.setEmphases(new String[] {});
-		}else {
-			school.setEmphases(emphases);
-		}
-		
-		this.DBCon.addUniversity(school.getName(), school.getState(), school.getLocation(),
-				school.getControl(), school.getEnrollment(),
-				school.getPercentFemale(), school.getSatVerbal(),
-				school.getSatMath(),school.getCost(),
-				school.getPercentFinAid(), school.getApplicants(),
-				school.getPercentAdmitted(), school.getPercentEnrolled(),
-				school.getAcademicScale(), school.getSocialScale(),
+		this.DBCon.addUniversity(school.getName(), school.getState(), school.getLocation(), school.getControl(),
+				school.getEnrollment(), school.getPercentFemale(), school.getSatVerbal(), school.getSatMath(),
+				school.getCost(), school.getPercentFinAid(), school.getApplicants(), school.getPercentAdmitted(),
+				school.getPercentEnrolled(), school.getAcademicScale(), school.getSocialScale(),
 				school.getQualityOfLife());
-	
-		for(String e: emphases) {
-			this.DBCon.addEmphasis(name, e);
+
+		if (emphases == null || emphases.length == 0) {
+			school.setEmphases(null);
+		} else {
+			school.setEmphases(emphases);
+			for (String e : emphases) {
+				this.DBCon.addEmphasis(name, e);
+			}
 		}
-		
-		return school;
+		return 1; // create a new university successfully
 	}
 
 }
