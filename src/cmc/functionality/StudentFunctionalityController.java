@@ -17,7 +17,7 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	 */
 	public StudentFunctionalityController() {
 		super();
-		//this.account = new AccountController();
+		this.account = new AccountController();
 		this.searchCon = new SearchController(this.DBCon.getUniversityList());
 	}
 
@@ -28,7 +28,7 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 				if (this.DBCon.getAccount(userName).getUserStatus().equals("Y")) {
 					AccountController userAcc = new AccountController(this.DBCon.getAccount(userName));
 					if (userAcc.checkPassword(password)) {
-						account = new AccountController(this.DBCon.getAccount(userName));
+						this.account = new AccountController(this.DBCon.getAccount(userName));
 						this.loggedIn = true;
 						return 0;
 					} else {
@@ -156,7 +156,6 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	public ArrayList<UserSavedSchool> viewSavedSchools() {
 		//this.account.viewSavedSchools();
 		System.out.println("SF Controller this.viewSavedSchools: "+ this.getAccount());
-
 		return this.account.viewSavedSchools();
 	}
 

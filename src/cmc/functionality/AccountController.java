@@ -260,7 +260,7 @@ public class AccountController {
 		if (!type.equals("") && type != null) {
 
 				if (type.equals("u") || type.equals("U")) 
-				{
+				{v
 					account.setUserType("u");
 				} 
 				else if (type.equals("a") || type.equals("A")) 

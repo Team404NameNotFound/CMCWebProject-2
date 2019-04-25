@@ -1,7 +1,6 @@
 package cmc.functionality;
 
 import cmc.entity.*;
-import cmc.interaction.*;
 import java.util.ArrayList;
 
 /**
