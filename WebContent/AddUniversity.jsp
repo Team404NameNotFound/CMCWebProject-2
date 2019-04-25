@@ -117,7 +117,7 @@
 				<tr>
 					<td style="vertical-align: top;"><%out.print("Emphases " + (i + 1)); %><br>
 					</td>
-					<td style="vertical-align: top;"><input name = <%out.print("Emp" + i);%>
+					<td style="vertical-align: top;"><input name = "<%out.print("Emp" + i);%>"
 						><br></td>
 				</tr>
 				<%} %>
@@ -130,5 +130,58 @@
 		</table>
 		<br>
 	</form>
+	<%
+	String anyErrors = request.getParameter("Error");
+	
+	if(anyErrors != null && anyErrors.equals("0"))
+	{
+		out.println("This school has already exist, please change to a different school name");
+	}
+	else if(anyErrors != null && anyErrors.equals("-1"))
+	{
+		out.println("School name cannot be empty");
+	}
+	else if(anyErrors != null && anyErrors.equals("-2"))
+	{
+		out.println("Number of students (enrollment) needs to be a positive integer");
+	}
+	else if(anyErrors != null && anyErrors.equals("-3"))
+	{
+		out.println("%Female between 0 - 100");
+	}
+	else if(anyErrors != null && anyErrors.equals("-4"))
+	{
+		out.println("SAT Verbal between 200 - 800");
+	}
+	else if(anyErrors != null && anyErrors.equals("-5"))
+	{
+		out.println("SAT Math between 200 - 800");
+	}
+	else if(anyErrors != null && anyErrors.equals("-6"))
+	{
+		out.println("Expense must be positive");
+	}
+	else if(anyErrors != null && anyErrors.equals("-7"))
+	{
+		out.println("%FinAid between 0 - 100");
+	}
+	else if(anyErrors != null && anyErrors.equals("-8"))
+	{
+		out.println("Number of applicants needs to be a positive integer");
+	}
+	else if(anyErrors != null && anyErrors.equals("-9"))
+	{
+		out.println("%Admitted between 0 - 100");
+	}
+	else if(anyErrors != null && anyErrors.equals("-10"))
+	{
+		out.println("%Enrolled between 0 - 100");
+	}
+	else if(anyErrors != null && anyErrors.equals("-11"))
+	{
+		out.println("Adademic/Social/Life score among 1, 2, 3, 4, 5");
+	}
+	
+	%>
 </body>
 </html>

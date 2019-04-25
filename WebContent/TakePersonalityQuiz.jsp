@@ -7,7 +7,7 @@
 <title></title>
 </head>
 <body>
-	<form method="post" action="TakeQuizAction" name="Quiz">
+	<form method="post" action="TakeQuizAction.jsp" name="Quiz">
 	<span style="font-weight: bold;">1. How would you describe the
 		location of your ideal college?</span>
 	<br>

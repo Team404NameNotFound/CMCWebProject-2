@@ -53,16 +53,17 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 	 * @param qualityOfLife
 	 * @param emphases
 	 */
-	public void addNewUniversity(String name, String state, String location, String control, String enrollment,
+	public int addNewUniversity(String name, String state, String location, String control, String enrollment,
 			String percentFemale, String satVerbal, String satMath, String cost, String percentFinAid,
-			String percentEnrolled, String applicants, String percentAdmitted, String academicScale, String socialScale,
+			String applicants, String percentAdmitted, String percentEnrolled, String academicScale, String socialScale,
 			String qualityOfLife, String[] emphases) {
 		if (this.DBCon.getUniversity2(name) != null) {
-			throw new IllegalArgumentException("Sorry" + name + " already exists");
+			return 0;
 		} else {
-			University schoolToAdd = this.universityCon.createNewUniversity(name, state, location, control, enrollment,
-					percentFemale, satVerbal, satMath, cost, percentFinAid, percentEnrolled, applicants,
-					percentAdmitted, academicScale, socialScale, qualityOfLife, emphases);
+			int addResult = this.universityCon.createNewUniversity(name, state, location, control, enrollment,
+					percentFemale, satVerbal, satMath, cost, percentFinAid, applicants, percentAdmitted,
+					percentEnrolled, academicScale, socialScale, qualityOfLife, emphases);
+			return addResult;
 		}
 
 	}
@@ -108,15 +109,13 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 	 * @param emphases
 	 *            up to five areas of studies which the university excels in
 	 */
-	public void editUniversity(String name, String state, String location, String control, String enrollment,
+	public int editUniversity(String name, String state, String location, String control, String enrollment,
 			String percentFemale, String satVerbal, String satMath, String cost, String percentFinAid,
-			String percentEnrolled, String applicants, String percentAdmitted, String academicScale, String socialScale,
+			String applicants, String percentAdmitted, String percentEnrolled, String academicScale, String socialScale,
 			String qualityOfLife, String[] emphases) {
 
 		University uniToChange = this.DBCon.getUniversity2(name);
-		if (uniToChange == null) {
-			throw new IllegalArgumentException(name + " does not exist in the database");
-		}
+		int result;
 
 		String[] oldEmphases = uniToChange.getEmphases();
 		if (oldEmphases.length > 0) {
@@ -124,13 +123,16 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 				this.DBCon.removeEmphasis(uniToChange.getName(), oldOne);
 			}
 		}
-		for (String newEmphase : emphases) {
-			this.DBCon.addEmphasis(uniToChange.getName(), newEmphase);
+
+		if (emphases.length > 0) {
+			for (String newEmphase : emphases) {
+				this.DBCon.addEmphasis(uniToChange.getName(), newEmphase);
+			}
 		}
 
 		this.universityCon = new UniversityController(uniToChange);
-		uniToChange = this.universityCon.updateUniversityInfo(name, state, location, control, enrollment, percentFemale,
-				satVerbal, satMath, cost, percentFinAid, percentEnrolled, applicants, percentAdmitted, academicScale,
+		return  result = this.universityCon.updateUniversityInfo(name, state, location, control, enrollment, percentFemale, satVerbal,
+				satMath, cost, percentFinAid, applicants, percentAdmitted, percentEnrolled, academicScale,
 				socialScale, qualityOfLife, emphases);
 
 		/*
@@ -147,15 +149,15 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 	 * @param name
 	 *            name of university
 	 */
-	public void removeUniversity(String name) {
-		University schoolToRemove= this.DBCon.getUniversity2(name);
+	public int removeUniversity(String name) {
+		University schoolToRemove = this.DBCon.getUniversity2(name);
 		if (schoolToRemove == null) {
-			throw new IllegalArgumentException("Cannot move invalid school");
+			return 0;
 		} else {
-			if(this.DBCon.getUserSavedStatistics(name)>0 || schoolToRemove.getEmphases().length > 0) {
-				throw new IllegalArgumentException("This shcool cannot be deleted, it has been saved by a user or have emphases");
+			if (this.DBCon.getUserSavedStatistics(name) > 0 || schoolToRemove.getEmphases().length > 0) {
+				return -1;
 			}
-			this.DBCon.removeUniversity(name);
+			return this.DBCon.removeUniversity(name);
 		}
 	}
 

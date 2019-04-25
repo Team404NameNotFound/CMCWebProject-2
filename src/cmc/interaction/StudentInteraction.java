@@ -21,6 +21,7 @@ public class StudentInteraction extends AccountInteraction {
 
 	StudentFunctionalityController sfCon;
 	DBController dbCon = new DBController();
+
 	/**
 	 * Create a new StudentInteraction
 	 */
@@ -80,17 +81,85 @@ public class StudentInteraction extends AccountInteraction {
 	 *            numStduentsMax, maximal number of students
 	 */
 
-	public ArrayList<University> fieldSearch(String schoolName, String state, String location, int numStudentsMin,
-			int numStudentsMax, float percentFemaleMin, float percentFemaleMax, int SATVerbalMin, int SATVerbalMax,
-			int SATMathMin, int SATMathMax, int expensesMin, int expensesMax, float PercentFinancialAidMin,
-			float percenetFinancialAidMax, int numberApplicantsMin, int numberApplicatnsMax, float percentAddmittedMin,
-			float percentAdmittedMax, float percentEnrolledMin, float percentEnrolledMax, int academicScaleMin,
-			int academicScaleMax, int socialScalemin, int socialScaleMax, int qualityOfLifeMin, int qualityOfLifeMax,
+	/*
+	 * public ArrayList<University> fieldSearch(String schoolName, String state,
+	 * String location, int numStudentsMin, int numStudentsMax, float
+	 * percentFemaleMin, float percentFemaleMax, int SATVerbalMin, int SATVerbalMax,
+	 * int SATMathMin, int SATMathMax, int expensesMin, int expensesMax, float
+	 * PercentFinancialAidMin, float percenetFinancialAidMax, int
+	 * numberApplicantsMin, int numberApplicatnsMax, float percentAddmittedMin,
+	 * float percentAdmittedMax, float percentEnrolledMin, float percentEnrolledMax,
+	 * int academicScaleMin, int academicScaleMax, int socialScalemin, int
+	 * socialScaleMax, int qualityOfLifeMin, int qualityOfLifeMax, String[]
+	 * emphases, String control) {
+	 */
+
+	public ArrayList<University> fieldSearch(String schoolName, String state, String location, String numStudentsMinS,
+			String numStudentsMaxS, String percentFemaleMinS, String percentFemaleMaxS, String SATVerbalMinS,
+			String SATVerbalMaxS, String SATMathMinS, String SATMathMaxS, String expensesMinS, String expensesMaxS,
+			String PercentFinancialAidMinS, String percenetFinancialAidMaxS, String numberApplicantsMinS,
+			String numberApplicatnsMaxS, String percentAddmittedMinS, String percentAdmittedMaxS,
+			String percentEnrolledMinS, String percentEnrolledMaxS, String academicScaleMinS, String academicScaleMaxS,
+			String socialScaleminS, String socialScaleMaxS, String qualityOfLifeMinS, String qualityOfLifeMaxS,
 			String[] emphases, String control) {
-		ArrayList<University> matchSchools;
 
+		ArrayList<University> matchSchools = new ArrayList<University>();
+		int numStudentsMin = (Integer) null;
+		int numStudentsMax = (Integer) null;
+		float percentFemaleMin = (Float) null;
+		float percentFemaleMax = (Float) null;
+		int SATVerbalMin = (Integer) null;
+		int SATVerbalMax = (Integer) null;
+		int SATMathMin = (Integer) null;
+		int SATMathMax = (Integer) null;
+		int expensesMin = (Integer) null;
+		int expensesMax = (Integer) null;
+		float PercentFinancialAidMin = (Float) null;
+		float percenetFinancialAidMax = (Float) null;
+		int numberApplicantsMin = (Integer) null;
+		int numberApplicatnsMax = (Integer) null;
+		float percentAddmittedMin = (Float) null;
+		float percentAdmittedMax = (Float) null;
+		float percentEnrolledMin = (Float) null;
+		float percentEnrolledMax = (Float) null;
+		int academicScaleMin = (Integer) null;
+		int academicScaleMax = (Integer) null;
+		int socialScalemin = (Integer) null;
+		int socialScaleMax = (Integer) null;
+		int qualityOfLifeMin = (Integer) null;
+		int qualityOfLifeMax = (Integer) null;
+
+		try {
+			numStudentsMin = Integer.parseInt(numStudentsMinS);
+			numStudentsMax = Integer.parseInt(numStudentsMaxS);
+			percentFemaleMin = Float.parseFloat(percentFemaleMinS);
+			percentFemaleMax = Float.parseFloat(percentFemaleMaxS);
+			SATVerbalMin = Integer.parseInt(SATVerbalMinS);
+			SATVerbalMax = Integer.parseInt(SATVerbalMaxS);
+			SATMathMin = Integer.parseInt(SATMathMinS);
+			SATMathMax = Integer.parseInt(SATMathMaxS);
+			expensesMin = Integer.parseInt(expensesMinS);
+			expensesMax = Integer.parseInt(expensesMaxS);
+			PercentFinancialAidMin = Float.parseFloat(PercentFinancialAidMinS);
+			percenetFinancialAidMax = Float.parseFloat(percenetFinancialAidMaxS);
+			numberApplicantsMin = Integer.parseInt(numberApplicantsMinS);
+			numberApplicatnsMax = Integer.parseInt(numberApplicatnsMaxS);
+			percentAddmittedMin = Float.parseFloat(percentAddmittedMinS);
+			percentAdmittedMax = Float.parseFloat(percentAdmittedMaxS);
+			percentEnrolledMin = Float.parseFloat(percentEnrolledMinS);
+			percentEnrolledMax = Float.parseFloat(percentEnrolledMaxS);
+			academicScaleMin = Integer.parseInt(academicScaleMinS);
+			academicScaleMax = Integer.parseInt(academicScaleMaxS);
+			socialScalemin = Integer.parseInt(socialScaleminS);
+			socialScaleMax = Integer.parseInt(socialScaleMaxS);
+			qualityOfLifeMin = Integer.parseInt(qualityOfLifeMinS);
+			qualityOfLifeMax = Integer.parseInt(qualityOfLifeMaxS);
+		} catch (Exception e) {
+			System.out.println("Might be a Number Format Exception");
+		}
+		
 		if (!sfCon.loggedIn) {
-
+			System.out.println("line 162 studentInteraction, at least logged in");
 			if (schoolName.equals("") && state.equals("") && location.equals("") && numStudentsMin == -1
 					&& numStudentsMax == -1 && percentFemaleMin == -1 && percentFemaleMax == -1 && SATVerbalMin == -1
 					&& SATVerbalMax == -1 && SATMathMin == -1 && SATMathMax == -1 && expensesMin == -1
@@ -132,7 +201,6 @@ public class StudentInteraction extends AccountInteraction {
 		else {
 			throw new IllegalArgumentException("Sorry, you must be logged in to access this functionality");
 		}
-
 		return matchSchools;
 	}
 
@@ -156,7 +224,7 @@ public class StudentInteraction extends AccountInteraction {
 	 * @param school
 	 */
 	public ArrayList<UserSavedSchool> saveSchool(String school) {
-		//this.sfCon.setAccount(this.UFCon.getAccount());
+		// this.sfCon.setAccount(this.UFCon.getAccount());
 		this.sfCon.saveSchool(school);
 		return sfCon.viewSavedSchools();
 	}
@@ -216,7 +284,7 @@ public class StudentInteraction extends AccountInteraction {
 	public void setSfCon(StudentFunctionalityController sfCon) {
 		this.sfCon = sfCon;
 	}
-	
+
 	/**
 	 * Remove a school from user's saved schools list
 	 * 
@@ -235,7 +303,8 @@ public class StudentInteraction extends AccountInteraction {
 		return sfCon.compareSchoolsByScore();
 	}
 
-	public ArrayList<String> editProfile(String userName, String firstName, String lastName, String password, String userType, String activeStatus) {
+	public ArrayList<String> editProfile(String userName, String firstName, String lastName, String password,
+			String userType, String activeStatus) {
 		if (firstName == "" || lastName == "" || password == "") {
 			throw new IllegalArgumentException();
 		} else {
@@ -244,9 +313,9 @@ public class StudentInteraction extends AccountInteraction {
 
 		return UFCon.viewUserProfile(userName);
 	}
-	
-//	public void setAccount(String username) {
-//		this.sfCon.setAccount(username);
-//	}
+
+	// public void setAccount(String username) {
+	// this.sfCon.setAccount(username);
+	// }
 
 }

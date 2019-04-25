@@ -53,11 +53,16 @@ public class AdminInteraction extends AccountInteraction {
 	public void addUser(String firstname, String lastname, String username, String password, String userType) {
 
 		if (firstname.equals("") || lastname.equals("") || username.equals("") || password.equals("")
-				|| userType.equals("")) {
+				|| userType.equals("")) 
+		{
 			throw new IllegalArgumentException("Please input valid user information");
-		} else if (!userType.equals("a") && !userType.equals("u")) {
+		} 
+		else if (!userType.equals("a") && !userType.equals("u"))
+		{
 			throw new IllegalArgumentException("not a valid type");
-		} else {
+		} 
+		else 
+		{
 			this.afCon.addUser(firstname, lastname, username, password, userType);
 		}
 
@@ -84,16 +89,16 @@ public class AdminInteraction extends AccountInteraction {
 	 * @param changes
 	 */
 
-	public void editUniversityInfo(String name, String state, String location, String control, String enrollment,
+	public int editUniversityInfo(String name, String state, String location, String control, String enrollment,
 			String percentFemale, String satVerbal, String satMath, String cost, String percentFinAid,
-			String percentEnrolled, String applicants, String percentAdmitted, String academicScale, String socialScale,
+			String applicants, String percentAdmitted, String percentEnrolled, String academicScale, String socialScale,
 			String qualityOfLife, String[] emphases) {
-		if (name.equals("")) {
-			throw new IllegalArgumentException("Please input valid university");
-		}
-		else{this.afCon.editUniversity(name, state, location, control, enrollment, percentFemale, satVerbal, satMath, cost,
-				percentFinAid, percentEnrolled, applicants, percentAdmitted, academicScale, socialScale, qualityOfLife,
-				emphases);
+		if (name.length() < 1) {
+			return -1;
+		} else {
+			return this.afCon.editUniversity(name, state, location, control, enrollment, percentFemale, satVerbal,
+					satMath, cost, percentFinAid, applicants, percentAdmitted, percentEnrolled, academicScale,
+					socialScale, qualityOfLife, emphases);
 		}
 
 	}
@@ -149,13 +154,13 @@ public class AdminInteraction extends AccountInteraction {
 	 * @param qualityOfLife
 	 * @param emphases
 	 */
-	public void addNewUniversity(String name, String state, String location, String control, String enrollment,
+	public int addNewUniversity(String name, String state, String location, String control, String enrollment,
 			String percentFemale, String satVerbal, String satMath, String cost, String percentFinAid,
-			String percentEnrolled, String applicants, String percentAdmitted, String academicScale, String socialScale,
+			String applicants, String percentAdmitted, String percentEnrolled, String academicScale, String socialScale,
 			String qualityOfLife, String[] emphases) {
-		this.afCon.addNewUniversity(name, state, location, control, enrollment, percentFemale, satVerbal, satMath, cost,
-				percentFinAid, percentEnrolled, applicants, percentAdmitted, academicScale, socialScale, qualityOfLife,
-				emphases);
+		return this.afCon.addNewUniversity(name, state, location, control, enrollment, percentFemale, satVerbal,
+				satMath, cost, percentFinAid, applicants, percentAdmitted, percentEnrolled, academicScale, socialScale,
+				qualityOfLife, emphases);
 	}
 
 	/**
@@ -163,8 +168,8 @@ public class AdminInteraction extends AccountInteraction {
 	 * 
 	 * @param name
 	 */
-	public void removeUniversity(String name) {
-		this.afCon.removeUniversity(name);
+	public int removeUniversity(String name) {
+		return this.afCon.removeUniversity(name);
 	}
 
 	/**
@@ -181,13 +186,20 @@ public class AdminInteraction extends AccountInteraction {
 	public ArrayList<String> editProfile(String userName, String firstName, String lastName, String password, String userType,
 			String userStatus) {
 		if (firstName.equals("") || lastName.equals("") || userName.equals("") || password.equals("")
-				|| userType.equals("") || userStatus.equals("")) {
+				|| userType.equals("") || userStatus.equals("")) 
+		{
 			throw new IllegalArgumentException("");
-		} else if (!userType.equals("a") && !userType.equals("u")) {
+		} 
+		else if (!userType.equals("a") && !userType.equals("u")) 
+		{
 			throw new IllegalArgumentException();
-		} else if (!userStatus.equals("Y") && !userStatus.equals("N")) {
+		} 
+		else if (!userStatus.equals("Y") && !userStatus.equals("N")) 
+		{
 			throw new IllegalArgumentException();
-		} else {
+		} 
+		else
+		{
 			this.UFCon.editUserProfile(userName, firstName, password, lastName, userType, userStatus);
 		}
 		return this.UFCon.editUserProfile(userName, firstName, password, lastName, userType, userStatus);
