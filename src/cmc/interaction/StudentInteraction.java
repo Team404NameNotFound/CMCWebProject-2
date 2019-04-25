@@ -1,4 +1,4 @@
-v/**
+/**
  * 
  */
 package cmc.interaction;
@@ -251,10 +251,13 @@ public class StudentInteraction extends AccountInteraction {
 	 * View all the schools on current use's saved school list
 	 */
 	public ArrayList<UserSavedSchool> viewSavedSchools() {
-		this.sfCon.viewSavedSchools();
 		return this.sfCon.viewSavedSchools();
 	}
 
+	public int login(String username, String password) {
+		return this.sfCon.login(username, password);
+
+	}
 	/**
 	 * View how many times that a school is being saved by users
 	 * 

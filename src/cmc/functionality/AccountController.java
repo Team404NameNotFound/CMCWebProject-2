@@ -67,7 +67,7 @@ public class AccountController {
 		// throw new UnsupportedOperationException("Current account is an admin");
 		// else {
 		System.out.println("Account Controller this.viewSavedSchools: "+ this.getAccount());
-		for (University savedSchool : this.dbController.getSchoolList2(this.account)) {
+		for (University savedSchool : this.dbController.getSchoolList2(this.getAccount())) {
 			System.out.println(savedSchool.getName());
 		}
 		// }
@@ -260,7 +260,7 @@ public class AccountController {
 		if (!type.equals("") && type != null) {
 
 				if (type.equals("u") || type.equals("U")) 
-				{v
+				{
 					account.setUserType("u");
 				} 
 				else if (type.equals("a") || type.equals("A")) 

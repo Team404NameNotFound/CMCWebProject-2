@@ -11,6 +11,7 @@ import cmc.entity.*;
 public class StudentFunctionalityController extends UserFunctionalityController {
 
 	public SearchController searchCon;
+	AccountController account;
 
 	/**
 	 * Creating a new StudentFunctionalityController
@@ -28,7 +29,8 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 				if (this.DBCon.getAccount(userName).getUserStatus().equals("Y")) {
 					AccountController userAcc = new AccountController(this.DBCon.getAccount(userName));
 					if (userAcc.checkPassword(password)) {
-						this.account = new AccountController(this.DBCon.getAccount(userName));
+						this.account = new AccountController(userAcc.getAccount());
+						System.out.println("we here");
 						this.loggedIn = true;
 						return 0;
 					} else {
