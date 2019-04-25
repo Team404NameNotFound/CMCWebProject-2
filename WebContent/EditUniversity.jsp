@@ -32,8 +32,7 @@
 	}
 	else if(anyErrors != null && anyErrors.equals("-3"))
 	{
-		out.println("Helllo" + request.getParameter("UniName")); //);+ "%Female between 0 - 100");
-		//out.println("Name " + request.getParameter("UniName"));
+		out.println("Helllo" + request.getParameter("UniName"));
 	}
 	else if(anyErrors != null && anyErrors.equals("-4"))
 	{
