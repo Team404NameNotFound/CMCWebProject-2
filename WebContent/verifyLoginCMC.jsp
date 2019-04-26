@@ -3,7 +3,7 @@
 <%
 AccountInteraction sessionUser = (AccountInteraction) session.getAttribute("interaction");
 
-if(sessionUser == null || !sessionUser.getLoggedIn())
+if(!sessionUser.getLoggedIn() || sessionUser == null )
 {
 	response.sendRedirect("Login.jsp?Error=-6");
 	return;

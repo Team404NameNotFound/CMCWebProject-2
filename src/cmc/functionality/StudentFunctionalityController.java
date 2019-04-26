@@ -11,6 +11,21 @@ import cmc.entity.*;
 public class StudentFunctionalityController extends UserFunctionalityController {
 
 	public SearchController searchCon;
+	/**
+	 * @return the searchCon
+	 */
+	public SearchController getSearchCon() {
+		return searchCon;
+	}
+
+
+	/**
+	 * @param searchCon the searchCon to set
+	 */
+	public void setSearchCon(SearchController searchCon) {
+		this.searchCon = searchCon;
+	}
+
 	AccountController account;
 
 	/**

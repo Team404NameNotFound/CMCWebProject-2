@@ -39,8 +39,7 @@ int editStatus = adminInteraction.editUniversityInfo(name, state, location, cont
 if(editStatus == 1){
 	response.sendRedirect("ViewUniversities.jsp?");
 }else{
-	//response.sendRedirect("AddUniversity.jsp?Error="+editStatus);
-	request.getRequestDispatcher("AddUniversity.jsp?Error="+editStatus+"&UniName="+name).forward(request, response);
+	request.getRequestDispatcher("EditUniversity.jsp?Error="+editStatus).forward(request, response);
 }
 
 %>

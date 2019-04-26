@@ -39,7 +39,7 @@ public class AccountInteraction {
 	 *            password
 	 */
 	public int login(String username, String password) {
-		isLoggedIn = true;
+		this.isLoggedIn = true;
 		return this.UFCon.login(username, password);
 
 	}

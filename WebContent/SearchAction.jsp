@@ -1,37 +1,38 @@
 <%@ page language="java" import="cmc.interaction.*,java.util.*,cmc.functionality.*, cmc.entity.*"%>
-<%@include file="verifyLoginCMC.jsp" %>
 <%
 StudentInteraction student = (StudentInteraction)session.getAttribute("interaction");
-
+//Map<String,String[]> params = request.getParameterMap();
+//for(String key: params.keySet()){
+//out.print(key + " =**" + request.getParameter(key) + "**<br>");
+//} 
 String name  = request.getParameter("School");
-out.println(name);
 String state = request.getParameter("State");
 String location = request.getParameter("Loc");
 String control = request.getParameter("Cont");
-String numStudentsMin = request.getParameter("NumOfStud");
-String numStudentsMax = request.getParameter("NumOfStud");
-String percentFemaleMin = request.getParameter("PerFem");
-String percentFemaleMax = request.getParameter("PerFem");
-String SATVerbalMin = request.getParameter("SATVerbal");
-String SATVerbalMax = request.getParameter("SATVerbal");
-String SATMathMin = request.getParameter("SATMath");
-String SATMathMax= request.getParameter("SATMath");
-String expensesMin = request.getParameter("Exp");
-String expensesMax = request.getParameter("Exp");
-String PercentFinancialAidMin = request.getParameter("PerFinAid");
-String percenetFinancialAidMax = request.getParameter("PerFinAid");
-String numberApplicantsMin = request.getParameter("NumOfApp");
-String numberApplicantsMax = request.getParameter("NumOfApp");
-String percentAddmittedMin = request.getParameter("PerAdm");
-String percentAdmittedMax = request.getParameter("PerAdm");
-String percentEnrolledMin = request.getParameter("PerEnr");
-String percentEnrolledMax= request.getParameter("PerEnr");
-String academicScaleMin = request.getParameter("AccSc");
-String academicScaleMax = request.getParameter("AccSc");
-String socialScaleMin = request.getParameter("SocSc");
-String socialScaleMax = request.getParameter("SocSc");
-String qualityOfLifeMin = request.getParameter("QLSc");
-String qualityOfLifeMax = request.getParameter("QLSc");
+String numStudentsMin = request.getParameter("NumOfStudMin");
+String numStudentsMax = request.getParameter("NumOfStudMax");
+String percentFemaleMin = request.getParameter("PerFemMin");
+String percentFemaleMax = request.getParameter("PerFemMax");
+String SATVerbalMin = request.getParameter("SATVerbalMin");
+String SATVerbalMax = request.getParameter("SATVerbalMax");
+String SATMathMin = request.getParameter("SATMathMin");
+String SATMathMax= request.getParameter("SATMathMax");
+String expensesMin = request.getParameter("ExpMin");
+String expensesMax = request.getParameter("ExpMax");
+String PercentFinancialAidMin = request.getParameter("PerFinAidMin");
+String percenetFinancialAidMax = request.getParameter("PerFinAidMax");
+String numberApplicantsMin = request.getParameter("NumOfAppMin");
+String numberApplicantsMax = request.getParameter("NumOfAppMax");
+String percentAddmittedMin = request.getParameter("PerAdmMin");
+String percentAdmittedMax = request.getParameter("PerAdmMax");
+String percentEnrolledMin = request.getParameter("PerEnrMin");
+String percentEnrolledMax= request.getParameter("PerEnrMax");
+String academicScaleMin = request.getParameter("AccScMin");
+String academicScaleMax = request.getParameter("AccScMax");
+String socialScaleMin = request.getParameter("SocScMin");
+String socialScaleMax = request.getParameter("SocScMax");
+String qualityOfLifeMin = request.getParameter("QLScMin");
+String qualityOfLifeMax = request.getParameter("QLScMax");
 ArrayList<String> emphases = new ArrayList<String>();
 for(int i = 1; i < 9; i++){
 	String emphTemp = request.getParameter("Emp" + i);
@@ -46,7 +47,7 @@ if(!emphases.isEmpty()){
 		emphasesArray[j]  = emphases.get(j);
 	}
 }
-out.println(name);
+
 ArrayList<University> matches = student.fieldSearch(name, state, location, numStudentsMin, numStudentsMax,
 		percentFemaleMin, percentFemaleMax, SATVerbalMin, SATVerbalMax, SATMathMin, SATMathMax,
 		expensesMin, expensesMax, PercentFinancialAidMin, percenetFinancialAidMax, numberApplicantsMin,
@@ -54,11 +55,17 @@ ArrayList<University> matches = student.fieldSearch(name, state, location, numSt
 		percentEnrolledMax, academicScaleMin, academicScaleMax, socialScaleMin, socialScaleMax,
 		qualityOfLifeMin, qualityOfLifeMax, emphasesArray, control);
 
+
 int numOfMatches = matches.size();
 
 if(numOfMatches > 0){
 	for(int i = 0; i < numOfMatches; i++){
 		out.println(matches.get(i).getName());
 	}
+	request.getRequestDispatcher("ViewSearchResults.jsp").forward(request, response);
+}else{
+	
 }
+
+
 %>

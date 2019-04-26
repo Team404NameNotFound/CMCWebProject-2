@@ -10,6 +10,7 @@
 	AdminInteraction admin = (AdminInteraction)session.getAttribute("interaction");
 %>
 <body>
+
 	<form action="AddUniversityAction.jsp" name="addForm">
 		<table style="text-align: left; width: 523px; height: 180px;"
 			border="1" cellpadding="2" cellspacing="2">

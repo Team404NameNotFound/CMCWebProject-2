@@ -3,6 +3,12 @@
 <%
 
 AdminInteraction adminInteraction = (AdminInteraction)session.getAttribute("interaction");
+
+ Map<String,String[]> params = request.getParameterMap();
+for(String key: params.keySet()){
+out.println(key + " =**" + request.getParameter(key) + "**<br>");
+} 
+
 String name  = request.getParameter("School");
 String state = request.getParameter("State");
 String location = request.getParameter("Loc");
@@ -38,7 +44,8 @@ int addStatus = adminInteraction.addNewUniversity(name, state, location, control
 if(addStatus == 1){
 	response.sendRedirect("ViewUniversities.jsp?");
 }else{
-	response.sendRedirect("AddUniversity.jsp?Error="+addStatus);
+	//response.sendRedirect("AddUniversity.jsp?Error="+addStatus);
+	request.getRequestDispatcher("AddUniversity.jsp?Error="+addStatus).forward(request, response);
 }
 
 %>

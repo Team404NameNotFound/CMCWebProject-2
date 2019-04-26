@@ -9,14 +9,11 @@ import java.util.List;
 import cmc.entity.University;
 import cmc.entity.UserSavedSchool;
 import cmc.functionality.AccountController;
+import cmc.functionality.AdminFunctionalityController;
 import cmc.functionality.DBController;
 import cmc.functionality.SearchController;
 import cmc.functionality.StudentFunctionalityController;
 
-/**
- * @author tzhang001
- *
- */
 public class StudentInteraction extends AccountInteraction {
 
 	StudentFunctionalityController sfCon;
@@ -26,9 +23,14 @@ public class StudentInteraction extends AccountInteraction {
 	 * Create a new StudentInteraction
 	 */
 	public StudentInteraction() {
-		super();
-		sfCon = new StudentFunctionalityController();
+		//super();
+		this.sfCon = new StudentFunctionalityController();
 	}
+	
+	public StudentInteraction(StudentFunctionalityController sfCon) {
+		this.sfCon = sfCon;
+	}
+
 
 	/**
 	 * Student take the personal quiz
@@ -81,19 +83,6 @@ public class StudentInteraction extends AccountInteraction {
 	 *            numStduentsMax, maximal number of students
 	 */
 
-	/*
-	 * public ArrayList<University> fieldSearch(String schoolName, String state,
-	 * String location, int numStudentsMin, int numStudentsMax, float
-	 * percentFemaleMin, float percentFemaleMax, int SATVerbalMin, int SATVerbalMax,
-	 * int SATMathMin, int SATMathMax, int expensesMin, int expensesMax, float
-	 * PercentFinancialAidMin, float percenetFinancialAidMax, int
-	 * numberApplicantsMin, int numberApplicatnsMax, float percentAddmittedMin,
-	 * float percentAdmittedMax, float percentEnrolledMin, float percentEnrolledMax,
-	 * int academicScaleMin, int academicScaleMax, int socialScalemin, int
-	 * socialScaleMax, int qualityOfLifeMin, int qualityOfLifeMax, String[]
-	 * emphases, String control) {
-	 */
-
 	public ArrayList<University> fieldSearch(String schoolName, String state, String location, String numStudentsMinS,
 			String numStudentsMaxS, String percentFemaleMinS, String percentFemaleMaxS, String SATVerbalMinS,
 			String SATVerbalMaxS, String SATMathMinS, String SATMathMaxS, String expensesMinS, String expensesMaxS,
@@ -139,7 +128,7 @@ public class StudentInteraction extends AccountInteraction {
 		}
 
 		for (String p : percentParameters) {
-			if(!p.matches("\\d+(\\.\\d+)?") || Float.parseFloat(p) < 0 || Float.parseFloat(p) > 100 
+			if((!p.matches("\\d+(\\.\\d+)?") || Float.parseFloat(p) < 0 || Float.parseFloat(p) > 100) 
 					&& p.length() > 0){
 				throw new IllegalArgumentException("need to be percentage");
 			}
@@ -334,10 +323,6 @@ public class StudentInteraction extends AccountInteraction {
 				percentAddmittedMin, percentAdmittedMax, percentEnrolledMin, percentEnrolledMax, academicScaleMin,
 				academicScaleMax, socialScalemin, socialScaleMax, qualityOfLifeMin, qualityOfLifeMax, emphases,
 				control);
-
-		for (int i = 0; i < matchSchools.size(); i++) {
-			System.out.println(matchSchools.get(i).getName());
-		}
 
 		return matchSchools;
 	}
