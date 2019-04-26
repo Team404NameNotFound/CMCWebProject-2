@@ -8,7 +8,7 @@
    <%
 		StudentInteraction student = (StudentInteraction) session.getAttribute("interaction");
 		Account studentAccount = student.getAccount();
-		out.println("aCCOUNT="+studentAccount);
+		out.println("Saved schools for "+studentAccount.getUsername()+": ");
 	%>
 	<table style="text-align: left; width: 100%;" border="1"
 		cellpadding="2" cellspacing="2">
@@ -16,7 +16,7 @@
 			<tr align="center">
 
 				<td colspan="8" rowspan="1" style="vertical-align: top;"><a
-					href="studentMenu.jsp">BACK TO MENU</a></td>
+					href="StudentMenu.jsp">BACK TO MENU</a></td>
 
 			</tr>
 			<%
