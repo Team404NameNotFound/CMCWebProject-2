@@ -184,7 +184,7 @@ public class UserFunctionalityController {
 	 * @return
 	 */
 	public ArrayList<String> viewUniversityDetials(String universityName) {
-		University university = this.DBCon.getUniversity(universityName);
+		University university = this.DBCon.getUniversity2(universityName);
 		if (university == null) {
 			throw new IllegalArgumentException("University Does not exist");
 
