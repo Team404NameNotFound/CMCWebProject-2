@@ -393,6 +393,7 @@ public class StudentInteraction extends AccountInteraction {
 	}
 
 	public int login(String username, String password) {
+		isLoggedIn = true;
 		return this.sfCon.login(username, password);
 
 	}
