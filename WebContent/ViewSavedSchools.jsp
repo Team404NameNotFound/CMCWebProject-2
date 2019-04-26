@@ -26,6 +26,14 @@
 				for (int i = 0; i < savedSchools.size(); i++) {
 			%>
 			<tr>
+			<td style="vertical-align: top;">
+			<form method="post" action="RemoveSavedSchool.jsp"
+						name="Remove">
+						<input name="RemoveSavedSchool.jsp" value="Remove"
+							type="submit"> <input name="savedSchool"
+							value="<%=savedSchools.get(i).getName()%>" type="hidden">
+					</form>
+			</td>
 				<td style="vertical-align: top;">
 					<%
 						out.println(savedSchools.get(i).getName());
