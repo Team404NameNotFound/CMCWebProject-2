@@ -11,7 +11,6 @@ if(loginStatus == 0)
 	{
 		interaction = new AdminInteraction();
 		interaction.login(u,p);
-		//interaction.setUfCon(u);
 		interaction.setAccount(u);
 		session.setAttribute("interaction", interaction);
 		response.sendRedirect("AdminMenu.jsp");
@@ -19,7 +18,6 @@ if(loginStatus == 0)
 	if(interaction.viewProfile(u).get(4).equals("u"))
 	{
 		interaction = new StudentInteraction();
-		//interaction.setUfCon(u);
 		interaction.login(u,p);
 		interaction.setAccount(u);
 		session.setAttribute("interaction", interaction);
