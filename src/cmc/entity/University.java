@@ -373,5 +373,12 @@ public class University {
 	public void setEmphases(String[] emphases) {
 		this.emphases = emphases;
 	}
+	
+	public String negOneStripper(String value) {
+		if (value.equals("-1")) {
+			return "";
+		}
+		return value;
+	}
 
 }
