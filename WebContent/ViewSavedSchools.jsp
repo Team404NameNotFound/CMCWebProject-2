@@ -1,9 +1,10 @@
+<%@page language="java" import="cmc.entity.*, cmc.functionality.*, cmc.interaction.*, java.util.*"%>
+
 <html>
 <head>
 <title></title>
 </head>
 <body>
-	<%@page language="java" import="cmc.entity.*, cmc.functionality.*, cmc.interaction.*, java.util.*"%>
    <%
 		StudentInteraction student = (StudentInteraction) session.getAttribute("interaction");
 		Account studentAccount = student.getAccount();

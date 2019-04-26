@@ -1,5 +1,6 @@
 <%@ page language="java" import="cmc.interaction.*,java.util.*,cmc.functionality.*"%>
 
+
 <%
 
 AdminInteraction adminInteraction = (AdminInteraction)session.getAttribute("interaction");

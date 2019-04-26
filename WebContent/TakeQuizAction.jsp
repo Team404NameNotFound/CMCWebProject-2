@@ -1,4 +1,5 @@
 <%@ page language="java" import="cmc.interaction.AccountInteraction, cmc.functionality.*, java.util.*"%>
+
 <% 
 String q1 = request.getParameter("Q1");
 String q2 = request.getParameter("Q2");

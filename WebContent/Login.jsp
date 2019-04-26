@@ -1,6 +1,9 @@
 <%@ page language="java" import="cmc.interaction.*,  java.util.*"%>
 
-
+<%
+AccountInteraction user = new AccountInteraction();
+session.setAttribute("interaction", user);
+%>
 <html>
 <head>
 
@@ -62,6 +65,11 @@
 	{
 		out.println("User is already logged in");
 	}
+	else if(anyErrors != null && anyErrors.equals("-6"))
+	{
+		out.println("You must login before accessing this page");
+	}
+	
 	
 	String emailStatus = request.getParameter("emailStatus");
 	if(emailStatus != null && emailStatus.equals("0"))

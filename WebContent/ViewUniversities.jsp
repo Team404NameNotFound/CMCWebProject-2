@@ -131,15 +131,16 @@
 </html>
 
  --%>
-
+<%@page language="java" import="cmc.entity.*"
+		import="cmc.functionality.*" import="cmc.interaction.*"
+		import="java.util.ArrayList"%>
+		
 <html>
 <head>
 <title></title>
 </head>
 <body>
-	<%@page language="java" import="cmc.entity.*"
-		import="cmc.functionality.*" import="cmc.interaction.*"
-		import="java.util.ArrayList"%>
+
 	<%
 		AdminInteraction con = (AdminInteraction) session.getAttribute("interaction");
 		String anyErrors = request.getParameter("RemoveError");

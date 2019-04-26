@@ -1,5 +1,4 @@
 <%@ page language="java" import="cmc.*,java.util.*"%>
-
 <html>
 <head>
 <title>Add User Form</title>

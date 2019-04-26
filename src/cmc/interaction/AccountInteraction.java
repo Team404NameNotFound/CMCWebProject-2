@@ -12,6 +12,7 @@ import cmc.functionality.UserFunctionalityController;
 public class AccountInteraction {
 
 	protected UserFunctionalityController UFCon = new UserFunctionalityController();
+	protected Boolean isLoggedIn = false;
 	//protected String un = null;
 //	/**
 //	 * Create a new AccountInteraction
@@ -38,10 +39,16 @@ public class AccountInteraction {
 	 *            password
 	 */
 	public int login(String username, String password) {
+		isLoggedIn = true;
 		return this.UFCon.login(username, password);
 
 	}
 
+	public boolean getLoggedIn() {
+		Boolean loginStatus = this.isLoggedIn;
+		return loginStatus;
+	}
+	
 	/**
 	 * View a school's detail information
 	 * 
@@ -91,6 +98,7 @@ public class AccountInteraction {
 	 * Logs out the currently logged in user
 	 */
 	public boolean logout() {
+		isLoggedIn = false;
 		return this.UFCon.logout();
 	}
 
