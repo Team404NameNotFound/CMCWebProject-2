@@ -17,5 +17,7 @@
 	<br>
 	<a href="ViewUsers.jsp?username="+<%=request.getParameter("username")%>>Manage Users</a>
 	<br>
+	<a href="LogoutAction.jsp">Logout</a>
+	<br>
 </body>
 </html>

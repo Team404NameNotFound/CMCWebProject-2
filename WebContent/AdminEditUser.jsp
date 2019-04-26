@@ -9,6 +9,13 @@ String userName = request.getParameter("username");
 AdminInteraction afc = (AdminInteraction)session.getAttribute("interaction");
 %>
 <body>
+String message = request.getParameter("message");
+
+if(message != null && message.equals("-1"))
+{
+	out.println("User information updated successfully");
+}
+
 	<form action="EditUserAction.jsp" name="editForm">
 		<table style="text-align: left; width: 523px; height: 180px;"
 			border="1" cellpadding="2" cellspacing="2">

@@ -21,5 +21,7 @@
 	<br>
 	<a href="TakePersonalityQuiz.jsp">Take personality quiz</a>
 	<br>
+	<br>
+	<a href="LogoutAction.jsp">Logout</a>
 </body>
 </html>
