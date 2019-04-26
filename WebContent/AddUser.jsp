@@ -1,4 +1,5 @@
 <%@ page language="java" import="cmc.*,java.util.*"%>
+<%@include file="verifyLoginCMC.jsp" %>
 <html>
 <head>
 <title>Add User Form</title>

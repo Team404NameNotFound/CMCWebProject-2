@@ -1,5 +1,5 @@
 <%@ page language="java" import="cmc.interaction.*,java.util.*,cmc.functionality.*"%>
-
+<%@include file="verifyLoginCMC.jsp" %>
 <% 
 String u = request.getParameter("username");
 String p = request.getParameter("password");

@@ -1,5 +1,5 @@
 <%@ page language="java" import="cmc.interaction.*,java.util.*,cmc.functionality.*, cmc.entity.*"%>
-
+<%@include file="verifyLoginCMC.jsp" %>
 <%
 StudentInteraction student = (StudentInteraction)session.getAttribute("interaction");
 

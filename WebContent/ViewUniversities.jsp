@@ -134,7 +134,7 @@
 <%@page language="java" import="cmc.entity.*"
 		import="cmc.functionality.*" import="cmc.interaction.*"
 		import="java.util.ArrayList"%>
-		
+<%@include file="verifyLoginCMC.jsp" %>
 <html>
 <head>
 <title></title>
