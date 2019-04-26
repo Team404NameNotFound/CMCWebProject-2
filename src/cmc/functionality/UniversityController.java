@@ -52,6 +52,10 @@ public class UniversityController {
 		schoolDetails.add(school.getAcademicScale());
 		schoolDetails.add(school.getSocialScale());
 		schoolDetails.add(school.getQualityOfLife());
+		for(int i = 0; i < school.getEmphases().length; i++)
+		{
+			schoolDetails.add(school.getEmphases()[i]);
+		}
 		return schoolDetails;
 
 	}

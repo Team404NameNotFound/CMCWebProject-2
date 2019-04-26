@@ -34,7 +34,7 @@
 				<td style="vertical-align: top;">
 					<form method="post" action="ViewSavedSchoolDetails.jsp"
 						name="View">
-						<input name="ViewSavedSchoolDetails" value="View"
+						<input name="ViewSavedSchoolDetails.jsp" value="View"
 							type="submit"> <input name="savedSchool"
 							value="<%=savedSchools.get(i).getName()%>" type="hidden">
 					</form>
