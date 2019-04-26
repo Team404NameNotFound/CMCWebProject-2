@@ -27,13 +27,13 @@
 	<span style="font-weight: bold;">2. Which characteristics are
 		most important to you when looking for colleges?</span>
 	<br>
-	<input name="Q2" value="ACADEMIC" type="radio" checked>Prestige and
+	<input name="Q2" value="academic" type="radio" checked>Prestige and
 	challenging classes
 	<br>
-	<input name="Q2" value="SOCIAL" type="radio">Lots of parties and
+	<input name="Q2" value="social" type="radio">Lots of parties and
 	sporting events
 	<br>
-	<input name="Q2" value="QUALITYOFLIFE" type="radio">Good food and nice
+	<input name="Q2" value="qualityOfLife" type="radio">Good food and nice
 	dorms
 	<br>
 	<br>

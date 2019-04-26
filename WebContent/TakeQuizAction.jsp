@@ -1,100 +1,93 @@
-<%@ page language="java" import="cmc.interaction.AccountInteraction, cmc.functionality.*, java.util.*"%>
+<%@ page language="java" import="cmc.interaction.*, cmc.functionality.*, java.util.*"%>
 <%@include file="verifyLoginCMC.jsp" %>
 <% 
-String q1 = request.getParameter("Q1");
-String q2 = request.getParameter("Q2");
-String q3 = request.getParameter("Q3");
-String q4 = request.getParameter("Q4");
+String location = request.getParameter("Q1");
+String characteristic = request.getParameter("Q2");
+String control = request.getParameter("Q3");
+String emphasis = request.getParameter("Q4");
 
-//q1 location
-if(q1.equals("URBAN"))
+StudentInteraction stud = (StudentInteraction) session.getAttribute("interaction");
+
+//q3 size -- MODIFY
+if(control.equals("LARGE"))
 {
-	
+	control = "STATE";
 }
-else if(q1.equals("SMALL-CITY"))
+else if(control.equals("SEMI-LARGE"))
 {
-	
+	control = "STATE";
 }
-else if(q1.equals("SUBURBAN"))
+else if(control.equals("-1"))
 {
-	
+	control = "-1";
 }
-else if(q1.equals("-1"))
+else if(control.equals("SEMI-SMALL"))
 {
-	
+	control = "PRIVATE";
 }
-//q2 scales
-if(q2.equals("ACADEMIC"))
+else if(control.equals("SMALL"))
 {
-	
-}
-else if(q2.equals("SOCIAL"))
-{
-	
-}
-else if(q2.equals("QUALITYOFLIFE"))
-{
-	
-}
-//q3 size
-if(q3.equals("LARGE"))
-{
-	
-}
-else if(q3.equals("SEMI-LARGE"))
-{
-	
-}
-else if(q3.equals("-1"))
-{
-	
-}
-else if(q3.equals("SEMI-SMALL"))
-{
-	
-}
-else if(q3.equals("SMALL"))
-{
-	
+	control = "PRIVATE";
 }
 
-//q4 emphases
-if(q4.equals("BUSINESS"))
+//q4 emphasis
+String[] searchList = {};
+if(emphasis.equals("BUSINESS"))
 {
-	
+	String[] emphasesList = {"ACCOUNTING", "BUSINESS-ADMINISTRATION", "BUSINESS-EDUCATION", "ECONOMICS",
+			"COMMUNICATIONS", "COMMERCE", "MANAGEMENT", "MARKETING"};
+	searchList = emphasesList;
 }
-else if(q4.equals("MEDICINE"))
+else if(emphasis.equals("MEDICINE"))
 {
-	
+	String[] emphasesList = {"BIOLOGY", "BIOMED", "CHEMISTRY", "HEALTH-MEDICINE", "HEALTH-PROFESSIONS",
+			"HEALTH-SCIENCE", "MEDICAL-SCHOOL", "MEDICAL", "MEDICINE", "MOLECULAR-BIOLOGY", "NATURAL-SCIENCES",
+			"NURSING", "PHARMACY", "PRE-MED"};
+	searchList = emphasesList;
 }
-else if(q4.equals("ENGINEERING"))
+else if(emphasis.equals("ENGINEERING"))
 {
-	
+	String[] emphasesList = {"APPLIED-SCIENCE", "ARCHITECTURE", "APPLIED-TECHNOLOGY", "ARTS-AND-SCIENCES",
+			"CHEMICAL-ENGINEERING", "COMPUTER-SCIENCE", "ELECTRICAL-ENGINEERING", "ENGINEERING",
+			"MATH", "MATH-AND-SCIENCE", "MECHANICAL-ENGINEERING", "PHYSICAL-SCIENCES", "PHYSICS"};
+	searchList = emphasesList;
 }
-else if(q4.equals("MUSIC"))
+else if(emphasis.equals("MUSIC"))
 {
-	
+	String[] emphasesList = {"ARTS-AND-HUMANITIES", "FINE-ARTS", "FINE-AND-PERFORMING-ARTS", "PERFORMING-ARTS",
+			"MUSIC", "MUSIC-COMPOSITION", "MUSIC-EDUCATION", "MUSIC-PERFORMANCE"};
+	searchList = emphasesList;
 }
-else if(q4.equals("EDUCATION"))
+else if(emphasis.equals("EDUCATION"))
 {
-	
+	String[] emphasesList = {"BUSINESS-EDUCATION", "EDUCATION", "MUSIC-EDUCATION", "TEACHER-EDUCATION"};
+	searchList = emphasesList;
 }
-else if(q4.equals("LAW"))
+else if(emphasis.equals("LAW"))
 {
-	
+	String[] emphasesList = {"GOVERNMENT", "INTERNATIONAL-AFFAIRS", "LAW", "PHILOSOPHY", "POLITICAL-SCIENCE",
+			"PRE-LAW", "SOCIAL-SCIENCE", "SOCIAL-WORK"};
+	searchList = emphasesList;
 }
-else if(q4.equals("ENGLISH"))
+else if(emphasis.equals("ENGLISH"))
 {
-	
+	String[] emphasesList = {"ARTS-AND-HUMANITIES", "ENGLISH", "HUMANITIES"};
+	searchList = emphasesList;
 }
-else if(q4.equals("LIBERAL-ARTS"))
+else if(emphasis.equals("LIBERAL-ARTS"))
 {
-	
+	String[] emphasesList = {"LIBERAL-ARTS"};
+	searchList = emphasesList;
 }
-else if(q4.equals("-1"))
+else if(emphasis.equals("-1"))
 {
-	
+	String[] emphasesList = {};
+	searchList = emphasesList;
 }
 
-out.println(q1+" "+q2+" "+q3+" "+q4);
+
+out.println(location+" "+characteristic+" "+control+" "+searchList);
+
+stud.takeQuiz(location, characteristic, control, searchList);
+
 %>
