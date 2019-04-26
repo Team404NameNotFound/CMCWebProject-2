@@ -84,91 +84,91 @@
 					<td style="vertical-align: top;">State<br>
 					</td>
 					<td style="vertical-align: top;"><input name="State"
-						value="<%=university.getState()%>"><br></td>
+						value="<%=university.negOneStripper(university.getState())%>"><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">Location<br>
 					</td>
 					<td style="vertical-align: top;"><input name="Loc"
-						value="<%=university.getLocation()%>"><br></td>
+						value="<%=university.negOneStripper(university.getLocation())%>"><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">Control<br>
 					</td>
 					<td style="vertical-align: top;"><input name="Cont"
-						value="<%=university.getControl()%>"><br></td>
+						value="<%=university.negOneStripper(university.getControl())%>"><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">Number of Students<br>
 					</td>
 					<td style="vertical-align: top;"><input name="NumOfStud"
-						value="<%=university.getEnrollment()%>"><br></td>
+						value="<%=university.negOneStripper(university.getEnrollment())%>"><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">% Female<br>
 					</td>
 					<td style="vertical-align: top;"><input name="PerFem"
-						value="<%=university.getPercentFemale()%>"><br></td>
+						value="<%=university.negOneStripper(university.getPercentFemale())%>"><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">SAT Verbal<br>
 					</td>
 					<td style="vertical-align: top;"><input name="SATVerbal"
-						value="<%=university.getSatVerbal()%>"><br></td>
+						value="<%=university.negOneStripper(university.getSatVerbal())%>"><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">SAT Math<br>
 					</td>
 					<td style="vertical-align: top;"><input name="SATMath"
-						value="<%=university.getSatMath()%>"><br></td>
+						value="<%=university.negOneStripper(university.getSatMath())%>"><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">Expenses<br>
 					</td>
 					<td style="vertical-align: top;"><input name="Exp"
-						value="<%=university.getCost()%>"><br></td>
+						value="<%=university.negOneStripper(university.getCost())%>"><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">% Financial Aid<br>
 					</td>
 					<td style="vertical-align: top;"><input name="PerFinAid"
-						value="<%=university.getPercentFinAid()%>"><br></td>
+						value="<%=university.negOneStripper(university.getPercentFinAid())%>"><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">Number of Applicants<br>
 					</td>
 					<td style="vertical-align: top;"><input name="NumOfApp"
-						value="<%=university.getPercentEnrolled()%>"><br></td>
+						value="<%=university.negOneStripper(university.getApplicants())%>"><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">% Admitted<br>
 					</td>
 					<td style="vertical-align: top;"><input name="PerAdm"
-						value="<%=university.getPercentAdmitted()%>"><br></td>
+						value="<%=university.negOneStripper(university.getPercentAdmitted())%>"><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">% Enrolled<br>
 					</td>
 					<td style="vertical-align: top;"><input name="PerEnr"
-						value="<%=university.getApplicants()%>"><br></td>
+						value="<%=university.negOneStripper(university.getPercentEnrolled())%>"><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">Academic Scale(1-5)<br>
 					</td>
 					<td style="vertical-align: top;"><input name="AccSc"
-						value="<%=university.getAcademicScale()%>"><br></td>
+						value="<%=university.negOneStripper(university.getAcademicScale())%>"><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">Social Scale(1-5)<br>
 					</td>
 					<td style="vertical-align: top;"><input name="SocSc"
-						value="<%=university.getSocialScale()%>"><br></td>
+						value="<%=university.negOneStripper(university.getSocialScale())%>"><br></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">Quality of Life Scale(1-5)<br>
 					</td>
 					<td style="vertical-align: top;"><input name="QLSc"
-						value="<%=university.getQualityOfLife()%>"><br></td>
+						value="<%=university.negOneStripper(university.getQualityOfLife())%>"><br></td>
 				</tr>
 				<%String[] emphases = university.getEmphases();
 				int i = 0;
