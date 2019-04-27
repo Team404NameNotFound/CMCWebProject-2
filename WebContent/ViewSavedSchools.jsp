@@ -34,7 +34,7 @@
 			<tr align="center">
 
 				<td colspan="8" rowspan="1" style="vertical-align: top;"><a
-					href="CompareSchools.jsp">Compare Schools by Score</a></td>
+					href="CompareSchools2.jsp">Compare Schools by Score</a></td>
 
 			</tr>
 			<%
