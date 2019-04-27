@@ -45,6 +45,7 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 					AccountController userAcc = new AccountController(this.DBCon.getAccount(userName));
 					if (userAcc.checkPassword(password)) {
 						this.account = new AccountController(userAcc.getAccount());
+						super.account = new AccountController(userAcc.getAccount());
 						System.out.println("we here");
 						this.loggedIn = true;
 						return 0;

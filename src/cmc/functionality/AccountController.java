@@ -389,7 +389,7 @@ public class AccountController {
 	 */
 	public ArrayList<String> compareSchoolsByScore() {
 
-		if (this.account == null || this.account.getUserType().equals("a")) {
+		if (account == null || account.getUserType().equals("a")) {
 			throw new UnsupportedOperationException("Invalid account to compare scores");
 		}
 
@@ -404,7 +404,8 @@ public class AccountController {
 
 		String[] savedSchoolNames = new String[savedSchools.size()];
 		for (int i = 0; i < savedSchools.size(); i++) {
-			scores[i][0] = Double.parseDouble(savedSchools.get(i).getSatMath());
+			scores[i][0] = (Double.parseDouble(savedSchools.get(i).getSatMath()) + Double.parseDouble(savedSchools.get(i).getSatVerbal()))/2;
+			//scores[i][0] = Double.parseDouble((savedSchools.get(i).getSatMath()) + Double.parseDouble((savedSchools.get(i).getSatVerbal())))/2;
 			scores[i][1] = Double.parseDouble("" + i);
 			savedSchoolNames[i] = savedSchools.get(i).getName();
 		}
