@@ -8,16 +8,6 @@
 <div class="header">
   <h1>ChooseMyCollege</h1>
 </div>
-<div class="topnav">
-  <a href="StudentMenu.jsp">Menu</a>
-  <a href="StudentEditUser.jsp">Manage my profile</a>
-  <a href="ViewSavedSchools.jsp">Manage my saved schools</a>
-  <a href="Search.jsp">Search</a>
-  <a href="TakePersonalityQuiz.jsp">Take Quiz</a>
-  <a href="LogoutAction.jsp">Logout</a>
-</div>
-<br>
-<br>
 
 <form method="post" action="ForgotPasswordAction.jsp" name="Login">
 		<br>
