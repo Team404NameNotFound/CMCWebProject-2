@@ -6,6 +6,19 @@
 <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
 <title></title>
 </head>
+<style>
+<%@include file="styleCMC.css" %>
+<%@include file="topNavBarStyle.css" %>
+</style>
+<div class="header">
+  <h1>Admin Menu</h1>
+</div>
+<div class="topnav">
+  <a class="active" href="AdminMenu.jsp">Menu</a>
+  <a href="ViewUniversities.jsp?username="+<%=request.getParameter("username")%>>Manage universities</a>
+  <a href="ViewUsers.jsp?username="+<%=request.getParameter("username")%>>Manage users</a>
+  <a href="LogoutAction.jsp">Log out</a>
+</div>
 
 <%
 	String uniName = request.getParameter("universityName"); //from viewUniversities
@@ -14,10 +27,7 @@
 	ArrayList<University> universityList = afc.viewSchoolList();
 	boolean found = false; 
 	DBController dbCon = new DBController();
-	out.println("EDIT ACTION,  UNI NAME " + uniName +"<br>");
-
 	University university = dbCon.getUniversity2(uniName);
-	out.println("EDIT ACTION, DB RETURN UNI NAME " + university.getName());
 %>
 <body>
 	<%

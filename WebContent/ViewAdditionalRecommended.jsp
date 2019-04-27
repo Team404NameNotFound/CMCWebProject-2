@@ -11,7 +11,8 @@
 	   StudentInteraction student = (StudentInteraction)session.getAttribute("interaction");
 	   String matchSchool = request.getParameter("School");
 	   ArrayList<String> matchDetails = student.viewSchoolDetails(matchSchool);
-	   String[] matchEmphs = student.getSchoolEmphases(matchSchool);%>
+	   String[] matchEmphs = student.getSchoolEmphases(matchSchool);
+	   String matchSavedTimes = student.viewUserSavedStatistics(matchSchool);   %>
 	   
 	   
 	   <table style="text-align: left; width: 100%;" border="1"
@@ -121,6 +122,12 @@
 					<td style="vertical-align: top;"><input name="QLSc"
 						value="<%=matchDetails.get(15)%>"><br></td>
 				</tr>
+				<tr>
+					<td style="vertical-align: top;">Matching School User Saved Times<br>
+					</td>
+					<td style="vertical-align: top;"><input name="QLSc"
+						value="<%=matchSavedTimes%>"><br></td>
+				</tr>
 
 				<tr>
 					<td style="vertical-align: top;">
@@ -139,7 +146,7 @@
 	   for (int i = 0; i < recommends.size(); i++) {
 		   ArrayList<String> details = student.viewSchoolDetails(recommends.get(i).getName());
 		   String[] emphs = student.getSchoolEmphases(recommends.get(i).getName());
-		  // out.println("MAY WE ALSO RECOMMEND");
+		   String savedTimes = student.viewUserSavedStatistics(recommends.get(i).getName());
 		   
 	%>
 	<table style="text-align: left; width: 100%;" border="1"
@@ -249,6 +256,12 @@
 					</td>
 					<td style="vertical-align: top;"><input name="QLSc"
 						value="<%=details.get(15)%>"><br></td>
+				</tr>
+				<tr>
+					<td style="vertical-align: top;">User Saved Times<br>
+					</td>
+					<td style="vertical-align: top;"><input name="QLSc"
+						value="<%=savedTimes%>"><br></td>
 				</tr>
 
 				<tr>

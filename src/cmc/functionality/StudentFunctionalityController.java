@@ -258,10 +258,9 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 		}
 		String[] stats = { "", "" };
 		int savedTimes = this.DBCon.getUserSavedStatistics(school);
-		System.out.println(school + " has been saved for " + savedTimes + " times");
 		stats[0] = school;
 		stats[1] = savedTimes + "";
-		return stats[0] + " " + stats[1];
+		return stats[1];
 	}
 
 	/**

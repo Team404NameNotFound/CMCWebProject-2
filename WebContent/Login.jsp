@@ -35,7 +35,7 @@ session.setAttribute("interaction", user);
 				<tr>
 					<td style="vertical-align: top;">Password<br>
 					</td>
-					<td style="vertical-align: top;"><input name="password">
+					<td style="vertical-align: top;"><input name="password" type = "password">
 					</td>
 				</tr>
 				<tr>

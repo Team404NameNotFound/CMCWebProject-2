@@ -7,18 +7,28 @@
 <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
 <title></title>
 </head>
+<style>
+<%@include file="styleCMC.css" %>
+<%@include file="topNavBarStyle.css" %>
+</style>
+<br>
+<br>
 <body>
+
 <%
 		AdminInteraction admin = (AdminInteraction) session.getAttribute("interaction");
 		Account adminAccount = admin.getAccount();
 	%>
-	Welcome : <%=adminAccount.getUsername()%>
-	<br>
-	<a href="ViewUniversities.jsp?username="+<%=request.getParameter("username")%>>Manage Universities</a>
-	<br>
-	<a href="ViewUsers.jsp?username="+<%=request.getParameter("username")%>>Manage Users</a>
-	<br>
-	<a href="LogoutAction.jsp">Logout</a>
-	<br>
+	<div class="header">
+  <h1>Admin Menu</h1>
+  <p>Welcome : <%=adminAccount.getUsername()%></p>
+</div>
+<div class="topnav">
+  <a class="active" href="AdminMenu.jsp">Menu</a>
+  <a href="ViewUniversities.jsp?username="+<%=request.getParameter("username")%>>Manage universities</a>
+  <a href="ViewUsers.jsp?username="+<%=request.getParameter("username")%>>Manage users</a>
+  <a href="LogoutAction.jsp.jsp">Log out</a>
+</div>
+
 </body>
 </html>

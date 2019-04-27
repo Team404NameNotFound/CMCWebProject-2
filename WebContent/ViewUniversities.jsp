@@ -6,6 +6,20 @@
 <head>
 <title></title>
 </head>
+<style>
+<%@include file="styleCMC.css" %>
+<%@include file="topNavBarStyle.css" %>
+</style>
+<div class="header">
+  <h1>Admin Menu</h1>
+</div>
+<div class="topnav">
+  <a class="active" href="AdminMenu.jsp">Menu</a>
+  <a href="ViewUniversities.jsp?username="+<%=request.getParameter("username")%>>Manage universities</a>
+  <a href="ViewUsers.jsp?username="+<%=request.getParameter("username")%>>Manage users</a>
+  <a href="LogoutAction.jsp">Log out</a>
+</div>
+
 <body>
 
 	<%
@@ -20,7 +34,7 @@
 	%>
 
 	<table style="text-align: left; width: 100%;" border="1"
-		cellpadding="2" cellspacing="2">
+		cellpadding="2" cellspacing="2" class="center">
 		<tbody>
 			<tr align="center">
 
@@ -173,6 +187,7 @@
 	</table>
 	<br>
 	<br>
+
 </body>
 </html>
 
