@@ -13,13 +13,10 @@
 
 <div class="header">
   <h1>ChooseMyCollege</h1>
+  <p>School Details</p>
 </div>
 <div class="topnav">
   <a href="StudentMenu.jsp">Menu</a>
-  <a href="StudentEditUser.jsp">Manage my profile</a>
-  <a href="ViewSavedSchools.jsp">Manage my saved schools</a>
-  <a href="Search.jsp">Search</a>
-  <a href="TakePersonalityQuiz.jsp">Take Quiz</a>
   <a href="LogoutAction.jsp">Logout</a>
 </div>
 
@@ -36,7 +33,7 @@
 	   <table style="text-align: left; width: 100%;" border="1"
 		cellpadding="2" cellspacing="2">
 		<tbody>
-			<form method="post" action="SaveSchool.jsp" name="SaveSchool">
+			<%out.print("School information: "+matchSchool+"  "); %><form method="post" action="SaveSchool.jsp" name="SaveSchool">
 						<input name="Save" value="Save" type="submit"> <input
 							name="School" value="<%=matchSchool%>"
 							type="hidden">

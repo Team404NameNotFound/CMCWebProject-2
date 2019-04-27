@@ -18,7 +18,7 @@
   <a href="AdminMenu.jsp">Menu</a>
   <a href="LogoutAction.jsp">Log out</a>
 </div>
-	
+<body>
 	<%
 		AdminInteraction con = (AdminInteraction) session.getAttribute("interaction");
 	%>
