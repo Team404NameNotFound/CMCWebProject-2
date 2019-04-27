@@ -8,6 +8,16 @@ session.setAttribute("interaction", user);
 
 <title>Login Form</title>
 </head>
+<style>
+body {background-image: url("bookBackground.jpg");
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;}
+</style>
+
+
 <body>
 	<br> Login form:
 	<br>
