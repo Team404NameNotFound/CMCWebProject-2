@@ -6,9 +6,32 @@
 <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
 <title></title>
 </head>
-<body>
+
+<style>
+<%@include file="styleCMC.css" %>
+<%@include file="topNavBarStyle.css" %>
+</style>
+
+<div class="header">
+  <h1>ChooseMyCollege</h1>
+</div>
+<div class="topnav">
+  <a href="StudentMenu.jsp">Menu</a>
+  <a href="StudentEditUser.jsp">Manage my profile</a>
+  <a href="ViewSavedSchools.jsp">Manage my saved schools</a>
+  <a href="Search.jsp">Search</a>
+  <a class="active" href="TakePersonalityQuiz.jsp">Take Quiz</a>
+  <a href="LogoutAction.jsp">Logout</a>
+</div>
+<br>
+<br>
+
+<body text="white">
+<div>
+    <div style="float: left; width: 50%">
+
 	<form method="post" action="TakeQuizAction.jsp" name="Quiz">
-	<span style="font-weight: bold;">1. How would you describe the
+	<span style="font-weight: bold; color:#FED0C6">1. How would you describe the
 		location of your ideal college?</span>
 	<br>
 	<input name="Q1" value="URBAN" type="radio" checked>Walking distance to
@@ -24,7 +47,7 @@
 	matter to me
 	<br>
 	<br>
-	<span style="font-weight: bold;">2. Which characteristics are
+	<span style="font-weight: bold; color:#FED0C6">2. Which characteristics are
 		most important to you when looking for colleges?</span>
 	<br>
 	<input name="Q2" value="academic" type="radio" checked>Prestige and
@@ -37,7 +60,7 @@
 	dorms
 	<br>
 	<br>
-	<span style="font-weight: bold;">3. I prefer large lectures
+	<span style="font-weight: bold; color:#FED0C6">3. I prefer large lectures
 		where I can observe and be anonymous, rather than small discussions
 		with lots of participation and my professors know my name</span>
 	<br>
@@ -52,7 +75,7 @@
 	<input name="Q3" value="SMALL" type="radio">Strongly Agree
 	<br>
 	<br>
-	<span style="font-weight: bold;">4. What would you like to
+	<span style="font-weight: bold; color:#FED0C6">4. What would you like to
 		study?<br>
 	</span>
 	<input name="Q4" value="BUSINESS" type="radio" checked>Business or a related
@@ -80,8 +103,10 @@
 	<br>
 	<input name="Q4" value="-1" type="radio">Unsure
 	<br>
-	<span style="font-weight: bold;"><br> </span>
+	<span style="font-weight: bold; color:#FED0C6"><br> </span>
 	<input name="quizResults" value="Submit" type="submit"> <br>
 	</form>
+	</div>
+</div>
 </body>
 </html>

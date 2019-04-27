@@ -4,9 +4,30 @@
 <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
 <title></title>
 </head>
+
+<style>
+<%@include file="styleCMC.css" %>
+<%@include file="topNavBarStyle.css" %>
+</style>
+
 <%  
 	StudentInteraction student = (StudentInteraction)session.getAttribute("interaction");
 %>
+
+<div class="header">
+  <h1>ChooseMyCollege</h1>
+</div>
+<div class="topnav">
+  <a href="StudentMenu.jsp">Menu</a>
+  <a href="StudentEditUser.jsp">Manage my profile</a>
+  <a href="ViewSavedSchools.jsp">Manage my saved schools</a>
+  <a class="active" href="Search.jsp">Search</a>
+  <a href="TakePersonalityQuiz.jsp">Take Quiz</a>
+  <a href="LogoutAction.jsp">Logout</a>
+</div>
+<br>
+<br>
+
 <body>
 	<form action="SearchAction.jsp" name="SearchMenu">
 		<table style="text-align: left; width: 960px; height: 180px;"

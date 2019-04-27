@@ -5,13 +5,36 @@
 <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
 <title></title>
 </head>
+
+<style>
+<%@include file="styleCMC.css" %>
+<%@include file="topNavBarStyle.css" %>
+</style>
+
+
 <%
 StudentInteraction student = (StudentInteraction) session.getAttribute("interaction");
 Account studentAccount = student.getAccount();
 
 ArrayList<String> user = new ArrayList<String>();
 user = student.viewProfile(studentAccount.getUsername());
+%>
 
+<div class="header">
+  <h1>ChooseMyCollege</h1>
+</div>
+<div class="topnav">
+  <a href="StudentMenu.jsp">Menu</a>
+  <a class="active" href="StudentEditUser.jsp">Manage my profile</a>
+  <a href="ViewSavedSchools.jsp">Manage my saved schools</a>
+  <a href="Search.jsp">Search</a>
+  <a href="TakePersonalityQuiz.jsp">Take Quiz</a>
+  <a href="LogoutAction.jsp">Logout</a>
+</div>
+<br>
+<br>
+
+<%
 String message = request.getParameter("message");
 
 if(message != null && message.equals("-1"))
@@ -19,6 +42,8 @@ if(message != null && message.equals("-1"))
 	out.println("User information updated successfully");
 }
 %>
+<br>
+<br>
 <body>
 	<form action="StudentEditUserAction.jsp" name="editForm">
 		<table style="text-align: left; width: 523px; height: 180px;"
