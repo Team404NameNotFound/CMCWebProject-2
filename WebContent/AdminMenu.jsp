@@ -19,7 +19,7 @@
 		Account adminAccount = admin.getAccount();
 	%>
 		<div class="header">
-  <h1>Admin Menu</h1>
+  <h1>ChooseMyCollege</h1>
   <p>Welcome : <%=adminAccount.getUsername()%></p>
 </div>
 <div class="topnav">
