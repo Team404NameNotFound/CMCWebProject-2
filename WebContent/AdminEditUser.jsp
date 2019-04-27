@@ -10,19 +10,21 @@
 <%@include file="topNavBarStyle.css" %>
 </style>
 <div class="header">
-  <h1>Admin Menu</h1>
+  <h1>ChooseMyCollege</h1>
+  <p>Edit User </p>
 </div>
 <div class="topnav">
-  <a class="active" href="AdminMenu.jsp">Menu</a>
-  <a href="ViewUniversities.jsp?username="+<%=request.getParameter("username")%>>Manage universities</a>
-  <a href="ViewUsers.jsp?username="+<%=request.getParameter("username")%>>Manage users</a>
+  <a href="AdminMenu.jsp">Menu</a>
   <a href="LogoutAction.jsp">Log out</a>
 </div>
+
 <%
 String userName = request.getParameter("username");
 AdminInteraction afc = (AdminInteraction)session.getAttribute("interaction");
 %>
 <body>
+<br>
+<br>
 <% 
 String message = request.getParameter("message");
 
@@ -34,7 +36,8 @@ if(message != null && message.equals("-1"))
 
 	<form action="EditUserAction.jsp" name="editForm">
 		<table style="text-align: left; width: 523px; height: 180px;"
-			border="1" cellpadding="2" cellspacing="2">
+			border="1" cellpadding="2" cellspacing="2"
+			class = "center">
 			<tbody>
 				<tr>
 					<td style="vertical-align: top;">First Name<br>
