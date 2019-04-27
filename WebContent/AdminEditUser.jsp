@@ -5,17 +5,32 @@
 <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
 <title></title>
 </head>
+<style>
+<%@include file="styleCMC.css" %>
+<%@include file="topNavBarStyle.css" %>
+</style>
+<div class="header">
+  <h1>Admin Menu</h1>
+</div>
+<div class="topnav">
+  <a class="active" href="AdminMenu.jsp">Menu</a>
+  <a href="ViewUniversities.jsp?username="+<%=request.getParameter("username")%>>Manage universities</a>
+  <a href="ViewUsers.jsp?username="+<%=request.getParameter("username")%>>Manage users</a>
+  <a href="LogoutAction.jsp">Log out</a>
+</div>
 <%
 String userName = request.getParameter("username");
 AdminInteraction afc = (AdminInteraction)session.getAttribute("interaction");
 %>
 <body>
+<% 
 String message = request.getParameter("message");
 
 if(message != null && message.equals("-1"))
 {
 	out.println("User information updated successfully");
 }
+%>
 
 	<form action="EditUserAction.jsp" name="editForm">
 		<table style="text-align: left; width: 523px; height: 180px;"
