@@ -27,21 +27,21 @@ session.setAttribute("interaction", user);
 			class="center">
 			<tbody>
 				<tr>
-					<td style="vertical-align: top;"> Username<br>
+					<td style="vertical-align: center;"> Username<br>
 					</td>
-					<td style="vertical-align: top;"><input name="username">
-					</td>
-				</tr>
-				<tr>
-					<td style="vertical-align: top;">Password<br>
-					</td>
-					<td style="vertical-align: top;"><input name="password" type = "password">
+					<td style="vertical-align: center;"><input name="username">
 					</td>
 				</tr>
 				<tr>
-				<td style="vertical-align: top;"><input value="Log in"
+					<td style="vertical-align: center;">Password<br>
+					</td>
+					<td style="vertical-align: center;"><input name="password" type = "password">
+					</td>
+				</tr>
+				<tr>
+				<td style="vertical-align: center; style="text-align:center""><input value="Log in"
 					name="Log in" type="submit"></td>
-				<td style="vertical-align: top;"><input value="Reset"
+				<td style="vertical-align: center style="text-align:center";"><input value="Reset"
 					name="Reset" type="reset"></td>
 				</tr>
 			</tbody>
