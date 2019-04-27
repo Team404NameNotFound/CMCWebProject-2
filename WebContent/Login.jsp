@@ -9,20 +9,7 @@ session.setAttribute("interaction", user);
 <title>Login Form</title>
 </head>
 <style>
-body {background-image: url("bookBackground.jpg");
-  height: 500px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;}
-table { border:ridge 5px red; background-color:#FED0C6; color:#000000;}
-.header {
-  padding: 20px;
-  text-align: center;
-  background: #FED0C6;
-  color: black;
-  font-size: 18px;
-}
+<%@include file="styleCMC.css" %>
 </style>
 
 
