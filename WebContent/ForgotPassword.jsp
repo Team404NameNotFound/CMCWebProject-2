@@ -29,6 +29,9 @@
 		</table>
 		<br>
 	</form>
+	<div style="text-align:center">    
+  		<a href="Login.jsp"style="color:blue; text-align:center">Back to Menu</a>
+	</div>
 	
 	<%
 	String emailStatus = request.getParameter("emailStatus");
