@@ -11,12 +11,11 @@
 <%@include file="topNavBarStyle.css" %>
 </style>
 <div class="header">
-  <h1>Admin Menu</h1>
+  <h1>ChooseMyCollege</h1>
+  <p>View Universities </p>
 </div>
 <div class="topnav">
-  <a class="active" href="AdminMenu.jsp">Menu</a>
-  <a href="ViewUniversities.jsp?username="+<%=request.getParameter("username")%>>Manage universities</a>
-  <a href="ViewUsers.jsp?username="+<%=request.getParameter("username")%>>Manage users</a>
+  <a href="AdminMenu.jsp">Menu</a>
   <a href="LogoutAction.jsp">Log out</a>
 </div>
 
@@ -32,7 +31,8 @@
 			out.println("This school cannot be removed because it has emphases or it has been saved by a user");
 		}
 	%>
-
+<br>
+<br>
 	<table style="text-align: left; width: 100%;" border="1"
 		cellpadding="2" cellspacing="2" class="center">
 		<tbody>
