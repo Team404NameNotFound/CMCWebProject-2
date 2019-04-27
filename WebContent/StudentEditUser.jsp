@@ -47,7 +47,8 @@ if(message != null && message.equals("-1"))
 <body>
 	<form action="StudentEditUserAction.jsp" name="editForm">
 		<table style="text-align: left; width: 523px; height: 180px;"
-			border="1" cellpadding="2" cellspacing="2">
+			border="1" cellpadding="2" cellspacing="2"
+			class="center">
 			<tbody>
 				<tr>
 					<td style="vertical-align: top;">First Name<br>

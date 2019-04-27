@@ -23,7 +23,8 @@ session.setAttribute("interaction", user);
 	<form method="post" action="LoginAction.jsp" name="Login">
 		<br>
 		<table style="text-align: left; width: 266px; height: 228px;"
-			border="1" cellpadding="2" cellspacing="2" background="white">
+			border="1" cellpadding="2" cellspacing="2" background="white"
+			class="center">
 			<tbody>
 				<tr>
 					<td style="vertical-align: top;"> Username<br>
@@ -47,9 +48,9 @@ session.setAttribute("interaction", user);
 		</table>
 		<br>
 	</form>
-	
-	<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-	<a href="ForgotPassword.jsp"style="color:blue"> Forgot password?</a>
+	<div style="text-align:center">    
+  <a href="ForgotPassword.jsp"style="color:blue; text-align:center">Forgot password?</a>
+</div>
 	<br>
 	<br>
 	<br>
