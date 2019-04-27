@@ -359,6 +359,10 @@ public class StudentInteraction extends AccountInteraction {
 		this.sfCon.viewSchoolDetails(universityName);
 		return this.sfCon.viewSchoolDetails(universityName);
 	}
+	
+	public String[] getSchoolEmphases(String universityName) {
+		return this.dbCon.getUniversity2(universityName).getEmphases();
+	}
 
 	/**
 	 * View a specific saved school's detail information

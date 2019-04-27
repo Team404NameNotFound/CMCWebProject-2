@@ -73,7 +73,7 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 			throw new IllegalArgumentException(universityName + "is not in this database");
 		}
 		University uni = this.DBCon.getUniversity(universityName);
-		ArrayList<University> rankedUniversities = this.searchCon.rankUniversity(uni);
+		ArrayList<University> rankedUniversities = this.searchCon.rankUniversity2(uni);
 		return rankedUniversities;
 	}
 
