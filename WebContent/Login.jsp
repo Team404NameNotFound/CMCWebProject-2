@@ -15,17 +15,28 @@ body {background-image: url("bookBackground.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;}
+table { border:ridge 5px red; background-color:#FED0C6; color:#000000; }
+.header {
+  padding: 20px;
+  text-align: center;
+  background: #FED0C6;
+  color: black;
+  font-size: 18px;
+}
 </style>
 
 
 <body>
-	<br> Login form:
+<div class="header">
+  <h1>Welcome to ChooseMyCollege</h1>
+  <p>Login:</p>
+</div>
 	<br>
 	<br>
 	<form method="post" action="LoginAction.jsp" name="Login">
 		<br>
 		<table style="text-align: left; width: 266px; height: 228px;"
-			border="1" cellpadding="2" cellspacing="2">
+			border="1" cellpadding="2" cellspacing="2" background="white">
 			<tbody>
 				<tr>
 					<td style="vertical-align: top;"> Username<br>
@@ -50,8 +61,8 @@ body {background-image: url("bookBackground.jpg");
 		<br>
 	</form>
 	
-	<br>
-	<a href="ForgotPassword.jsp">Forgot password?</a>
+	<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+	<a href="ForgotPassword.jsp"> Forgot password?</a>
 	<br>
 	<br>
 	<br>
