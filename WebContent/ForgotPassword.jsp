@@ -7,12 +7,14 @@
 
 <div class="header">
   <h1>ChooseMyCollege</h1>
+  <p>Forgot Password</p>
 </div>
 
 <form method="post" action="ForgotPasswordAction.jsp" name="Login">
 		<br>
-		<table style="text-align: left; width: 266px; height: 228px;"
-			border="1" cellpadding="2" cellspacing="2"
+		<br>
+		<table style="text-align: left; width: auto; height: atuo;"
+			border="1" cellpadding="10" cellspacing="2"
 			class="center">
 			<tbody>
 				<tr>
