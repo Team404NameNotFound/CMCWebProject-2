@@ -26,7 +26,7 @@
   <a class="active" href="AdminMenu.jsp">Menu</a>
   <a href="ViewUniversities.jsp">Manage universities</a>
   <a href="ViewUsers.jsp">Manage users</a>
-  <a href="LogoutAction.jsp.jsp">Log out</a>
+  <a href="LogoutAction.jsp">Log out</a>
 </div>
 
 </body>
