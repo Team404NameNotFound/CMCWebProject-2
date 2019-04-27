@@ -25,6 +25,14 @@
 </div>
 <br>
 <br>
+<% 
+String anyErrors = request.getParameter("Error");
+	
+	if(anyErrors != null && anyErrors.equals("-1"))
+	{
+		out.println("No matches found");
+	}
+%>
 
 <body text="white">
 <div>

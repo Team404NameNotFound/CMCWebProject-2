@@ -40,25 +40,105 @@ public class StudentInteraction extends AccountInteraction {
 	 * @param control
 	 * @param emphasis
 	 */
-	public ArrayList<University> takeQuiz(String location, String characteristic, String control, String[] emphasis) {
+	public ArrayList<University> takeQuiz(String location, String characteristic, String control, String emphasis) {
 		ArrayList<University> personalMatches = new ArrayList<University>();
 
 		if (location.equals("") || control.equals("") || characteristic.equals("")) {
 			throw new IllegalArgumentException("Sorry, you must answer all questions");
-		} else {
+		}
+		else
+		{
+			//question 1
+			if(control.equals("LARGE"))
+			{
+				control = "STATE";
+			}
+			else if(control.equals("SEMI-LARGE"))
+			{
+				control = "STATE";
+			}
+			else if(control.equals("-1"))
+			{
+				control = "-1";
+			}
+			else if(control.equals("SEMI-SMALL"))
+			{
+				control = "PRIVATE";
+			}
+			else if(control.equals("SMALL"))
+			{
+				control = "PRIVATE";
+			}
+			
+			//question 4
+			String[] searchList = {};
+			if(emphasis.equals("BUSINESS"))
+			{
+				String[] emphasesList = {"ACCOUNTING", "BUSINESS-ADMINISTRATION", "BUSINESS-EDUCATION", "ECONOMICS",
+						"COMMUNICATIONS", "COMMERCE", "MANAGEMENT", "MARKETING"};
+				searchList = emphasesList;
+			}
+			else if(emphasis.equals("MEDICINE"))
+			{
+				String[] emphasesList = {"BIOLOGY", "BIOMED", "CHEMISTRY", "HEALTH-MEDICINE", "HEALTH-PROFESSIONS",
+						"HEALTH-SCIENCE", "MEDICAL-SCHOOL", "MEDICAL", "MEDICINE", "MOLECULAR-BIOLOGY", "NATURAL-SCIENCES",
+						"NURSING", "PHARMACY", "PRE-MED"};
+				searchList = emphasesList;
+			}
+			else if(emphasis.equals("ENGINEERING"))
+			{
+				String[] emphasesList = {"APPLIED-SCIENCE", "ARCHITECTURE", "APPLIED-TECHNOLOGY", "ARTS-AND-SCIENCES",
+						"CHEMICAL-ENGINEERING", "COMPUTER-SCIENCE", "ELECTRICAL-ENGINEERING", "ENGINEERING",
+						"MATH", "MATH-AND-SCIENCE", "MECHANICAL-ENGINEERING", "PHYSICAL-SCIENCES", "PHYSICS"};
+				searchList = emphasesList;
+			}
+			else if(emphasis.equals("MUSIC"))
+			{
+				String[] emphasesList = {"ARTS-AND-HUMANITIES", "FINE-ARTS", "FINE-AND-PERFORMING-ARTS", "PERFORMING-ARTS",
+						"MUSIC", "MUSIC-COMPOSITION", "MUSIC-EDUCATION", "MUSIC-PERFORMANCE"};
+				searchList = emphasesList;
+			}
+			else if(emphasis.equals("EDUCATION"))
+			{
+				String[] emphasesList = {"BUSINESS-EDUCATION", "EDUCATION", "MUSIC-EDUCATION", "TEACHER-EDUCATION"};
+				searchList = emphasesList;
+			}
+			else if(emphasis.equals("LAW"))
+			{
+				String[] emphasesList = {"GOVERNMENT", "INTERNATIONAL-AFFAIRS", "LAW", "PHILOSOPHY", "POLITICAL-SCIENCE",
+						"PRE-LAW", "SOCIAL-SCIENCE", "SOCIAL-WORK"};
+				searchList = emphasesList;
+			}
+			else if(emphasis.equals("ENGLISH"))
+			{
+				String[] emphasesList = {"ARTS-AND-HUMANITIES", "ENGLISH", "HUMANITIES"};
+				searchList = emphasesList;
+			}
+			else if(emphasis.equals("LIBERAL-ARTS"))
+			{
+				String[] emphasesList = {"LIBERAL-ARTS"};
+				searchList = emphasesList;
+			}
+			else if(emphasis.equals("-1"))
+			{
+				String[] emphasesList = {};
+				searchList = emphasesList;
+			}
+			
+			//question 3
 			if (characteristic.equals("academic")) {
 
-				personalMatches = sfCon.search("", "-1", location, -1, -1, (float) -1.0, (float) -1.0, -1, -1, -1, -1,
-						-1, -1, (float) -1.0, (float) -1.0, -1, -1, (float) -1.0, (float) -1.0, (float) -1.0,
-						(float) -1.0, 3, -1, -1, -1, -1, -1, emphasis, control);
+				personalMatches = this.fieldSearch("", "", location, "", "", "", "", "", "", "", "", "",
+						"", "", "", "", "", "", "", "", "",
+						"3", "", "", "", "", "", searchList, control);
 			} else if (characteristic.equals("social")) {
-				personalMatches = sfCon.search("", "-1", location, -1, -1, (float) -1.0, (float) -1.0, -1, -1, -1, -1,
-						-1, -1, (float) -1.0, (float) -1.0, -1, -1, (float) -1.0, (float) -1.0, (float) -1.0,
-						(float) -1.0, -1, -1, 3, -1, -1, -1, emphasis, control);
+				personalMatches = this.fieldSearch("", "", location, "", "", "", "", "", "", "", "", "",
+						"", "", "", "", "", "", "", "", "",
+						"", "", "3", "", "", "", searchList, control);
 			} else if (characteristic.equals("qualityOfLife")) {
-				personalMatches = sfCon.search("", "-1", location, -1, -1, (float) -1.0, (float) -1.0, -1, -1, -1, -1,
-						-1, -1, (float) -1.0, (float) -1.0, -1, -1, (float) -1.0, (float) -1.0, (float) -1.0,
-						(float) -1.0, -1, -1, -1, -1, 3, -1, emphasis, control);
+				personalMatches = this.fieldSearch("", "", location, "", "", "", "", "", "", "", "", "",
+						"", "", "", "", "", "", "", "", "",
+						"", "", "", "", "3", "", searchList, control);
 			}
 
 		}
