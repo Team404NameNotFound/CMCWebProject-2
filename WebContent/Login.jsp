@@ -15,7 +15,7 @@ body {background-image: url("bookBackground.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;}
-table { border:ridge 5px red; background-color:#FED0C6; color:#000000; }
+table { border:ridge 5px red; background-color:#FED0C6; color:#000000;}
 .header {
   padding: 20px;
   text-align: center;
