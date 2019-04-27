@@ -49,7 +49,7 @@ session.setAttribute("interaction", user);
 	</form>
 	
 	<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-	<a href="ForgotPassword.jsp"> Forgot password?</a>
+	<a href="ForgotPassword.jsp"style="color:blue"> Forgot password?</a>
 	<br>
 	<br>
 	<br>
