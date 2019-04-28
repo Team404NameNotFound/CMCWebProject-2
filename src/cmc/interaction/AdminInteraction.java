@@ -94,7 +94,7 @@ public class AdminInteraction extends AccountInteraction {
 			String applicants, String percentAdmitted, String percentEnrolled, String academicScale, String socialScale,
 			String qualityOfLife, String[] emphases) {
 		if (name.length() < 1) {
-			return -1;
+			throw new IllegalArgumentException("Sorry, school name cannot be empty");
 		} else {
 			return this.afCon.editUniversity(name, state, location, control, enrollment, percentFemale, satVerbal,
 					satMath, cost, percentFinAid, applicants, percentAdmitted, percentEnrolled, academicScale,

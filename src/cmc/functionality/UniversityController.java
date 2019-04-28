@@ -114,7 +114,7 @@ public class UniversityController {
 		} else if (enrollment == null || enrollment.length() < 1) {
 			school.setEnrollment("-1");
 		} else {
-			return -2;
+			throw new IllegalArgumentException("Sorry, Number of students must be a positive integer");
 		}
 
 		if (percentFemale.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentFemale) >= 0.0
@@ -123,7 +123,7 @@ public class UniversityController {
 		} else if (percentFemale == null || percentFemale.length() < 1) {
 			school.setPercentFemale("-1.0");
 		} else {
-			return -3;
+			throw new IllegalArgumentException("Sorry, %Female must between 0 - 100");
 		}
 
 		if (satVerbal.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(satVerbal) >= 200
@@ -132,7 +132,7 @@ public class UniversityController {
 		} else if (satVerbal == null || satVerbal.length() < 1) {
 			school.setSatVerbal("-1.0");
 		} else {
-			return -4;
+			throw new IllegalArgumentException("Sorry, SAT must between 200 to 800");
 		}
 
 		if (satMath.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(satMath) >= 200
@@ -141,7 +141,7 @@ public class UniversityController {
 		} else if (satMath == null || satMath.length() < 1) {
 			school.setSatMath("-1.0");
 		} else {
-			return -5;
+			throw new IllegalArgumentException("Sorry, SAT must between 200 to 800");
 		}
 
 		if (cost.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(cost) >= 0.0) {
@@ -149,7 +149,7 @@ public class UniversityController {
 		} else if (cost == null || cost.length() < 1) {
 			school.setCost("-1.0");
 		} else {
-			return -6;
+			throw new IllegalArgumentException("Sorry, expenses must be positive");
 		}
 
 		if (percentFinAid.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentFinAid) >= 0.0
@@ -158,7 +158,7 @@ public class UniversityController {
 		} else if (percentFinAid == null || percentFinAid.length() < 1) {
 			school.setPercentFinAid("-1.0");
 		} else {
-			return -7;
+			throw new IllegalArgumentException("Sorry, %Financial Aidding must between 0 - 100");
 		}
 
 		if (applicants.matches("\\d+")) {
@@ -166,7 +166,7 @@ public class UniversityController {
 		} else if (applicants == null || applicants.length() < 1) {
 			school.setApplicants("-1");
 		} else {
-			return -8;
+			throw new IllegalArgumentException("Sorry, number of applicants must be a positive integer");
 		}
 
 		if (percentAdmitted.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentAdmitted) >= 0
@@ -175,7 +175,7 @@ public class UniversityController {
 		} else if (percentAdmitted == null || percentAdmitted.length() < 1) {
 			school.setPercentAdmitted("-1.0");
 		} else {
-			return -9;
+			throw new IllegalArgumentException("Sorry, %Admitted  must between 0 - 100");
 		}
 
 		if (percentEnrolled.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentEnrolled) >= 0
@@ -184,7 +184,7 @@ public class UniversityController {
 		} else if (percentEnrolled == null || percentEnrolled.length() < 1) {
 			school.setPercentEnrolled("-1.0");
 		} else {
-			return -10;
+			throw new IllegalArgumentException("Sorry, %Enrolled must between 0 - 100");
 		}
 
 		if (academicScale.matches("[12345]")) {
@@ -192,7 +192,7 @@ public class UniversityController {
 		} else if (academicScale == null || academicScale.length() < 1) {
 			school.setAcademicScale("-1");
 		} else {
-			return -11;
+			throw new IllegalArgumentException("Sorry, academic scale must be 1, 2, 3, 4, 5");
 		}
 
 		if (socialScale.matches("[12345]")) {
@@ -200,7 +200,7 @@ public class UniversityController {
 		} else if (socialScale == null || socialScale.length() < 1) {
 			school.setSocialScale("-1");
 		} else {
-			return -11;
+			throw new IllegalArgumentException("Sorry, social scale must be 1, 2, 3, 4, 5");
 		}
 
 		if (qualityOfLife.matches("[12345]")) {
@@ -208,7 +208,7 @@ public class UniversityController {
 		} else if (qualityOfLife == null || qualityOfLife.length() < 1) {
 			school.setQualityOfLife("-1");
 		} else {
-			return -11;
+			throw new IllegalArgumentException("Sorry, quality of life must be 1, 2, 3, 4, 5");
 		}
 
 
