@@ -155,11 +155,11 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	public void saveSchool(String schoolName) {
 		ArrayList<UserSavedSchool> savedSchols = DBCon.getSchoolList2(account.account);
 		if (!this.DBCon.findUniversity(schoolName)) {
-			throw new IllegalArgumentException("School is not in database");
+			throw new IllegalArgumentException("Sorry, school is not in database");
 		}
 		for (UserSavedSchool school : savedSchols) {
 			if (school.getName().equals(schoolName)) {
-				throw new IllegalArgumentException("School is already saved");
+				throw new IllegalArgumentException("Sorry, school is already saved");
 			}
 		}
 		account.saveSchool(schoolName);

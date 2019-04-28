@@ -127,7 +127,7 @@ public class UserFunctionalityController {
 		account = new AccountController(this.DBCon.getAccount(userName));
 		if (this.DBCon.getAccount(userName) == null) 
 		{
-			throw new IllegalArgumentException("Valid User needed");
+			throw new IllegalArgumentException("Sorry, Valid User needed");
 		} 
 		else 
 		{
@@ -174,10 +174,10 @@ public class UserFunctionalityController {
 				userAcc.sendEmail(emailMessage, userAcc.account.getUsername());
 				return 0;
 			} else {
-				return -5;
+				throw new IllegalArgumentException("Sorry, invalid email address");
 			}
 		}
-		return -5;
+		throw new IllegalArgumentException("Sorry, invalid email address");
 	}
 
 	/**

@@ -65,7 +65,7 @@ if(numOfMatches > 0){
 	}
 	request.getRequestDispatcher("ViewSearchResults.jsp").forward(request, response);
 }else{
-	
+	response.sendRedirect("ViewSearchResults.jsp");
 }
 
 
