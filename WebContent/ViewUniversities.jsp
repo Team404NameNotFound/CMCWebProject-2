@@ -34,7 +34,7 @@
 <br>
 <br>
 	<table style="text-align: left; width: 100%;" border="1"
-		cellpadding="2" cellspacing="2" class="center">
+		cellpadding="2" cellspacing="0" class="center">
 		<tbody>
 			<tr align="center">
 

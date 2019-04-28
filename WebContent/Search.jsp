@@ -28,7 +28,7 @@
 <body>
 	<form action="SearchAction.jsp" name="SearchMenu">
 		<table style="text-align: left; width: 960px; height: 180px;"
-			border="1" cellpadding="2" cellspacing="2"
+			border="1" cellpadding="2" cellspacing="0"
 			class="center">
 			<tbody>
 				<tr>

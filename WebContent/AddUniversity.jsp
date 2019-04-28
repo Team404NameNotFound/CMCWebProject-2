@@ -86,7 +86,7 @@ else if(anyErrors != null)
 %>
 	<form action="AddUniversityAction.jsp" name="addForm">
 		<table style="text-align: left; width: 523px; height: 180px;"
-			border="1" cellpadding="2" cellspacing="2"
+			border="1" cellpadding="2" cellspacing="0"
 			class="center">
 			<tbody>
 				<tr>

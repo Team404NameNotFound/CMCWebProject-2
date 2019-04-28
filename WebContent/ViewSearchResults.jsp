@@ -29,7 +29,7 @@
 	   ArrayList<University> matches = student.getSfCon().getSearchCon().getMatches();
 	%>
 	<table style="text-align: left; width: 100%;" border="1"
-		cellpadding="2" cellspacing="2">
+		cellpadding="2" cellspacing="0">
 		<tbody>
 			<tr align="center">
 

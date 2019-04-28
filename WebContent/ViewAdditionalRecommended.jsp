@@ -31,7 +31,7 @@
 	   
 	   
 	   <table style="text-align: left; width: 100%;" border="1"
-		cellpadding="2" cellspacing="2">
+		cellpadding="2" cellspacing="0">
 		<tbody>
 			<%out.print("School information: "+matchSchool+"  "); %><form method="post" action="SaveSchool.jsp" name="SaveSchool">
 						<input name="Save" value="Save" type="submit"> <input

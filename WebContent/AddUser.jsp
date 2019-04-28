@@ -24,7 +24,7 @@
 	<form method="post" action="AddUserAction.jsp" name="addUser">
 		<br>
 		<table style="text-align: left; width: 266px; height: 228px;"
-			border="1" cellpadding="2" cellspacing="2"
+			border="1" cellpadding="2" cellspacing="0"
 			class="center">
 			<tbody>
 				<tr>

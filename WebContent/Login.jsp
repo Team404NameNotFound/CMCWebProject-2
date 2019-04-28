@@ -23,7 +23,7 @@ session.setAttribute("interaction", user);
 	<form method="post" action="LoginAction.jsp" name="Login">
 		<br>
 		<table style="text-align: left; width: 266px; height: 228px;"
-			border="1" cellpadding="2" cellspacing="2" background="white"
+			border="1" cellpadding="2" cellspacing="0" background="white"
 			class="center">
 			<tbody>
 				<tr>
