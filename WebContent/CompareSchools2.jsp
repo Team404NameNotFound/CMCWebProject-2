@@ -1,4 +1,5 @@
 <%@ page language="java" import="cmc.interaction.*,  java.util.*"%>
+<%@ page errorPage = "ErrorHandlingStudent.jsp" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

@@ -1,4 +1,5 @@
 <%@ page language="java" import="cmc.interaction.*,java.util.*,cmc.functionality.*, cmc.entity.*"%>
+<%@ page errorPage = "ErrorHandlingStudent.jsp" %>
 <%
 StudentInteraction student = (StudentInteraction)session.getAttribute("interaction");
 //Map<String,String[]> params = request.getParameterMap();

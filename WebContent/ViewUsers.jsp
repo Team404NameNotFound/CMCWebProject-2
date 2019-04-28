@@ -17,7 +17,6 @@ tr:hover {background-color:#F7F7D1;}
   <p>View Users </p>
 </div>
 <div class="topnav">
-  <a class="active" href="AdminMenu.jsp">Menu</a>
   <a href="AdminMenu.jsp">Menu</a>
   <a href="LogoutAction.jsp">Log out</a>
 </div>
