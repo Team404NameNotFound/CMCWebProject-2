@@ -1,5 +1,6 @@
 <%@ page language="java" import="cmc.interaction.*,java.util.*,cmc.functionality.*"%>
 <%@include file="verifyLoginCMC.jsp" %>
+<%@ page errorPage = "ErrorHandling.jsp" %>
 <%
 
 AdminInteraction inter = (AdminInteraction)session.getAttribute("interaction");
