@@ -127,7 +127,7 @@ public class UserFunctionalityController {
 		account = new AccountController(this.DBCon.getAccount(userName));
 		if (this.DBCon.getAccount(userName) == null) 
 		{
-			throw new IllegalArgumentException("Valid User needed");
+			throw new IllegalArgumentException("Sorry, Valid User needed");
 		} 
 		else 
 		{

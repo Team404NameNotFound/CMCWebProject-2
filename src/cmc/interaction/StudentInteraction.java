@@ -187,7 +187,6 @@ public class StudentInteraction extends AccountInteraction {
 				&& socialScaleMaxS.length() < 1 && qualityOfLifeMinS.length() < 1 && qualityOfLifeMaxS.length() < 1
 				&& control.length() < 1) {
 			throw new IllegalArgumentException("Sorry, you must input at least one search field");
-			//return matchSchools;
 		}
 		
 		//Check if number parameters are valid
@@ -202,21 +201,21 @@ public class StudentInteraction extends AccountInteraction {
 				qualityOfLifeMaxS };
 
 		for (String n : numParameters) {
-			if(!n.matches("\\d+(\\.\\d+)?") && n.length() > 0) {
-				throw new IllegalArgumentException("need to be positive number");
+			if(n.length() > 0 && !n.matches("\\d+(\\.\\d+)?")) {
+				throw new IllegalArgumentException("Sorry, need to be positive integer");
 			}
 		}
 
 		for (String p : percentParameters) {
-			if((!p.matches("\\d+(\\.\\d+)?") || Float.parseFloat(p) < 0 || Float.parseFloat(p) > 100) 
-					&& p.length() > 0){
-				throw new IllegalArgumentException("need to be percentage");
+			if(p.length() > 0 && (!p.matches("\\d+(\\.\\d+)?") || Float.parseFloat(p) < 0 || Float.parseFloat(p) > 100) 
+				){
+				throw new IllegalArgumentException("Sorry, need to be percentage");
 			}
 		}
 
 		for (String c : scales) {
-			if(!c.matches("[12345]") && c.length() > 0){
-				throw new IllegalArgumentException("need to be 12345");
+			if(c.length() > 0 &&!c.matches("[12345]")){
+				throw new IllegalArgumentException("Sorry, need to be 12345");
 			}
 		}
 		
@@ -379,6 +378,18 @@ public class StudentInteraction extends AccountInteraction {
 		}else {
 			qualityOfLifeMax = -1;
 		}
+		if(schoolName.length() < 1) {
+			schoolName = "-1";
+		}
+		if(state.length() < 1) {
+			state = "-1";
+		}
+		if(location.length() < 1) {
+			location = "-1";
+		}
+		if(control.length() < 1) {
+			control = "-1";
+		}
 		
 			
 		//check it min < max
@@ -517,7 +528,7 @@ public class StudentInteraction extends AccountInteraction {
 	public ArrayList<String> editProfile(String userName, String firstName, String lastName, String password,
 			String userType, String activeStatus) {
 		if (firstName == "" || lastName == "" || password == "") {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Sorry, no field  could be empty");
 		} else {
 			UFCon.editUserProfile(userName, firstName, lastName, password, "u", activeStatus);
 		}
