@@ -50,7 +50,7 @@ response.sendRedirect("ViewUniversities.jsp");
 }
 else 
 {
-	response.sendRedirect("ViewUniversities.jsp"+i);
+	response.sendRedirect("ViewUniversities.jsp");
 }
 
 

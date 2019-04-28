@@ -58,7 +58,7 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 			String applicants, String percentAdmitted, String percentEnrolled, String academicScale, String socialScale,
 			String qualityOfLife, String[] emphases) {
 		if (this.DBCon.getUniversity2(name) != null) {
-			return 0;
+			throw new IllegalArgumentException("Sorry, " + name + " already exists");
 		} else {
 			int addResult = this.universityCon.createNewUniversity(name, state, location, control, enrollment,
 					percentFemale, satVerbal, satMath, cost, percentFinAid, applicants, percentAdmitted,

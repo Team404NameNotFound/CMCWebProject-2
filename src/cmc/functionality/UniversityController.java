@@ -255,7 +255,7 @@ public class UniversityController {
 		 */
 
 		if (name == null || name.length() < 1) {
-			return -1;
+			throw new IllegalArgumentException("Sorry, school name is empty");
 		} else {
 			school.setName(name);
 		}
@@ -284,7 +284,7 @@ public class UniversityController {
 		} else if (enrollment == null || enrollment.length() < 1) {
 			school.setEnrollment("-1");
 		} else {
-			return -2;
+			throw new IllegalArgumentException("Sorry, number of students must be greater than 0");
 		}
 
 		if (percentFemale.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentFemale) >= 0.0
@@ -293,7 +293,7 @@ public class UniversityController {
 		} else if (percentFemale == null || percentFemale.length() < 1) {
 			school.setPercentFemale("-1.0");
 		} else {
-			return -3;
+			throw new IllegalArgumentException("Sorry, % female must be between 0 and 100");
 		}
 
 		if (satVerbal.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(satVerbal) >= 200
@@ -302,7 +302,7 @@ public class UniversityController {
 		} else if (satVerbal == null || satVerbal.length() < 1) {
 			school.setSatVerbal("-1.0");
 		} else {
-			return -4;
+			throw new IllegalArgumentException("Sorry, SAT verbal must be between 200 and 800");
 		}
 
 		if (satMath.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(satMath) >= 200
@@ -311,7 +311,7 @@ public class UniversityController {
 		} else if (satMath == null || satMath.length() < 1) {
 			school.setSatMath("-1.0");
 		} else {
-			return -5;
+			throw new IllegalArgumentException("Sorry, SAT math must be between 200 and 800");
 		}
 
 		if (cost.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(cost) >= 0.0) {
@@ -319,7 +319,7 @@ public class UniversityController {
 		} else if (cost == null || cost.length() < 1) {
 			school.setCost("-1.0");
 		} else {
-			return -6;
+			throw new IllegalArgumentException("Sorry, expences must be gereater than 0");
 		}
 
 		if (percentFinAid.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentFinAid) >= 0.0
@@ -328,7 +328,7 @@ public class UniversityController {
 		} else if (percentFinAid == null || percentFinAid.length() < 1) {
 			school.setPercentFinAid("-1.0");
 		} else {
-			return -7;
+			throw new IllegalArgumentException("Sorry, % Finantial aid must be between 0 and 100");
 		}
 
 		if (applicants.matches("\\d+")) {
@@ -336,7 +336,7 @@ public class UniversityController {
 		} else if (applicants == null || applicants.length() < 1) {
 			school.setApplicants("-1");
 		} else {
-			return -8;
+			throw new IllegalArgumentException("Sorry, number of applicants must be greater than 0");
 		}
 
 		if (percentAdmitted.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentAdmitted) >= 0
@@ -345,7 +345,7 @@ public class UniversityController {
 		} else if (percentAdmitted == null || percentAdmitted.length() < 1) {
 			school.setPercentAdmitted("-1.0");
 		} else {
-			return -9;
+			throw new IllegalArgumentException("% Addmitted must be between 0 and 100");
 		}
 
 		if (percentEnrolled.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentEnrolled) >= 0
@@ -354,7 +354,7 @@ public class UniversityController {
 		} else if (percentEnrolled == null || percentEnrolled.length() < 1) {
 			school.setPercentEnrolled("-1.0");
 		} else {
-			return -10;
+			throw new IllegalArgumentException("% Enrolled must be between 0 and 100");
 		}
 
 		if (academicScale.matches("[12345]")) {
@@ -362,7 +362,7 @@ public class UniversityController {
 		} else if (academicScale == null || academicScale.length() < 1) {
 			school.setAcademicScale("-1");
 		} else {
-			return -11;
+			throw new IllegalArgumentException("Sorry, accedemic scale must be between 1 and 5");
 		}
 
 		if (socialScale.matches("[12345]")) {
@@ -370,7 +370,7 @@ public class UniversityController {
 		} else if (socialScale == null || socialScale.length() < 1) {
 			school.setSocialScale("-1");
 		} else {
-			return -11;
+			throw new IllegalArgumentException("Sorry, social scale must be between 1 and 5");
 		}
 
 		if (qualityOfLife.matches("[12345]")) {
@@ -378,7 +378,7 @@ public class UniversityController {
 		} else if (qualityOfLife == null || qualityOfLife.length() < 1) {
 			school.setQualityOfLife("-1");
 		} else {
-			return -11;
+			throw new IllegalArgumentException("Sorry, quality of life scale must be between 1 and 5");
 		}
 
 		this.DBCon.addUniversity(school.getName(), school.getState(), school.getLocation(), school.getControl(),
