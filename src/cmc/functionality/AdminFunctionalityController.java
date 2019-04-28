@@ -184,7 +184,7 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 			added = true;
 
 		} else {
-			throw new IllegalArgumentException("sorry, this user has already exist");
+			throw new IllegalArgumentException("Sorry, this user already exists");
 		}
 
 		return added;
