@@ -92,20 +92,6 @@ public class SearchController {
 
 		ArrayList<University> returnSchools = new ArrayList<University>();
 
-		/*
-		 * if (numStudentsMin < 0 || numStudentsMax < 0 || percentFemaleMin < 0 ||
-		 * percentFemaleMin > 100 || percentFemaleMax < 0 || percentFemaleMax > 100 ||
-		 * SATVerbalMin < 0 || SATVerbalMin > 800 || SATVerbalMax < 0 || SATVerbalMax >
-		 * 800 || SATMathMin < 0 || SATMathMin > 100 || SATMathMax < 0 || SATMathMax >
-		 * 800 || expensesMin < 0 || expensesMax < 0 || PercentFinancialAidMin < 0 ||
-		 * percenetFinancialAidMax < 0 || numberApplicantsMin < 0 || numberApplicatnsMax
-		 * < 0 || percentAddmittedMin < 0 || percentAdmittedMax < 0 ||
-		 * percentEnrolledMin < 0 || percentEnrolledMax < 0 || academicScaleMin < 0 ||
-		 * academicScaleMax < 0 || socialScalemin < 0 || socialScaleMax < 0 ||
-		 * qualityOfLifeMin < 0 || qualityOfLifeMax < 0) { return returnSchools; }
-		 * 
-		 * 
-		 */
 		for (int i = 0; i < this.universityList.length; i++) {
 			Boolean emphMatch = false;
 			
@@ -263,22 +249,22 @@ public class SearchController {
 																			&& qualityOfLifeMax == -1) {
 																
 																if (this.universityList[i].getState().toLowerCase().trim().contains(state.toLowerCase().trim())
-																		|| state.length() < 1) {
+																		|| state.equals("-1")) {
 																
 																	if (this.universityList[i].getName().toLowerCase().trim().contains(schoolName.toLowerCase().trim())
-																			|| schoolName.length() < 1) {
+																			|| schoolName.equals("-1")) {
 																		
 																		if (location.toLowerCase().trim()
 																				.equals(this.universityList[i]
 																						.getLocation().toLowerCase()
 																						.trim())
-																				|| location.length() < 1) {
+																				|| location.equals("-1")) {
 																			
 																			if (control.toLowerCase().trim()
 																					.equals(this.universityList[i]
 																							.getControl().toLowerCase()
 																							.trim())
-																					|| control.length() < 1) {
+																					|| control.equals("-1")) {
 																	
 																				returnSchools.add(this.universityList[i]);
 																			}
