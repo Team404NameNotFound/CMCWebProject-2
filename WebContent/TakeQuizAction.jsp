@@ -1,5 +1,6 @@
 <%@ page language="java" import="cmc.interaction.*, cmc.entity.*, cmc.functionality.*, java.util.*"%>
 <%@include file="verifyLoginCMC.jsp" %>
+<%@ page errorPage = "ErrorHandlingStudent.jsp" %>
 <% 
 String location = request.getParameter("Q1");
 String characteristic = request.getParameter("Q2");
