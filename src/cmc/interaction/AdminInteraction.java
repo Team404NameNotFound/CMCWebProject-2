@@ -55,11 +55,11 @@ public class AdminInteraction extends AccountInteraction {
 		if (firstname.equals("") || lastname.equals("") || username.equals("") || password.equals("")
 				|| userType.equals("")) 
 		{
-			throw new IllegalArgumentException("Please input valid user information");
+			throw new IllegalArgumentException("Sorry, all fields must be filled");
 		} 
 		else if (!userType.equals("a") && !userType.equals("u"))
 		{
-			throw new IllegalArgumentException("not a valid type");
+			throw new IllegalArgumentException("Sorry, user type must be 'a' or 'u'");
 		} 
 		else 
 		{

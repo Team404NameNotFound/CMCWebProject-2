@@ -176,7 +176,6 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 		ArrayList<UserSavedSchool> savedSchoolList = new ArrayList<UserSavedSchool>();
 
 		if (this.DBCon.getAccount(username) == null) {
-			System.out.println("172 afCon");
 			AccountController acCon = new AccountController();
 			Account account = acCon.createNewAccount(firstname, lastname, username, password, userType,
 					savedSchoolList);

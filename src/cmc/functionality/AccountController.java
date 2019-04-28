@@ -379,7 +379,7 @@ public class AccountController {
 			account = new Student(fName, lName, userName, password, type, "Y", savedSchools);
 			return account;
 		} else {
-			throw new IllegalArgumentException("Sorry you need to specify the type of user.");
+			throw new IllegalArgumentException("Sorry, you need to specify the type of user.");
 		}
 	}
 
