@@ -155,7 +155,7 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 			return 0;
 		} else {
 			if (this.DBCon.getUserSavedStatistics(name) > 0 || schoolToRemove.getEmphases().length > 0) {
-				return -1;
+				throw new IllegalArgumentException("Sorry, you cannot remove this university because it has been saved or it has emphases");
 			}
 			return this.DBCon.removeUniversity(name);
 		}
