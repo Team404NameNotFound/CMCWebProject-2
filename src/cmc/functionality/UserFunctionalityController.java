@@ -60,18 +60,18 @@ public class UserFunctionalityController {
 						this.loggedIn = true;
 						return 0;
 					} else {
-						return -2;
+						throw new IllegalArgumentException("Please provide a valid password");
 
 					}
 				} else {
-					return -3;
+					throw new IllegalArgumentException("User is inactive");
 				}
 			} else {
-				return -1;
+				throw new IllegalArgumentException("Provide a valid username");
 
 			}
 		}
-		return -4;
+		throw new IllegalArgumentException("User is inactive");
 	}
 
 	/**
