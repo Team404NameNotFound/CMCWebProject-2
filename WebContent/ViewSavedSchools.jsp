@@ -12,13 +12,10 @@
 
 <div class="header">
   <h1>ChooseMyCollege</h1>
+  <p>Saved Schools</p>
 </div>
 <div class="topnav">
   <a href="StudentMenu.jsp">Menu</a>
-  <a href="StudentEditUser.jsp">Manage my profile</a>
-  <a class="active" href="ViewSavedSchools.jsp">Manage my saved schools</a>
-  <a href="Search.jsp">Search</a>
-  <a href="TakePersonalityQuiz.jsp">Take Quiz</a>
   <a href="LogoutAction.jsp">Logout</a>
 </div>
 <br>
@@ -37,7 +34,7 @@
 			<tr align="center">
 
 				<td colspan="8" rowspan="1" style="vertical-align: top;"><a
-					href="CompareSchools.jsp">Compare Schools by Score</a></td>
+					href="CompareSchools2.jsp">Compare Schools by Score</a></td>
 
 			</tr>
 			<%

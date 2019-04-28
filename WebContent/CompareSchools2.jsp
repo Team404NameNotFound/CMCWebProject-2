@@ -12,6 +12,14 @@ StudentInteraction stud = (StudentInteraction) session.getAttribute("interaction
 <style>
 <%@include file="styleCMC.css" %>
 <%@include file="topNavBarStyle.css" %>
+.chart div {
+  font: 18px sans-serif;
+  background-color: RED;
+  text-align: right;
+  padding: 30px;
+  margin: 10px;
+  color: white;
+}
 </style>
 
 <div class="header">
@@ -24,37 +32,16 @@ StudentInteraction stud = (StudentInteraction) session.getAttribute("interaction
 </div>
 <br>
 <br>
-
-<body>
-<table style="text-align: left; width: 100%;" border="1"
-		cellpadding="2" cellspacing="2">
-		<tbody>
-			<tr>
-				<td style="vertical-align: top;">School</td>
-				<td style="vertical-align: top; text-align: center;">Average SAT Score
-				</td>
-			</tr>
-
-
-			<%
+<div class="chart">
+<%
 			ArrayList<String> schoolScores = stud.compareSchoolsByScore();
-				for (int i = 0; i < schoolScores.size(); i++) {
-			%>
-			<tr>
-				<td style="vertical-align: top;">
-					<%
-						int pos = schoolScores.get(i).lastIndexOf(" ");
-						out.println(schoolScores.get(i).substring(0, pos));
-					%>
-				</td>
-				<td style="vertical-align: top;">
-					<%
-						out.println(schoolScores.get(i).substring(pos));
-					%>
-				</td>
-			</tr>
+				for (int i = 0; i < schoolScores.size(); i++) {%>
+<%-- 				<div style="width: 40px;"><%int pos = schoolScores.get(i).lastIndexOf(" "); --%>
+<%-- 				out.println(schoolScores.get(i).substring(pos)); %></div> --%>
+				
+				<div style="width: <%int pos = schoolScores.get(i).lastIndexOf(" ");
+				out.println(schoolScores.get(i).substring(pos)); %>;"> <%=schoolScores.get(i) %></div>
+
 			<%}%>
-		</tbody>
-	</table>
-</body>
+</div>
 </html>

@@ -11,23 +11,22 @@
 <%@include file="styleCMC.css" %>
 <%@include file="topNavBarStyle.css" %>
 </style>
-<br>
-<br>
+
 <body>
 
 <%
 		AdminInteraction admin = (AdminInteraction) session.getAttribute("interaction");
 		Account adminAccount = admin.getAccount();
 	%>
-	<div class="header">
-  <h1>Admin Menu</h1>
+		<div class="header">
+  <h1>ChooseMyCollege</h1>
   <p>Welcome : <%=adminAccount.getUsername()%></p>
 </div>
 <div class="topnav">
   <a class="active" href="AdminMenu.jsp">Menu</a>
-  <a href="ViewUniversities.jsp?username="+<%=request.getParameter("username")%>>Manage universities</a>
-  <a href="ViewUsers.jsp?username="+<%=request.getParameter("username")%>>Manage users</a>
-  <a href="LogoutAction.jsp.jsp">Log out</a>
+  <a href="ViewUniversities.jsp">Manage universities</a>
+  <a href="ViewUsers.jsp">Manage users</a>
+  <a href="LogoutAction.jsp">Log out</a>
 </div>
 
 </body>

@@ -11,14 +11,15 @@
 <%@include file="topNavBarStyle.css" %>
 </style>
 <div class="header">
-  <h1>Admin Menu</h1>
+  <h1>ChooseMyCollege</h1>
+  <p>View Users </p>
 </div>
 <div class="topnav">
   <a class="active" href="AdminMenu.jsp">Menu</a>
+  <a href="AdminMenu.jsp">Menu</a>
   <a href="LogoutAction.jsp">Log out</a>
 </div>
 <body>
-	
 	<%
 		AdminInteraction con = (AdminInteraction) session.getAttribute("interaction");
 	%>

@@ -4,21 +4,23 @@
 <head>
 <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
 <title></title>
-</head>
 
 <style>
 <%@include file="styleCMC.css" %>
 <%@include file="topNavBarStyle.css" %>
 </style>
-<div class="header">
-  <h1>Admin Menu</h1>
+</head>
+
+ <div class="header">
+  <h1>ChooseMyCollege</h1>
+  <p>Add University </p>
 </div>
 <div class="topnav">
-  <a class="active" href="AdminMenu.jsp">Menu</a>
-  <a href="ViewUniversities.jsp?username="+<%=request.getParameter("username")%>>Manage universities</a>
-  <a href="ViewUsers.jsp?username="+<%=request.getParameter("username")%>>Manage users</a>
+  <a href="AdminMenu.jsp">Menu</a>
   <a href="LogoutAction.jsp">Log out</a>
 </div>
+ <br>
+ <br>
 
 <%  
 	AdminInteraction admin = (AdminInteraction)session.getAttribute("interaction");
@@ -84,7 +86,8 @@ else if(anyErrors != null)
 %>
 	<form action="AddUniversityAction.jsp" name="addForm">
 		<table style="text-align: left; width: 523px; height: 180px;"
-			border="1" cellpadding="2" cellspacing="2">
+			border="1" cellpadding="2" cellspacing="2"
+			class="center">
 			<tbody>
 				<tr>
 					<td style="vertical-align: top;">University Name<br>

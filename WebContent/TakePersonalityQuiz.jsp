@@ -14,13 +14,10 @@
 
 <div class="header">
   <h1>ChooseMyCollege</h1>
+  <p>Personality Quiz </p>
 </div>
 <div class="topnav">
   <a href="StudentMenu.jsp">Menu</a>
-  <a href="StudentEditUser.jsp">Manage my profile</a>
-  <a href="ViewSavedSchools.jsp">Manage my saved schools</a>
-  <a href="Search.jsp">Search</a>
-  <a class="active" href="TakePersonalityQuiz.jsp">Take Quiz</a>
   <a href="LogoutAction.jsp">Logout</a>
 </div>
 <br>
