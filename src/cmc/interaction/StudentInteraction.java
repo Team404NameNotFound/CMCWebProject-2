@@ -528,7 +528,7 @@ public class StudentInteraction extends AccountInteraction {
 	public ArrayList<String> editProfile(String userName, String firstName, String lastName, String password,
 			String userType, String activeStatus) {
 		if (firstName == "" || lastName == "" || password == "") {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Sorry, no field  could be empty");
 		} else {
 			UFCon.editUserProfile(userName, firstName, lastName, password, "u", activeStatus);
 		}

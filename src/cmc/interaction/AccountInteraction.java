@@ -84,13 +84,15 @@ public class AccountInteraction {
 	 * @param password
 	 */
 	public ArrayList<String> editProfile(String userName, String firstName, String lastName, String password, String userType, String activeStatus) {
-		if (firstName == "" || lastName == "" || password == "" || userType == "") {
-			throw new IllegalArgumentException();
-		} else if (!userType.equals("a") && !userType.equals("u")) {
-			throw new IllegalArgumentException();
-		} else {
+		//if (firstName == "" || lastName == "" || password == "" || userType == "" || activeStatus == "") {
+		if (firstName.length() < 1 || lastName.length() < 1 || password.length() < 1 || userType.length() < 1 || activeStatus.length() < 1) {
+			throw new IllegalArgumentException("Sorry, the field cannot be empty");
+		}else if (!userType.equals("a") && !userType.equals("u")) {
+			throw new IllegalArgumentException("Sorry, User Type needs to be u or a");
+		}else if(!activeStatus.equals("Y") && !activeStatus.equals("N")){
+			throw new IllegalArgumentException("Sorry, User status need to be Y or N");
+		}else {
 			return UFCon.editUserProfile(userName, firstName, lastName, password, userType, activeStatus);
-
 		}
 	}
 
