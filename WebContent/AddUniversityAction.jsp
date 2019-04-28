@@ -38,14 +38,18 @@ for(int j = 0; j < emphases.size(); j++){
 	emphasesArray[j]  = emphases.get(j);
 }
 
-int addStatus = adminInteraction.addNewUniversity(name, state, location, control, enrollment,
+int i = adminInteraction.addNewUniversity(name, state, location, control, enrollment,
 		percentFemale, satVerbal, satMath, cost, percentFinAid, applicants,
 		percentAdmitted,percentEnrolled, academicScale, socialScale, qualityOfLife, emphasesArray);
-if(addStatus == 1){
-	response.sendRedirect("ViewUniversities.jsp?");
-}else{
-	//response.sendRedirect("AddUniversity.jsp?Error="+addStatus);
-	request.getRequestDispatcher("AddUniversity.jsp?Error="+addStatus).forward(request, response);
+
+if(i == 0)
+{
+response.sendRedirect("ViewUniversities.jsp");
 }
+else 
+{
+	response.sendRedirect("ViewUniversities.jsp"+i);
+}
+
 
 %>

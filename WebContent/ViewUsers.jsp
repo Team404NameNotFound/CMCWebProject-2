@@ -15,6 +15,7 @@
   <p>View Users </p>
 </div>
 <div class="topnav">
+  <a class="active" href="AdminMenu.jsp">Menu</a>
   <a href="AdminMenu.jsp">Menu</a>
   <a href="LogoutAction.jsp">Log out</a>
 </div>
@@ -24,9 +25,17 @@
 	%>
 	<br>
 	<br>
+	<% 
+	String anyErrors = request.getParameter("Error");
+	if(anyErrors != null)
+	{
+		out.println(anyErrors);
+	}
+	%>
 	<table style="text-align: left; width: 100%;" border="1"
 		cellpadding="2" cellspacing="2">
 		<tbody>
+		
 			<tr align="center">
 
 				<td colspan="8" rowspan="1" style="vertical-align: top;"><a
