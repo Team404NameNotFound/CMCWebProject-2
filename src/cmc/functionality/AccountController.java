@@ -221,10 +221,10 @@ public class AccountController {
 				return sent;
 			} catch (MessagingException e) {
 				e.printStackTrace();
-				return false;
+				throw new IllegalArgumentException("Invalid email address");
 			}
 		} else {
-			return false;
+			throw new IllegalArgumentException("Invalid email address");
 		}
 	}
 
