@@ -17,3 +17,16 @@ table.center {
   color: black;
   font-size: 18px;
 }
+
+.button {
+  background-color: rgb(500,0,0);
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+}

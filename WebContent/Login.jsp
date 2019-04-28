@@ -39,10 +39,8 @@ session.setAttribute("interaction", user);
 					</td>
 				</tr>
 				<tr>
-				<td style="vertical-align: center; style="text-align:center""><input value="Log in"
-					name="Log in" type="submit"></td>
-				<td style="vertical-align: center style="text-align:center";"><input value="Reset"
-					name="Reset" type="reset"></td>
+				<td style="vertical-align: center; style=text-align:center"><button class="button">Log in</button>
+				<td style="vertical-align: center style=text-align:center"><button value="reset" class="button">Reset</button>
 				</tr>
 			</tbody>
 		</table>
