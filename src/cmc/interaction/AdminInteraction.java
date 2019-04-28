@@ -55,11 +55,11 @@ public class AdminInteraction extends AccountInteraction {
 		if (firstname.equals("") || lastname.equals("") || username.equals("") || password.equals("")
 				|| userType.equals("")) 
 		{
-			throw new IllegalArgumentException("Please input valid user information");
+			throw new IllegalArgumentException("Sorry, all fields must be filled");
 		} 
 		else if (!userType.equals("a") && !userType.equals("u"))
 		{
-			throw new IllegalArgumentException("not a valid type");
+			throw new IllegalArgumentException("Sorry, user type must be 'a' or 'u'");
 		} 
 		else 
 		{
@@ -94,7 +94,7 @@ public class AdminInteraction extends AccountInteraction {
 			String applicants, String percentAdmitted, String percentEnrolled, String academicScale, String socialScale,
 			String qualityOfLife, String[] emphases) {
 		if (name.length() < 1) {
-			return -1;
+			throw new IllegalArgumentException("Sorry, school name cannot be empty");
 		} else {
 			return this.afCon.editUniversity(name, state, location, control, enrollment, percentFemale, satVerbal,
 					satMath, cost, percentFinAid, applicants, percentAdmitted, percentEnrolled, academicScale,
