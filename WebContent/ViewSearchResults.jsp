@@ -34,7 +34,20 @@ tr:hover {background-color:#F7F7D1;}
 	%>
 	<table style="text-align: left; width: 100%;" border="1"
 		cellpadding="2" cellspacing="0">
-		<tbody>
+		
+			
+			<% if (matches.size() == 0){%>
+					<tbody>
+			<tr align="center">
+
+				<td colspan="8" rowspan="1" style="vertical-align: top;"><a
+					>Sorry, there are no matches</a></td>
+
+			</tr>
+				<% }
+			else{%>
+			
+			<tbody>
 			<tr align="center">
 
 				<td colspan="8" rowspan="1" style="vertical-align: top;"><a
@@ -42,8 +55,7 @@ tr:hover {background-color:#F7F7D1;}
 
 			</tr>
 			
-			<%
-				for (int i = 0; i < matches.size(); i++) {
+				<%for (int i = 0; i < matches.size(); i++) {
 			%>
 			<tr>
 				<td style="vertical-align: top;">
@@ -67,7 +79,8 @@ tr:hover {background-color:#F7F7D1;}
 					</form>
 				</td>
 			</tr>
-			<%}%>
+			<%}
+			}%>
 		</tbody>
 	</table>
 </body>

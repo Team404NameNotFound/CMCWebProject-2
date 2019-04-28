@@ -174,10 +174,10 @@ public class UserFunctionalityController {
 				userAcc.sendEmail(emailMessage, userAcc.account.getUsername());
 				return 0;
 			} else {
-				return -5;
+				throw new IllegalArgumentException("Sorry, invalid email address");
 			}
 		}
-		return -5;
+		throw new IllegalArgumentException("Sorry, invalid email address");
 	}
 
 	/**

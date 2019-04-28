@@ -29,7 +29,23 @@ tr:hover {background-color:#F7F7D1;}
    <%
 		StudentInteraction student = (StudentInteraction) session.getAttribute("interaction");
 		Account studentAccount = student.getAccount();
-		out.println("Saved schools for "+studentAccount.getUsername()+": ");
+		ArrayList<UserSavedSchool> savedSchools = new ArrayList<UserSavedSchool>();
+		savedSchools = student.viewSavedSchools();
+		if (savedSchools.size() == 0){%>
+		<table style="text-align: left; width: 100%;" border="1"
+		cellpadding="2" cellspacing="0"
+		class="center">
+		<tbody>
+			<tr align="center">
+
+				<td colspan="8" rowspan="1" style="vertical-align: top;"><a
+					>Sorry, you have no saved schools</a></td>
+
+			</tr>
+			</tbody>
+		<%
+		}
+		else{
 	%>
 	<table style="text-align: left; width: 100%;" border="1"
 		cellpadding="2" cellspacing="0"
@@ -42,9 +58,7 @@ tr:hover {background-color:#F7F7D1;}
 
 			</tr>
 			<%
-				ArrayList<UserSavedSchool> savedSchools = new ArrayList<UserSavedSchool>();
-				savedSchools = student.viewSavedSchools();
-				out.println(savedSchools.size());
+		}
 				for (int i = 0; i < savedSchools.size(); i++) {
 			%>
 			<tr>
@@ -53,12 +67,12 @@ tr:hover {background-color:#F7F7D1;}
 						name="Remove">
 						<input name="RemoveSavedSchool.jsp" value="Remove"
 							type="submit"> <input name="savedSchool"
-							value="<%=savedSchools.get(i).getName()%>" type="hidden">
+							value="<%=savedSchools.get(i).getName() %>" type="hidden">
 					</form>
 			</td>
 				<td style="vertical-align: top;">
 					<%
-						out.println(savedSchools.get(i).getName());
+						out.println(savedSchools.get(i).getName() + " (added on: " + savedSchools.get(i).getDateAdded() + ")");
 					%>
 				</td>
 				<td style="vertical-align: top;">
