@@ -13,13 +13,12 @@
 </style>
    <body>
 <div class="header">
-  <h1>ChooseMyCollege</h1>
-<p>Oh no! There was an error!</p>
+  <h1>Oh no! There was an error!</h1>
+<p><%= exception.getMessage() %></p>
 </div>
 <div class="topnav">
   <a href="StudentMenu.jsp">Menu</a>
   <a href="LogoutAction.jsp">Logout</a>
 </div>
-      <p><% exception.getMessage(); %></p>
    </body>
 </html>

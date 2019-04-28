@@ -188,15 +188,15 @@ public class AdminInteraction extends AccountInteraction {
 		if (firstName.equals("") || lastName.equals("") || userName.equals("") || password.equals("")
 				|| userType.equals("") || userStatus.equals("")) 
 		{
-			throw new IllegalArgumentException("");
+			throw new IllegalArgumentException("All fields must be filled");
 		} 
 		else if (!userType.equals("a") && !userType.equals("u")) 
 		{
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("User type must be 'a' or 'u'");
 		} 
 		else if (!userStatus.equals("Y") && !userStatus.equals("N")) 
 		{
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("User status must be 'Y' or 'N'");
 		} 
 		else
 		{
