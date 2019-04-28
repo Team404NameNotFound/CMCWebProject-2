@@ -1,4 +1,5 @@
 <%@ page language="java" import="cmc.interaction.*,  java.util.*"%>
+<%@include file="verifyLoginCMC.jsp" %>
 <%@ page errorPage = "ErrorHandlingStudent.jsp" %>
 <html>
 <head>
@@ -34,7 +35,7 @@ StudentInteraction stud = (StudentInteraction) session.getAttribute("interaction
 <br>
 <br>
 <div style="float: left; width: 50%">
-<h3 style="text-align:center"> Average ACT Score</h3>
+<h3 style="text-align:center"> Average SAT Score</h3>
 </div>
   <hr color=#000000 width=800px align="left">
 

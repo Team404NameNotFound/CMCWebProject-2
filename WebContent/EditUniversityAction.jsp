@@ -1,5 +1,8 @@
 <%@ page language="java" import="cmc.interaction.*,java.util.*,cmc.functionality.*"%>
+<html>
 <%@include file="verifyLoginCMC.jsp" %>
+<%@ page errorPage = "ErrorHandlingAdmin.jsp" %>
+</html>
 
 <%
 
