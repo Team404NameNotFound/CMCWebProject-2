@@ -1,6 +1,6 @@
 <%@ page language="java" import="cmc.interaction.*,  java.util.*"%>
 <%@ page isErrorPage = "true" %>
-
+<%@include file="verifyLoginCMC.jsp"%>
 
 <html>
    <head>
