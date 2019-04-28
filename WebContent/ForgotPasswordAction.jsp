@@ -1,4 +1,5 @@
 <%@ page language="java" import="cmc.interaction.AccountInteraction, cmc.functionality.*, java.util.*"%>
+<%@ page errorPage = "ErrorHandlingBeforeLogin.jsp" %>
 
 <% String u = request.getParameter("username"); 
 

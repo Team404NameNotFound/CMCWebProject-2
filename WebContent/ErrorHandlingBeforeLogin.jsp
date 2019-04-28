@@ -9,7 +9,6 @@
    
 <style>
 	<%@include file="styleCMC.css" %>
-	<%@include file="topNavBarStyle.css" %>
 </style>
    <body>
 <div class="header">
