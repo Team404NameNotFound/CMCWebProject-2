@@ -21,15 +21,16 @@
   <a href="LogoutAction.jsp">Logout</a>
 </div>
 <br>
-<br>
 <% 
 String anyErrors = request.getParameter("Error");
 	
 	if(anyErrors != null && anyErrors.equals("-1"))
 	{
-		out.println("No matches found");
+		%><p style="color:red">No matches found </p><%
 	}
 %>
+<br>
+
 
 <body text="white">
 <div>
