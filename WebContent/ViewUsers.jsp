@@ -15,8 +15,6 @@
 </div>
 <div class="topnav">
   <a class="active" href="AdminMenu.jsp">Menu</a>
-  <a href="ViewUniversities.jsp?username="+<%=request.getParameter("username")%>>Manage universities</a>
-  <a href="ViewUsers.jsp?username="+<%=request.getParameter("username")%>>Manage users</a>
   <a href="LogoutAction.jsp">Log out</a>
 </div>
 <body>
@@ -24,9 +22,19 @@
 	<%
 		AdminInteraction con = (AdminInteraction) session.getAttribute("interaction");
 	%>
+	<br>
+	<br>
+	<% 
+	String anyErrors = request.getParameter("Error");
+	if(anyErrors != null)
+	{
+		out.println(anyErrors);
+	}
+	%>
 	<table style="text-align: left; width: 100%;" border="1"
 		cellpadding="2" cellspacing="2">
 		<tbody>
+		
 			<tr align="center">
 
 				<td colspan="8" rowspan="1" style="vertical-align: top;"><a
