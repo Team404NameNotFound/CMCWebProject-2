@@ -14,7 +14,7 @@
 		<br>
 		<br>
 		<table style="text-align: left; width: auto; height: atuo;"
-			border="1" cellpadding="10" cellspacing="2"
+			border="1" cellpadding="10" cellspacing="0"
 			class="center">
 			<tbody>
 				<tr>

@@ -9,6 +9,8 @@
 <style>
 <%@include file="styleCMC.css" %>
 <%@include file="topNavBarStyle.css" %>
+tr:nth-child(even) {background-color: #ea6d6d;}
+tr:hover {background-color:#F7F7D1;}
 </style>
 
 <div class="header">
