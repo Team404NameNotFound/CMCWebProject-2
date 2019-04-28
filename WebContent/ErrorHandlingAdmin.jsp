@@ -17,15 +17,7 @@
 <p>Oh no! There was an error!</p>
 </div>
 <div class="topnav">
-<%
-AccountInteraction sessionUser = (AccountInteraction) session.getAttribute("interaction");
-String menu = "";
-if(sessionUser.getAccount().getUserType().equals("a")){
-	menu = "AdminMenu.jsp";
-	menu = "StudentMenu.jsp";
-}
-%>
-  <a href=<%=menu%>>Menu</a>
+  <a href="AdminMenu.jsp">Menu</a>
   <a href="LogoutAction.jsp">Logout</a>
 </div>
       <p><% exception.getMessage(); %></p>
