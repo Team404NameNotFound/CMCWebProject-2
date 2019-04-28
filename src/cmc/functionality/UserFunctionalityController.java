@@ -51,6 +51,9 @@ public class UserFunctionalityController {
 	 * @return true in log on is successful
 	 */
 	public int login(String userName, String password) {
+		if (userName == null || password == null) {
+			throw new IllegalArgumentException("Sorry, one or more fields are empty");
+		}
 		if (!loggedIn) {
 			if (this.DBCon.checkUser(userName)) {
 				if (this.DBCon.getAccount(userName).getUserStatus().equals("Y")) {
@@ -60,14 +63,14 @@ public class UserFunctionalityController {
 						this.loggedIn = true;
 						return 0;
 					} else {
-						throw new IllegalArgumentException("Please provide a valid password");
+						throw new IllegalArgumentException("Sorry, invalid password");
 
 					}
 				} else {
-					throw new IllegalArgumentException("User is inactive");
+					throw new IllegalArgumentException("Sorry, user is inactive");
 				}
 			} else {
-				throw new IllegalArgumentException("Provide a valid username");
+				throw new IllegalArgumentException("Sorry, invalid username");
 
 			}
 		}
