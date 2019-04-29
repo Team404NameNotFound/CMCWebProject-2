@@ -156,9 +156,9 @@
 				<%} %>
 				<tr>
 					<td style="vertical-align: top;"><input name="reset"
-						type="reset"><br></td>
+						type="reset" class="button"><br></td>
 					<td style="vertical-align: top;"><input name="submit"
-						value="Submit Edit" type="submit"><br></td>
+						value="Submit Edit" type="submit" class="button"><br></td>
 				</tr>
 			</tbody>
 		</table>
