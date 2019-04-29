@@ -43,10 +43,7 @@ StudentInteraction stud = (StudentInteraction) session.getAttribute("interaction
 <div class="chart">
 <%
 			ArrayList<String> schoolScores = stud.compareSchoolsByScore();
-				for (int i = 0; i < schoolScores.size(); i++) {%>
-<%-- 				<div style="width: 40px;"><%int pos = schoolScores.get(i).lastIndexOf(" "); --%>
-<%-- 				out.println(schoolScores.get(i).substring(pos)); %></div> --%>
-				
+				for (int i = 0; i < schoolScores.size(); i++) {%>				
 				<div style="width: <%int pos = schoolScores.get(i).lastIndexOf(" ");
 				out.println(schoolScores.get(i).substring(pos)); %>;"> <%=schoolScores.get(i) %></div>
 
