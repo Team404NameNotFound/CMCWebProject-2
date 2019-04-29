@@ -23,10 +23,10 @@
 					<td style="vertical-align: top;"><input name="username">
 					</td>
 				</tr>
-				<td style="vertical-align: top;"><input value="Send Email"
-					name="Log in" type="submit" class="button"></td>
-				<td style="vertical-align: top;"><input value="Reset"
-					name="Reset" type="reset" class="button"></td>
+				<td style="vertical-align: top;"><div style="text-align:center"><input value="Send Email"
+					name="Log in" type="submit" class="button"></div></td>
+				<td style="vertical-align: top;"><div style="text-align:center"><input value="Reset"
+					name="Reset" type="reset" class="button"></div></td>
 			</tbody>
 		</table>
 		<br>

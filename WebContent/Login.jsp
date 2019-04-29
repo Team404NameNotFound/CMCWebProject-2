@@ -55,10 +55,10 @@ session.setAttribute("interaction", user);
 					</td>
 				</tr>
 				<tr>
-				<td style="vertical-align: center; style=text-align:center"><input value="Log in"
-					name="Log in" type="submit" class="button"></td>
-				<td style="vertical-align: center style=text-align:center"> <input value="Reset"
-					name="Reset" type="reset" class="button">
+				<td style="vertical-align: center; style=text-align:center"><div style="text-align:center"><input value="Log in"
+					name="Log in" type="submit" class="button"></div></td>
+				<td style="vertical-align: center style=text-align:center"><div style="text-align:center"><input value="Reset"
+					name="Reset" type="reset" class="button"></div></td>
 				</tr>
 			</tbody>
 	<br>
