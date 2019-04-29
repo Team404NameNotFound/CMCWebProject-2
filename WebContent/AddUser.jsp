@@ -65,9 +65,9 @@
 
 				<tr>
 					<td style="vertical-align: top;"><input value="Add" name="Add"
-						type="submit" action="AddUserAction.jsp"></td>
+						type="submit" action="AddUserAction.jsp" class="button"></td>
 					<td style="vertical-align: top;"><input value="Reset"
-						name="Reset" type="reset"></td>
+						name="Reset" type="reset" class="button"></td>
 				</tr>
 			</tbody>
 		</table>

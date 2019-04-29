@@ -24,9 +24,9 @@
 					</td>
 				</tr>
 				<td style="vertical-align: top;"><input value="Send Email"
-					name="Log in" type="submit"></td>
+					name="Log in" type="submit" class="button"></td>
 				<td style="vertical-align: top;"><input value="Reset"
-					name="Reset" type="reset"></td>
+					name="Reset" type="reset" class="button"></td>
 			</tbody>
 		</table>
 		<br>

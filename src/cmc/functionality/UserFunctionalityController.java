@@ -162,7 +162,7 @@ public class UserFunctionalityController {
 	 * @param userName
 	 */
 	public int forgotPassword(String userName) {
-		if (!loggedIn) {
+		if (!loggedIn || userName == null || userName.equals("")) {
 			if (this.DBCon.checkUser(userName)) {
 				AccountController userAcc = new AccountController(this.DBCon.getAccount(userName));
 				String rndPassword = userAcc.makeRandomPassword();

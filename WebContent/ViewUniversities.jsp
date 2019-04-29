@@ -74,7 +74,7 @@ tr:hover {background-color:#F7F7D1;}
 				<td style="vertical-align: top;">
 					<form method="post" action="RemoveUniversity.jsp"
 						name="Remove University">
-						<input name="RemoveUniversity" value="Remove" type="submit">
+						<input name="RemoveUniversity" value="Remove" type="submit" class="button">
 						<input name="universityName" value="<%=schools.get(i).getName()%>"
 							type="hidden">
 					</form>
@@ -163,7 +163,7 @@ tr:hover {background-color:#F7F7D1;}
 				<td style="vertical-align: top;">
 					<form method="post" action="EditUniversity.jsp"
 						name="Edit University">
-						<input name="Edit" value="Edit" type="submit"> <input
+						<input name="Edit" value="Edit" type="submit" class="button"> <input
 							name="universityName" value="<%=schools.get(i).getName()%>"
 							type="hidden">
 					</form>

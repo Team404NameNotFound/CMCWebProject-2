@@ -110,7 +110,9 @@ String anyErrors = request.getParameter("Error");
 	<input name="Q4" value="-1" type="radio">Unsure
 	<br>
 	<span style="font-weight: bold; color:#FED0C6"><br> </span>
-	<input name="quizResults" value="Submit" type="submit"> <br>
+	<div style="text-align:center">
+		<input name="quizResults" value="Submit" type="submit" class="button"> <br>
+	</div>
 	</form>
 	</div>
 </div>

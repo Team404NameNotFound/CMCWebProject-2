@@ -29,8 +29,7 @@ user = student.viewProfile(studentAccount.getUsername());
   <a href="LogoutAction.jsp">Logout</a>
 </div>
 <br>
-<br>
-
+<p style="color:red" align="center">
 <%
 String message = request.getParameter("message");
 
@@ -39,6 +38,8 @@ if(message != null && message.equals("-1"))
 	out.println("User information updated successfully");
 }
 %>
+</p>
+<br>
 
 <body>
 	<form action="StudentEditUserAction.jsp" name="editForm">
@@ -84,9 +85,9 @@ if(message != null && message.equals("-1"))
 				</tr>
 				<tr>
 					<td style="vertical-align: top;"><input name="reset"
-						type="reset"><br></td>
+						type="reset" class="button"><br></td>
 					<td style="vertical-align: top;"><input name="submit"
-						value="Submit Edit" type="submit"><br></td>
+						value="Submit Edit" type="submit" class="button"><br></td>
 				</tr>
 			</tbody>
 		</table>

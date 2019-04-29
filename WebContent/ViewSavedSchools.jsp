@@ -66,7 +66,7 @@ tr:hover {background-color:#F7F7D1;}
 			<form method="post" action="RemoveSavedSchool.jsp"
 						name="Remove">
 						<input name="RemoveSavedSchool.jsp" value="Remove"
-							type="submit"> <input name="savedSchool"
+							type="submit" class="button"> <input name="savedSchool"
 							value="<%=savedSchools.get(i).getName() %>" type="hidden">
 					</form>
 			</td>
@@ -79,7 +79,7 @@ tr:hover {background-color:#F7F7D1;}
 					<form method="post" action="ViewSavedSchoolDetails.jsp"
 						name="View">
 						<input name="ViewSavedSchoolDetails.jsp" value="View"
-							type="submit"> <input name="savedSchool"
+							type="submit" class="button"> <input name="savedSchool"
 							value="<%=savedSchools.get(i).getName()%>" type="hidden">
 					</form>
 				</td>

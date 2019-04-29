@@ -34,7 +34,7 @@
 		cellpadding="2" cellspacing="0">
 		<tbody>
 			<%out.print("School information: "+matchSchool+"  "); %><form method="post" action="SaveSchool.jsp" name="SaveSchool">
-						<input name="Save" value="Save" type="submit"> <input
+						<input name="Save" value="Save" type="submit" class="button"> <input
 							name="School" value="<%=matchSchool%>"
 							type="hidden">
 					</form>
@@ -169,7 +169,7 @@
 		<tbody>
 			<tr align="center">MAY WE ALSO RECOMMEND
 			<form method="post" action="SaveSchool.jsp" name="SaveSchool">
-						<input name="Save" value="Save" type="submit"> <input
+						<input name="Save" value="Save" type="submit" class="button"> <input
 							name="School" value="<%=recommends.get(i).getName()%>"
 							type="hidden">
 					</form>

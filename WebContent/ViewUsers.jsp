@@ -51,7 +51,7 @@ tr:hover {background-color:#F7F7D1;}
 				<td style="vertical-align: top; text-align: center;">Password</td>
 				<td style="vertical-align: top; text-align: center;">Type</td>
 				<td style="vertical-align: top; text-align: center;">Status</td>
-				<td style="vertical-align: top;">Toggle Activation Status</td>
+				<td style="vertical-align: top;">Toggle Active Status</td>
 			</tr>
 
 
@@ -62,7 +62,7 @@ tr:hover {background-color:#F7F7D1;}
 			<tr>
 				<td style="vertical-align: top;">
 					<form method="post" action="AdminEditUser.jsp" name="Edit">
-						<input name="Edit" value="Edit" type="submit"> <input
+						<input name="Edit" value="Edit" type="submit" class="button"> <input
 							name="username" value="<%=allUsers.get(i).getUsername()%>"
 							type="hidden">
 					</form>
@@ -94,9 +94,9 @@ tr:hover {background-color:#F7F7D1;}
 				</td>
 				<td style="vertical-align: top;">
 					<form method="post" action="ToggleActivationStatusAction.jsp"
-						name="Toggle Activation Status">
-						<input name="Toggle" value="Toggle Activation Status"
-							type="submit"> <input name="username"
+						name="Toggle Active Status">
+						<input name="Toggle" value="Toggle Active Status"
+							type="submit" class="button"> <input name="username"
 							value="<%=allUsers.get(i).getUsername()%>" type="hidden">
 					</form>
 				</td>
