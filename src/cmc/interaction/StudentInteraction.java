@@ -185,7 +185,7 @@ public class StudentInteraction extends AccountInteraction {
 				&& percentEnrolledMinS.length() < 1 && percentEnrolledMaxS.length() < 1
 				&& academicScaleMinS.length() < 1 && academicScaleMaxS.length() < 1 && socialScaleminS.length() < 1
 				&& socialScaleMaxS.length() < 1 && qualityOfLifeMinS.length() < 1 && qualityOfLifeMaxS.length() < 1
-				&& control.length() < 1) {
+				&& control.length() < 1 && emphases.length < 1) {
 			throw new IllegalArgumentException("Sorry, you must input at least one search field");
 		}
 		
