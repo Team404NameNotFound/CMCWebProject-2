@@ -118,7 +118,7 @@
 				{
 					%>
 					<tr>
-					<td style="vertical-align: top;">Emphases <%= i - 14 %><br>
+					<td style="vertical-align: top;">Emphases <%= i - 15 %><br>
 					</td>
 					<td style="vertical-align: top;"><%= university.get(i) %><br></td>
 						</tr>
