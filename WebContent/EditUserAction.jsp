@@ -11,7 +11,7 @@ String password = request.getParameter("password");
 String type = request.getParameter("type");
 String activation = request.getParameter("status");
 
-inter.editProfile(uName, fname, lName, password, type, activation);
+inter.editProfile(uName, fname, password, lName, type, activation);
 response.sendRedirect("ViewUsers.jsp");
 
 %>
